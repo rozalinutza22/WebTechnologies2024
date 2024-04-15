@@ -1,0 +1,153 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+body {
+    font: 1.5em / 1.2 Inter;
+    background-image: url('background1.png');
+    max-width: 100%;
+    height: auto;
+}
+
+nav {
+    background-color: black;
+    padding: 1% 0; 
+    text-align: center;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li {
+    display: inline; 
+    margin-right: 10%; 
+}
+
+
+nav ul li:last-child {
+    margin-right: 0; 
+}
+
+nav ul li a {
+    text-decoration: none;
+    color:#fabc3c;
+
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+    
+    font-size: 1.1em;
+    padding: 2% 4%; 
+    border: 1px solid transparent;
+    border-radius: 3px;
+    transition: padding 0.3s; 
+}
+
+nav ul li a:hover {
+    background-color: #fabc3c;
+    padding: 1% 2%; 
+}
+
+h1 {
+    color: #7a0103;
+    padding-left: 5%;
+    font-family: 'Inter';
+    position: relative;
+    font-size: calc(1.1rem + 1vw);
+}
+
+.forms {
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    font-family: 'Inter';
+    font-size: calc(1.4em + 1.7vw);
+    font-weight: bold;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto; 
+    padding-left: 5%;
+    box-sizing: border-box;
+}
+
+ul {
+    color : black;
+    list-style-type: none;
+    padding-left: 0%;
+    font-family: 'Inter';
+    font-size: calc(1.5rem + 1.9vw);
+    font-weight: bold;
+    width: 100%; 
+    height: max-content;
+    box-sizing: border-box;
+}
+
+ul li {
+    margin-bottom: 5%;
+    font-family: 'Inter';
+    font-size: calc(0.7rem + 0.7vw);
+}
+
+ul input {
+    width: 100%;
+    padding-left: 15%;
+    box-sizing: border-box;
+    border-color: coral;
+    background-color: #f3ac01;
+    text-align: left;
+    font-size: calc(0.2em + 0.5vw);
+}
+
+#strong_pass {
+    color: red;
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: calc(0.3em + 0.5vw);
+}
+
+img {
+    max-width: 7%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px green;
+}
+
+textarea {
+    background-color: cornsilk;
+    width: 15%;
+}
+
+#create {
+    width: 10%;
+    font-size: calc(0.2rem + 0.7vw);
+    cursor: pointer;
+    margin-bottom: 30%;
+    color: brown;
+    font-family: 'Inter';
+    border-color: black;
+}
+
+#first_name,
+#last_name, 
+#email_name,
+#password,
+#strong_pass,
+#phone_number {
+    width: 13%;
+    padding: 0%;
+    height: 100%;
+} 
+
+#vegetarian {
+    width: 2%;
+    padding-left: 1%;
+    height: 100%;
+}

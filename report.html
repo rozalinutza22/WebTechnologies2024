@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Techincal raport</title>
+  </head>
+  <body>
+    <article>
+      <header>
+        <h1>Table of Contents</h1>
+      </header>
+
+      <div role="contentinfo">
+        <section typeof="sa:AuthorsList">
+          <h2>Authors</h2>
+          <ul>
+            <li typeof="sa:ContributorRole" property="schema:author">
+              <span typeof="schema:Person">
+                <meta property="schema:additionalName" content="Andreea">
+                <meta property="schema:familyName" content="Bejan">
+                <span property="schema:name">Bejan Andreea</span>
+              </span>
+            </li>
+            <li typeof="sa:ContributorRole" property="schema:author">
+              <span typeof="schema:Person">
+                <meta property="schema:additionalName" content="Rodica-Elena">
+                <meta property="schema:familyName" content="Rosca">
+                <span property="schema:name">Rosca Rodica-Elena</span>
+              </span>
+            </li>
+          </ul>
+        </section>
+      </div>
+
+      <div role="contentinfo">
+        <ul role="directory">
+          <li>
+            <a href="#introduction">
+              Introduction
+            </a>
+            <ul role="directory">
+              <li>
+                <a href="#ref">
+                  <span>1.2</span>
+                  References
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <br>
+
+          <li>
+            <a href="#overall">
+              Overall Description
+            </a>
+            <ul role="directory">
+              <li>
+                <a href="#classes">
+                  <span>2.2</span>
+                  User Classes and Characteristics
+                </a>
+              </li>
+              <li>
+                <a href="#assumptions">
+                  <span>2.4</span>
+                  Assumptions and Dependencies
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <br>
+          <li>
+            <a href="#system">
+              System Features
+            </a>
+          </li>
+
+          <br>
+          <li>
+            <a href="#other">
+              Other Nonfunctional Requirements
+            </a>
+            <ul role="directory">
+              <li>
+                <a href="#safety">
+                  <span>4.1</span>
+                  Safety Requirements
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+      <section id="introduction" role="doc-introduction">
+        <h2> 
+          <span>1.</span>
+          Introduction
+        </h2>
+
+        <section id="ref">
+          <h3>
+            <span>1.2</span>
+            References
+          </h3>
+          <p>As system requirements specifications, the user can access our web application on every browser and on every operating system. </p>
+
+          <p> Provide enough information so that the reader could access a copy of each reference, including title, author, version number, 
+            date, and source or location. </p>
+        </section>
+      </section>
+
+      <section id="overall">
+        <h2>
+          <span>2.</span>
+          Overall Description
+        </h2>
+        <section id="classes">
+          <h3>
+            <span>2.2</span>
+            User Classes and Characteristics
+          </h3>
+          <p>
+            This web application allows two types of users, admin and customer. The admin user can access and modify the database by adding/removing recipes,
+            recommendations, pieces of information about each recipe, their availability and expiration date. The customer can only view and buy the products 
+            that are available and can modify its profile. </p>
+          <p>Each type of user must create an account by providing personal information as first name,
+            last name, email adress and phone number. After registration, the user must complete the login form to have access to its profile. </p>
+        </section>
+
+        <section id="assumptions">
+          <h3>
+            <span>2.4</span>
+            Assumptions and Dependencies
+          </h3>
+          <p>
+            A constraint that appears in our create account form is that first name, last name, email adress and phone number are required.
+            Otherwise, the user can not create an account. Also, there are specific types of phone numbers that are allows to use in the create account form.
+          </p>
+          <p>
+            It is very important for the user to inform us about every allergens that he/she is allergic to, because we can not apply the filtering process
+            if we do not know which product should be avoided. The same case is for the vegeterian diet, the user should mark the checkbox that we have placed 
+            in the create account form and in the modify account form. 
+          </p>
+        </section>
+      </section>
+
+      <section id="system">
+        <h2>
+          <span>3.</span>
+          System Features
+        </h2>
+      </section>
+
+      <section id="other">
+        <h2>
+          <span>4.</span>
+          Other Nonfunctional Requirements
+        </h2>
+        <section id="safety">
+          <h3>
+            <span>4.1</span>
+            Safety Requirements
+          </h3>
+          <p>
+            The user is strongly advised to keep their login information private. Any loss of data can influence its future experience
+            within our application. 
+          </p>
+          <p>
+            If you suspect that someone stole your login credentials, please contact us. We will send you an email with the new credentials.
+          </p>
+        </section>
+      </section>
+
+    </article>
+  </body>
+</html>

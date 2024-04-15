@@ -1,0 +1,309 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+body {
+    font: 1.5em / 1.2 Inter;
+    background-image: url('background1.png');
+    max-width: 100%;
+    height: auto;
+}
+
+h1 {
+    color: #7a0103;
+    padding-left: 25%;
+    font-family: 'Inter';
+    position: absolute;
+    font-size: calc(2.1rem + 1vw);
+}
+
+.forms {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: 'Inter';
+    font-size: calc(1.4em + 1.7vw);
+    font-weight: bold;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto; 
+    padding-left: 5%;
+    box-sizing: border-box;
+    position: relative;
+}
+
+ul {
+    color : black;
+    list-style-type: none;
+    padding-left: 0%;
+    font-family: 'Inter';
+    font-size: calc(1.5rem + 1.9vw);
+    font-weight: bold;
+    width: 100%; 
+    height: 100%;
+    box-sizing: border-box;
+    padding-left: 40%;
+}
+
+ul li {
+    margin-bottom: 5%;
+    font-family: 'Inter';
+    font-size: calc(0.7rem + 0.7vw);
+}
+
+ul input {
+    width: 100%;
+    padding-left: 15%;
+    box-sizing: border-box;
+    border-color: coral;
+    background-color: #f3ac01;
+    text-align: left;
+    font-size: calc(0.3em + 0.4vw);
+}
+
+#strong_pass {
+    color: red;
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: calc(0.3em + 0.5vw);
+}
+
+img {
+    max-width: 7%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 2%;
+}
+
+img:hover {
+    box-shadow: 0 0 2px 1px green;
+}
+
+textarea {
+    background-color: cornsilk;
+    width: 15%;
+}
+
+#create {
+    width: 20%;
+    font-size: calc(0.2rem + 0.7vw);
+    cursor: pointer;
+    margin-bottom: 30%;
+    color: brown;
+    font-family: 'Inter';
+    border-color: black;
+}
+
+#first_name,
+#last_name, 
+#email_name,
+#password,
+#strong_pass,
+#phone_number {
+    width: 23%;
+    padding: 0%;
+    height: 100%;
+} 
+
+#vegetarian {
+    width: 2%;
+    padding-left: 1%;
+    height: 100%;
+}
+
+#admin {
+    width: 2%;
+    padding-left: 1%;
+    height: 100%;
+}
+
+@media screen and (max-width: 576px) {
+    .forms {
+      padding: 100px;
+      font-size: calc(1.2rem + 1.7vw);
+    }
+    
+    ul li {
+      margin-bottom: 95px; 
+      font-size: calc(1.2rem + 0.7vw);
+    }
+    
+    ul input {
+      padding: 68px; 
+      font-size: calc(1.2rem + 0.7vw);
+    }
+
+    #first_name,
+    #last_name, 
+    #email_name,
+    #password,
+    #strong_pass,
+    #phone_number {
+        width: 90px;
+        padding: 0%;
+        height: 100%;
+    } 
+
+    #vegetarian {
+        width: 70px;
+        padding-left: 1%;
+        height: 100%;
+    }
+
+    #admin {
+        width: 70px;
+        padding-left: 1%;
+        height: 100%;
+    }
+
+    textarea {
+        background-color: cornsilk;
+        width: 102px;
+    }
+
+    #create {
+        width: 30%;
+        font-size: calc(1.2rem + 0.7vw);
+        cursor: pointer;
+        margin-bottom: 40%;
+        color: brown;
+        font-family: 'Inter';
+        border-color: black;
+    }
+
+    #strong_pass {
+        color: red;
+        font-family: 'Inter';
+        font-weight: bold;
+        font-size: calc(0.7em + 0.5vw);
+    }
+}
+
+@media screen and (min-width: 577px) and (max-width: 992px) {
+    .forms {
+      padding: 70px;
+      font-size: calc(1rem + 1vw);
+    }
+    
+    ul li {
+      margin-bottom: 10%; 
+      font-size: calc(1.2rem + 1.7vw);
+      padding-right: 25%;
+    }
+    
+    ul input {
+      padding-left: 30%;
+      font-size: calc(1.2rem + 1.7vw);
+    }
+
+    #first_name,
+    #last_name, 
+    #email_name,
+    #password,
+    #strong_pass,
+    #phone_number {
+        width: 90%;
+        padding: 0%;
+        height: 100%;
+    } 
+
+    #vegetarian {
+        width: 10%;
+        padding-left: 1%;
+        height: 100%;
+        transform: scale(2);
+    }
+
+    #admin {
+        width: 10%;
+        padding-left: 1%;
+        height: 100%;
+        transform: scale(2);
+    }
+
+    textarea {
+        background-color: cornsilk;
+        width: 90%;
+    }
+
+    #create {
+        width: 30%;
+        font-size: calc(1.2rem + 0.7vw);
+        cursor: pointer;
+        margin-bottom: 40%;
+        color: brown;
+        font-family: 'Inter';
+        border-color: black;
+    }
+
+    #strong_pass {
+        color: red;
+        font-family: 'Inter';
+        font-weight: bold;
+        font-size: calc(0.7em + 0.5vw);
+    }
+}
+  
+@media screen and (min-width: 993px) {
+    .forms {
+        padding: 50px;
+        font-size: calc(0.7rem + 0.7vw);
+      }
+      
+      ul li {
+        margin-bottom: 10%; 
+        font-size: calc(0.7rem + 0.3vw);
+        padding-right: 25%;
+      }
+      
+      ul input {
+        padding-left: 10%;
+        font-size: calc(0.4rem + 1vw);
+      }
+  
+      #first_name,
+      #last_name, 
+      #email_name,
+      #password,
+      #strong_pass,
+      #phone_number {
+          width: 50%;
+          padding: 0%;
+          height: 60%;
+      } 
+  
+      #vegetarian {
+          width: 10%;
+          padding-left: 1%;
+          height: 100%;
+          transform: scale(2);
+      }
+
+      #admin {
+        width: 10%;
+        padding-left: 1%;
+        height: 100%;
+        transform: scale(2);
+    }
+  
+      textarea {
+          background-color: cornsilk;
+          width: 50%;
+      }
+  
+      #create {
+          width: 30%;
+          font-size: calc(0.7rem + 0.7vw);
+          cursor: pointer;
+          margin-bottom: 30%;
+          color: brown;
+          font-family: 'Inter';
+          border-color: black;
+      }
+  
+      #strong_pass {
+          color: red;
+          font-family: 'Inter';
+          font-weight: bold;
+          font-size: calc(0.7em + 0.5vw);
+      }
+  }
