@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css?family=Inter');
+
+body {
+    background-image: url('background1.png');
+    color: #333;
+    margin: 0;
+    font: 1.2em / 1.2 Inter;
+    margin-left: 20%;
+    margin-right: 20%;
+    align-items: center;
+  }
+
+
+.stroke
+{
+    color: #f55536;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+    text-align: center;
+}
+.strokeTitle
+{
+    color: #f55536;
+    margin-top: 10%;
+    text-shadow:
+    -1px -1px 0 #000,
+    1px -1px 0 #000,
+    -1px 1px 0 #000,
+    1px 1px 0 #000;  
+    text-align: center;
+}
+
+form{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text{
+    color: black;
+    text-align: center;
+}
+
+button {
+    background-color: #ff773d;
+    border: 1px solid #000;
+    color: #fabc3c;
+    padding: 20px;
+    text-align: center;
+    align-items: center;
+    text-decoration: none;
+    font-size: 110%;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 12px;
+}
+
+ul, ol {
+    list-style: none;
+    text-align: center;
+}
+
+.input{
+    width: 100%; 
+    padding-top: 10%;
+    margin-bottom: 10%;
+    color: black;
+    background-color: #ffb238;
+    border-color: black;
+    outline-color: black;
+    box-shadow: 0 0 5px black;
+    outline: none;
+}
+
+a:link {
+    color: black;
+}
+
+/* Link color after click */
+a:visited {
+    color: #ff773d;
+}
+
+/* Link color when hovered */
+a:hover {
+    color: white;
+}
+
+.checkbox{
+    text-align: center;
+    color:#000;
+}
+
+@media screen and (max-width: 650px) {
+
+    .strokeTitle{
+        margin-top: 35%;
+    }
+
+    .input{
+        width: 100%; 
+        padding-top: 20%;
+        margin-bottom: 10%;
+    }
+}
