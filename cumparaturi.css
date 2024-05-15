@@ -51,6 +51,49 @@ nav ul li a:hover {
     padding: 1% 3%; 
 }
 
+.searchSection {
+    overflow: hidden;
+    background-color: #ffb238;
+}
+ 
+.searchSection .textTitle {
+    color: black;
+    text-align: center;
+    margin-top:2%;
+    font-size: 120%;
+    text-shadow:
+    -0.5px -0.5x 0 #000,
+    0.5px -0.5px 0 #000,
+    -0.5px 0.5px 0 #000,
+    0.5px 0.5px 0 #000;  
+} 
+  
+.searchSection .search-container {
+    float: right;
+}
+  
+.searchSection input[type=text] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+  
+.searchSection .search-container button {
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #ddd;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+}
+  
+.searchSection .search-container button:hover {
+   background: #ccc;
+}
+
 .boxes {
     display: flex;
     flex-direction: column;
@@ -70,6 +113,13 @@ nav ul li a:hover {
     align-items: center;
 }
 
+.ListeCumparaturi{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    padding: 2%;
+    margin-left: 5%;
+}
+
 
 .subtitle{
     color: #f55536;
@@ -82,14 +132,14 @@ nav ul li a:hover {
 }
 .container {
     position: relative;
+    padding: 2%;
 }
 
 .white-box {
     background-color: white;
-    position: absolute;
-    margin-top: 3%;
-    right: 5%;
-    width: 20%; 
+    position: relative;
+    /* right: auto; */
+    width: 60%; 
     max-height: 250px; 
     overflow-y: auto; /* vertical scrollbar when content overflows */
     padding: 2%; 
@@ -112,7 +162,12 @@ nav ul li a:hover {
     margin: 3px;
 }
 
-.finalCumparaturi{
+.titluLista{
+    font-weight: bold;
+    align-self: center;
+}
+
+.finalShoppingList{
     background-color: #fabc3c;
     padding: 2% 4%; 
 }
@@ -202,6 +257,13 @@ nav ul li a:hover {
         right: auto;
         margin-top:5%;
     }
+    
+.searchSection .search-container {
+    float: center;
+    padding:3%;
+    margin-right: 5%;
+}
+
 }
 
 @media screen and (max-width: 370px){
