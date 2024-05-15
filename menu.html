@@ -1,54 +1,58 @@
 <!DOCTYPE html>
 <html lang="en-US">
-    <head>
-        <!-- <meta charset="utf-8"/> -->
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Menu</title>
-        <link rel="stylesheet" href="menu.css" type="text/css">
-    </head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Menu</title>
+    <link href="menu.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
 
-    <body>
-        <nav>
-            <ul>
-              <li><a href="principal.html">Home</a></li>
-              <li><a href="cumparaturi.html">Cart</a></li>
-              <li><a href="modify_account.html">Profile</a></li>
-            </ul>
-          </nav> 
+  <body>
+    <nav>
+        <ul>
+          <li><a href="principal.html">Home</a></li>
+          <li><a href="cumparaturi.html">My lists</a></li>
+          <li><a href="profile.html">Profile</a></li>
+        </ul>
+      </nav>
 
-        <br>  
+      <br>
+      <br>
+      <br>
 
-        <h1>Browse our menu!</h1>
-        <br>
+      <h1>Browse our menu!</h1>
 
-        <p>Use our menu and choose the best recipe for you! Fast and fresh food.</p>
+      <!-- <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div> -->
 
-        <div class="Foodie">
-            <button name="burgers">Burgers</button>
-            <button name="pizza">Pizza</button>
-            <button name="pasta">Pasta</button>
+      <div class="searchSection">
+        <!-- <div class="textTitle">All you need is here</div> -->
+      <div class="search-container">
+        <form action="/action_page.php">
+          <input type="text" placeholder="Search.." name="search">
+          <button type="submit"><i class="fa fa-search"></i></button>
+        </form>
+      </div>
+    </div>
+
+      <br>
+      <br>
+      <br>
+
+      <h4>Filter by</h4>
+
+    <div class="container">
+        <div class="filter-container">
+            <label><input type="checkbox" id="sizeSmall"> Small</label>
+            <label><input type="checkbox" id="sizeMedium"> Medium</label>
+            <label><input type="checkbox" id="sizeLarge"> Large</label>
         </div>
+    </div>
 
-        <br> <br> 
-
-
-        <div class="container">
-            <div class="polaroid">
-                <img src="food-1.jpg" alt="American Burger">
-                <p class="food_name">American Burger</p>
-            </div>
-
-            <div class="polaroid">
-                <img src="Al.jpg" alt="OMG Burger">
-                <p class="food_name">OMG Burger</p>
-            </div>
-
-            <div class="polaroid">
-                <img src="burg.jpg" alt="Mister Burger">
-                <p class="food_name">Mister Burger</p>
-            </div>
-
-        </div>
-
-    </body>
+  </body>
 </html>
