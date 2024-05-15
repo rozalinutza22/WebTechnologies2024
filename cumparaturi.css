@@ -167,14 +167,22 @@ nav ul li a:hover {
     align-self: center;
 }
 
-.finalShoppingList{
+.specialButton{
     background-color: #fabc3c;
-    padding: 2% 4%; 
+    padding: 2%;
+}
+
+.specialButtonProduct{
+    background-color: #fabc3c;
+    height: 30%;
+    width: 70%;
+    margin-left: 10%;
+    margin-top: 10%;
 }
 
 .productImage{
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
-    margin: 4%;
+    margin: 6%;
     height: 6em;
     border-radius: 10px;
 }
@@ -196,10 +204,16 @@ nav ul li a:hover {
     align-items: center;
 }
 
+.productDetails{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
 .productText{
     display: flex;
     flex-direction: column;
     align-content: center;
+    margin-right: 25%;
 }
 .logo{
     align-self: flex-start;
