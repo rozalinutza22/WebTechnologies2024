@@ -19,13 +19,13 @@ nav ul {
 }
 
 nav ul li {
-    display: inline; /*elementele din meniu sa fie orizontal pozitionate, in loc de vertical*/
-    margin-right: 10%; /*distanta dintre elementele din meniu*/
+    display: inline; 
+    margin-right: 10%;
 }
 
 
 nav ul li:last-child {
-    margin-right: 0; /*ultimul element din meniu sa nu fie prea despartit de dreapta*/
+    margin-right: 0; 
 }
 
 nav ul li a {
