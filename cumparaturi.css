@@ -109,8 +109,8 @@ nav ul li a:hover {
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
     border: 2px black solid;
     border-radius: 10px;
-    display:flex;
-    align-items: center;
+    display: grid;
+    grid-auto-rows: 1fr 1fr 1fr;
 }
 
 .ListeCumparaturi{
@@ -207,13 +207,13 @@ nav ul li a:hover {
 .productDetails{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr;
-}
+} 
 
 .productText{
     display: flex;
     flex-direction: column;
     align-content: center;
-    margin-right: 25%;
+    /* margin-right: 25%; */
 }
 .logo{
     align-self: flex-start;
@@ -247,12 +247,40 @@ nav ul li a:hover {
     margin-top: 3%;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
+
+     .boxes {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        margin-left: 8%;
+    }
+    .box {
+        width: 100%; 
+        height: 15em;
+       display:flex;
+    }
+    .productText{
+        display:flex;
+        flex-direction: column;
+        
+    }
+    .productDetails{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .specialButtonProduct{
+        background-color: #fabc3c;
+        height: 70%;
+        width: 70%;
+        margin-left: 10%;
+        margin-bottom: 20%;
+    } 
 
     nav ul li {
         margin-right: 1%;
     }
-
+/* 
     .box {
         background-color: #ffb238; 
         width: 90%;
@@ -263,7 +291,7 @@ nav ul li a:hover {
         border-radius: 10px;
         display:flex;
         align-items: center;
-    }
+    } */
     .white-box {
         width: 90%; 
         margin: 0 auto; 
@@ -276,6 +304,11 @@ nav ul li a:hover {
     float: center;
     padding:3%;
     margin-right: 5%;
+}
+.ListeCumparaturi{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 }
@@ -290,7 +323,23 @@ nav ul li a:hover {
     .box {
         width: 100%; 
         height: 15em;
+       display:flex;
+    }
+    .productText{
+        display:flex;
         flex-direction: column;
+        
+    }
+    .productDetails{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .specialButtonProduct{
+        background-color: #fabc3c;
+        height: 70%;
+        width: 70%;
+        margin-left: 10%;
+        margin-top: 10%;
     }
 
     .detaliiFinal{

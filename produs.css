@@ -135,7 +135,39 @@ a:hover {
     color:#000;
 }
 
-@media screen and (max-width: 650px) {
+.productImage{
+    width:70%;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+.productDetails{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+.productText{
+    margin-left: 1%;
+}
+
+.Title{
+    /* font: 1.2em Inter-bold; */
+    font: bold 1.2em Inter, sans-serif;
+    text-align: left;
+    font-size: calc(6vw); /*font size one-fourth of the viewport width */;
+    color: #f55536;
+    text-shadow:
+    -1px -1px 0 #000,
+    3px -1px 0 #000,
+    -1px 1px 0 #000,
+    3px 3px 0 #000;  
+}
+
+.Description{
+    font: 3em / 1.2 Inter;
+}
+
+@media screen and (max-width: 750px) {
 
     .strokeTitle{
         margin-top: 35%;
@@ -146,4 +178,30 @@ a:hover {
         padding-top: 20%;
         margin-bottom: 10%;
     }
+   
+.Title{
+    /* font: 1.2em Inter-bold; */
+    font: bold 1.2em Inter, sans-serif;
+    text-align: left;
+    font-size: calc(14vw); /*font size one-fourth of the viewport width */;
+    color: #f55536;
+    text-shadow:
+    -1px -1px 0 #000,
+    3px -1px 0 #000,
+    -1px 1px 0 #000,
+    3px 3px 0 #000;  
+}
+.productImage{
+    width:70%;
+}
+
+.productDetails{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.productText{
+    margin-left: 1%;
+}
 }
