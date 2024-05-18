@@ -58,13 +58,6 @@ h1 {
     font-size: calc(1.5rem + 3vw);
 }
 
-@media (max-width: 768px) {
-    .h1 {
-      font-size: 12px;  
-    }
-}
-
-
 p {
     color: #000;
     padding-right: 10%;
@@ -74,7 +67,7 @@ p {
     font: 1.1em;
 }
 
-button {
+/* button #create {
     padding-left: 4%;
     padding-right: 4%;
     padding-top: 1%;
@@ -84,9 +77,146 @@ button {
     background-color: orange;
     transition: background-color 0.3s ease;
     font-size: 1.1em;
-}
+    position: fixed;
+} */
 
 button:focus {
     background-color: rgb(210, 93, 30); 
+}
+
+#create {
+    max-width: 77%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 95%;
+}
+
+.import {
+    max-width: 7%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 5%;
+}
+
+.export {
+    max-width: 7%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 1%;
+}
+
+.circular-image {
+    width: 200px; /* Alege o dimensiune potrivită pentru imagine */
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-image img {
+    width: 99%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.forms {
+    display: flex;
+    justify-content: left;
+    align-items: flex-end;
+    font-family: 'Inter';
+    font-size: calc(1.4em + 1.7vw);
+    font-weight: bold;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto; 
+    padding-left: 5%;
+    box-sizing: border-box;
+}
+
+form ul {
+    color : black;
+    list-style-type: none;
+    padding-left: 0%;
+    font-family: 'Inter';
+    font-size: calc(1.5rem + 1.9vw);
+    font-weight: bold;
+    width: 100%; 
+    height: max-content;
+    box-sizing: border-box;
+}
+
+ form ul li {
+    margin-bottom: 5%;
+    font-family: 'Inter';
+    font-size: calc(0.7rem + 0.7vw);
+}
+
+form ul input {
+    width: 100%;
+    padding-left: 15%;
+    box-sizing: border-box;
+    border-color: coral;
+    background-color: #f3ac01;
+    text-align: left;
+    font-size: calc(0.7em + 0.2vw);
+}
+
+#strong_pass {
+    color: red;
+    font-family: 'Inter';
+    font-weight: bold;
+    font-size: calc(0.3em + 0.5vw);
+}
+
+textarea {
+    background-color: cornsilk;
+    width: 15%;
+}
+
+/* #create {
+    width: 15%;
+    font-size: calc(0.9rem + 0.7vw);
+    cursor: pointer;
+    margin-bottom: 30%;
+    color: brown;
+    font-family: 'Inter';
+    border-color: black;
+} */
+
+#first_name,
+#last_name, 
+#email_name,
+#phone_number {
+    width: 19%;
+    padding: 0%;
+    height: 100%;
+    font-size: calc(0.6rem + 0.7vw);
+} 
+
+/* #vegetarian {
+    width: 2%;
+    padding-left: 1%;
+    height: 100%;
+    font-size: 1.1em;
+} */
+
+.input-group {
+    font-size: 1.3em;
+}
+
+form p {
+    font-size: 1em;
+    padding-right: 80%;
+}
+
+@media (max-width: 768px) {
+    .h1 {
+      font-size: 12px;  
+    }
 }
 
