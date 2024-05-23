@@ -19,16 +19,16 @@
     <div class="searchSection">
         <div class="textTitle">All you need is here</div>
         <div class="search-container">
-            <form action="cumparaturi.php" method="post">
+            <!-- <form action="cumparaturi.php" method="post">
                 <input type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
-            </form>
+            </form> -->
         </div>
     </div>
 
     <div class="add-list-form">
         <form action="cumparaturi.php" method="post">
-            <label for="list-name">List Name:</label>
+            <label for="list-name">Insert list name:</label>
             <input type="text" id="list-name" name="list_name" required>
             <button type="submit" name="add_list">Add List</button>
         </form>
@@ -45,7 +45,7 @@
 
 <div class="box">
   <div class="productDetails">
-    <img src="frenchButtercream.png" class="productImage" alt="imagine biscuiti"> 
+    <img src="../images/frenchButtercream.png" class="productImage" alt="imagine biscuiti"> 
     <div class="productText">
     <p class="productTitle">French Buttercream</p>
     <p class="productPrice">5.00 $</p>
@@ -55,7 +55,7 @@
 </div>
 <div class="box">
   <div class="productDetails">
-    <img src="red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup"> 
+    <img src="../images/red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup"> 
     <div class="productText">
     <p class="productTitle">Red lentil soup with beet greens</p>
     <p class="productPrice">3.00 $</p>
@@ -65,7 +65,7 @@
 </div>
 <div class="box">
   <div class="productDetails">
-    <img src="prajiturele.png" class="productImage" alt="imagine prajiturele"> 
+    <img src="../images/prajiturele.png" class="productImage" alt="imagine prajiturele"> 
     <div class="productText">
     <p class="productTitle">Special Homemade Sweet</p>
     <p class="productPrice">4.00 $</p>
@@ -75,7 +75,7 @@
 </div>
 <div class="box">
   <div class="productDetails">
-    <img src="burgerMenu.png" class="productImage" alt="imagine meniu"> 
+    <img src="../images/burgerMenu.png" class="productImage" alt="imagine meniu"> 
     <div class="productText">
     <p class="productTitle">Burger Menu</p>
     <p class="productPrice">15.00 $</p>
@@ -87,7 +87,7 @@
 
 
 <div class="detaliiFinal">
-<img class="logo" src="logo.png" alt="logo">
+<img class="logo" src="../images/logo.png" alt="logo">
 <div class="detaliiContact">
 <p class="footerTitle">Contact us at:</p>
 <p class="footerText">FoodStash@gmail.com</p>
