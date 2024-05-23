@@ -2,8 +2,8 @@
 
 body {
     font: 1em / 1.2 Inter;
-    /* background-color: #fabc3c; */
-    background-image: url('background1.png');
+     /* background-color: #fabc3c;  */
+     background-image: url('../background1.png'); 
 }
 
 nav {

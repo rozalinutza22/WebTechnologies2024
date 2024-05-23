@@ -1,6 +1,6 @@
 <?php
 
-function displayLists($lists) {
+function displayLists($lists, $model) {
     echo "<div class='container'>";
     if (!empty($lists)) {
         foreach ($lists as $list) {
@@ -8,7 +8,7 @@ function displayLists($lists) {
             echo "<div class='titluLista'>" . htmlspecialchars($list['name']) . "</div>";
 
             // Display list items
-            $items = getListItems($list['id']);
+            $items = $model->getListItems($list['id']); // Call getListItems() from $model
             foreach ($items as $item) {
                 echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
                 echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
@@ -21,7 +21,11 @@ function displayLists($lists) {
             echo "<div style='float: right;'>$" . calculateTotal($items) . "</div>";
             echo "<div style='clear: both;'></div>";
 
-            echo "<a href='delete_list.php?id=" . htmlspecialchars($list['id']) . "' class='deleteButton' onclick='return confirm(\"Are you sure you want to delete this list?\")'>Delete</a>";
+            // Form to delete list
+            echo "<form action='cumparaturi.php' method='post'>";
+            echo "<input type='hidden' name='list_id' value='" . htmlspecialchars($list['id']) . "'>";
+            echo "<button type='submit' name='delete_list' class='deleteButton' onclick='return confirm(\"Are you sure you want to delete this list?\")'>Delete</button>";
+            echo "</form>";
 
             echo "</div>";
         }
