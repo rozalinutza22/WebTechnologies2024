@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Inter');
 
 body {
-    background-image: url('background1.png');
+    background-image: url('../images/background1.png');
     color: #333;
     margin: 0;
     font: 1.2em / 1.2 Inter;

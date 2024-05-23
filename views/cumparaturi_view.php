@@ -42,4 +42,5 @@ function calculateTotal($items) {
     }
     return $total;
 }
-?>
+
+?> 
