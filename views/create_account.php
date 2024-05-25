@@ -1,56 +1,43 @@
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Modify your account details</title>
-        <link href="css/modify_account.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <meta charset="utf-8" /> -->
+        <title>Create account</title>
+        <link rel="stylesheet" href="../css/create_account.css">
     </head>
 
     <body>
-        <nav>
-            <ul>
-              <li><a href="principal.html">Home</a></li>
-              <li><a href="cumparaturi.php">My lists</a></li>
-              <li><a href="profile.html">Profile</a></li>
-            </ul>
-          </nav>
-    
-          <br>
-          <br>
-          <br>
+        <h1>Create an account for free!</h1>
+        <br> <br> <br>
 
-        <h1>Modify your account</h1>
-
-        <form class="forms" action="modify_account.php" method="post">
+        <form class="forms" action="create_account.php" method="post">
             <ul>
                 <li>
                     <label class="input-group">First Name</label>
                     <br>
                     <br>
-                    <input autofocus type="text" id="first_name" name="user_name" placeholder="Ex: Anna" >
+                    <input autofocus type="text" id="first_name" name="user_name" placeholder="Ex: Anna" required>
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Last Name</label>
                     <br>
                     <br>
-                    <input type="text" id="last_name" name="user_name" placeholder="Ex: Gomez" >
+                    <input type="text" id="last_name" name="user_name" placeholder="Ex: Gomez" required>
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Email</label>
                     <br>
                     <br>
-                    <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" >
+                    <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" required>
                 </li>
                 <li>
                     <br>
-                    <label class="input-group">Password</label>
+                    <label class="input-group" for="password">Password</label>
                     <br>
                     <br>
-                    <input type="password" id="password" name="user_password" > <br>
+                    <input type="password" id="password" name="user_password" required> <br>
                     <small id="strong_pass"> Use a strong password!</small>
                 </li>
                 <li>
@@ -58,7 +45,7 @@
                     <label class="input-group">Phone number</label>
                     <br>
                     <br>
-                    <input type="tel" id="phone_number" name="user_phone"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" >
+                    <input type="tel" id="phone_number" name="user_phone"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" required>
                 </li>
                 <li>
                     <br>
@@ -67,16 +54,21 @@
                 </li>
                 <li>
                     <br>
+                    <input type="checkbox" id="admin" name="admin" value="Admin">
+                    <label class="input-group" for="admin"> Admin</label><br>
+                </li>
+
+                <li>
+                    <br>
                     <p>Add here the allergens you are allergic to:</p>
                     <textarea id="allergens"></textarea>
                 </li>
                 <li>
                     <br>
-                    <br>
-                    <button id="create" name="create_acc">Modify</button>
+                    <button id="create" name="create_acc">Create account</button>
                 </li>
             </ul>
-        </form>  
+        </form>
         <img src="images/logo.png" alt="logo">
     </body>
 </html>

@@ -1,0 +1,29 @@
+open 'C:\xampp\apache\conf\httpd.conf'
+
+make sure LoadModule php_module "C:/xampp/php/php8apache2_4.dll" isn't commented 
+
+open httpd-vhosts.conf from xampp\apache\conf\extra
+
+add this, uncommented:
+
+<VirtualHost *:80>
+    ServerName cupo
+    DocumentRoot "C:/xampp/htdocs/ProiectWeb/WebTechnologies2024/public"
+    <Directory "C:/xampp/htdocs/ProiectWeb/WebTechnologies2024/public">
+        Options Indexes FollowSymLinks
+        AllowOverride All
+        Require all granted
+    </Directory>
+    ErrorLog "logs/cupo_error.log"
+    CustomLog "logs/cupo_access.log" common
+</VirtualHost>
+
+open C:\Windows\System32\drivers\etc\hosts
+
+add this, uncommented:
+
+127.0.0.1 cupo
+
+Restart Apache
+
+http://cupo/login should work
