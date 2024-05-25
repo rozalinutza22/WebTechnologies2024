@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Food Stash</title>
-    <link href="../css/principal.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../css/principal.css" rel="stylesheet" type="text/css"> -->
+    <style>
+            <?php include "../css/principal.css" ?>
+    </style>
   </head>
 
   <body>

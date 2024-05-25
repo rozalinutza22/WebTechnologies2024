@@ -4,16 +4,19 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Modify your account details</title>
-        <link href="../css/modify_account.css" rel="stylesheet" type="text/css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <!-- <link href="../css/modify_account.css" rel="stylesheet" type="text/css"> -->
+        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+        <style>
+            <?php include "../css/modify_account.css" ?>
+        </style>
     </head>
 
     <body>
         <nav>
             <ul>
-              <li><a href="principal.html">Home</a></li>
+              <li><a href="principal.php">Home</a></li>
               <li><a href="cumparaturi.php">My lists</a></li>
-              <li><a href="profile.html">Profile</a></li>
+              <li><a href="profile.php">Profile</a></li>
             </ul>
           </nav>
     

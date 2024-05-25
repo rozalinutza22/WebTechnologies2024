@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Product description</title>
-    <link href="../css/produs.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../css/produs.css" rel="stylesheet" type="text/css"> -->
+    <style>
+            <?php include "../css/produs.css" ?>
+    </style>
   </head>
 
   <body>

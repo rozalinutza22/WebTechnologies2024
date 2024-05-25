@@ -4,7 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Login to Food Stash</title>
-    <link href="../css/login.css" rel="stylesheet" type="text/css">
+    <!-- <link href="../css/login.css" rel="stylesheet" type="text/css"> -->
+    <style>
+            <?php include "../css/login.css" ?>
+    </style>
 </head>
 <body>
     <form action="/user/login" method="post">
@@ -26,7 +29,7 @@
                 <button type="submit">Submit</button>
             </li>
         </ul>
-        <p class="text">Don't have an account? <a href="create_account.html">Sign up.</a></p>
+        <p class="text">Don't have an account? <a href="create_account.php">Sign up.</a></p>
     </form>
 </body>
 </html>

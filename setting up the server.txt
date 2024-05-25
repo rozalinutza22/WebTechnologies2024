@@ -1,6 +1,6 @@
 open 'C:\xampp\apache\conf\httpd.conf'
 
-make sure LoadModule php_module "C:/xampp/php/php8apache2_4.dll" isn't commented 
+make sure LoadModule php_module "C:/xampp/php/php8apache2_4.dll" isn't commented 4
 
 open httpd-vhosts.conf from xampp\apache\conf\extra
 
