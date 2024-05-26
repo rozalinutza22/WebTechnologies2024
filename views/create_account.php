@@ -3,7 +3,6 @@
     <head>
         <!-- <meta charset="utf-8" /> -->
         <title>Create account</title>
-        <!-- <link rel="stylesheet" href="../css/create_account.css"> -->
         <style>
             <?php include "../css/create_account.css" ?>
         </style>

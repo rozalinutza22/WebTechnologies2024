@@ -13,8 +13,8 @@
   <body>
     <h1 class="stroke">Wellcome!</h1>
 
-    <a href="create_account.html" class="button">Sign up</a>
-    <a href="login.html" class="button">Log in</a>
+    <a href="/create-account" class="button">Sign up</a>
+    <a href="/login" class="button">Log in</a>
 
     <img class="logo" src="images/logo.png" alt="logo">
 

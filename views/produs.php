@@ -13,9 +13,9 @@
   <body>
     <nav>
         <ul>
-          <li><a href="menu.html">Home</a></li>
-          <li><a href="cumparaturi.php">My lists</a></li>
-          <li><a href="profile.html">Profile</a></li>
+          <li><a href="/menu">Home</a></li>
+          <li><a href="/cumparaturi">My lists</a></li>
+          <li><a href="/profile">Profile</a></li>
         </ul>
       </nav>
       <div class="productDetails">

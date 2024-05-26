@@ -7,17 +7,14 @@
         <style>
             <?php include "../css/profile.css" ?>
         </style>
-        <!-- <link href="../css/profile.css" rel="stylesheet" type="text/css"> -->
-        <!-- <link rel="stylesheet" href="../css/profile.css?v=<?php echo time(); ?>"> -->
-        <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     </head>
 
     <body>
         <nav>
             <ul>
-              <li><a href="principal.html">Home</a></li>
-              <li><a href="cumparaturi.php">My lists</a></li>
-              <li><a href="profile.php">Profile</a></li>
+              <li><a href="/principal">Home</a></li>
+              <li><a href="/cumparaturi">My lists</a></li>
+              <li><a href="/profile">Profile</a></li>
             </ul>
           </nav> 
 
