@@ -23,7 +23,8 @@ class UserController {
             exit();
         } else {
             // Show the login form
-            require '../views/login.php';
+            // require '../views/login.php';
+            header('Location: /login');
         }
     }
 }

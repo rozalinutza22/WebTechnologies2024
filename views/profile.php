@@ -13,7 +13,7 @@
         <nav>
             <ul>
               <li><a href="/principal">Home</a></li>
-              <li><a href="/cumparaturi">My lists</a></li>
+              <li><a href="/lists">My lists</a></li>
               <li><a href="/profile">Profile</a></li>
             </ul>
           </nav> 

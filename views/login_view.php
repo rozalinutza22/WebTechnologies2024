@@ -15,11 +15,11 @@
         <ul>
             <li>
                 <label for="name" class="stroke">Name:</label>
-                <input type="text" id="name" name="user_name" class="input">
+                <input type="text" id="name" name="user_name" class="input" required>
             </li>
             <li>
                 <label for="password" class="stroke">Password:</label>
-                <input type="password" id="password" name="user_password" class="input">
+                <input type="password" id="password" name="user_password" class="input" required>
             </li>
             <li>
                 <input type="checkbox" id="stayConnected" name="stay_connected">
@@ -29,7 +29,7 @@
                 <button type="submit">Submit</button>
             </li>
         </ul>
-        <p class="text">Don't have an account? <a href="create_account.php">Sign up.</a></p>
+        <p class="text">Don't have an account? <a href="/create-account">Sign up.</a></p>
     </form>
 </body>
 </html>
