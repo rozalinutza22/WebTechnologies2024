@@ -43,16 +43,15 @@ CREATE TABLE IF NOT EXISTS products (
 -- Create the 'users' table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    firstName VARCHAR(255) NOT NULL,
-    lastName VARCHAR(255) NOT NULL,
-    emailAdress VARCHAR(255) NOT NULL,
-    phoneNumber VARCHAR(255) NOT NULL,
+    firstName VARCHAR(255) NOT NULL UNIQUE,
+    lastName VARCHAR(255) NOT NULL UNIQUE,
+    emailAdress VARCHAR(255) NOT NULL UNIQUE,
+    phoneNumber VARCHAR(255) NOT NULL UNIQUE,
     vegetarian INT NOT NULL,
     admin INT NOT NULL,
     session_token VARCHAR(255),
-    last_login TIMESTAMP,
-    session_expiry TIMESTAMP
+    last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    session_expiry TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 -- Create the 'preferences' table

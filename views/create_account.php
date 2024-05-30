@@ -12,7 +12,7 @@
         <h1>Create an account for free!</h1>
         <br> <br> <br>
 
-        <form class="forms" action="create_account.php" method="post">
+        <form class="forms" action="create_account_view.php" method="post" novalidate>
             <ul>
                 <li>
                     <label class="input-group">First Name</label>
