@@ -4,7 +4,7 @@ class ShoppingListModel {
     private $servername = "localhost";
     private $username = "root";
     private $password = "";
-    private $dbname = "shopping_lists_db";
+    private $dbname = "cupo_db";
     private $conn;
 
     public function __construct() {

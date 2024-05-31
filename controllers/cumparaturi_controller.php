@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_list'])) {
     $list_name = $_POST['list_name'];
     $model->addList($list_name);
     // Redirect to refresh the page after adding the list
-    header("Location: /lists");
+    //header("Location: /lists"); //doesnt want to redirect bc of css
     exit();
 }
 
@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_list'])) {
     $list_id = $_POST['list_id'];
     $model->deleteList($list_id);
     // Redirect to refresh the page after adding the list
-    header("Location: /lists");
+   // header("Location: /lists");
     exit();
 }
 
@@ -35,5 +35,5 @@ function calculateTotal($items) {
 $lists = $model->getAllLists();
 
 // // Include the view file
-//  require_once '../views/cumparaturi_view.php';
+require_once '../views/cumparaturi_view.php';
 ?>

@@ -28,7 +28,7 @@ if ($requestUri === '/login') {
     require '../views/produs.php';
 
 } elseif ($requestUri === '/lists') {
-    require '../views/cumparaturi_view.php';
+    require_once '../controllers/cumparaturi_controller.php';
 
 } elseif ($requestUri === '/principal') {
     require '../views/principal.php';

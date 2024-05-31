@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>My lists</title>
-    <style><?php include(dirname(__DIR__).'/css/cumparaturi.css'); ?></style>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style><?php include(dirname(__DIR__).'/css/cumparaturi.css'); ?></style> 
+   
 </head>
 <body>
     <nav>
@@ -23,7 +23,7 @@
     </div>
 
     <div class="add-list-form">
-       <form action="/lists" method="post">   <!--not sure on form action -->
+       <form action="/lists" method="post"> 
             <label for="list-name">Insert list name:</label>
             <input type="text" id="list-name" name="list_name" required>
             <button type="submit" name="add_list">Add List</button>
@@ -38,7 +38,7 @@
                 echo "<div class='titluLista'>" . htmlspecialchars($list['name']) . "</div>";
 
                 // Display list items
-                $items = $model->getListItems($list['id']); // Call getListItems() from $model
+                $items = $model->getListItems($list['id']); 
                 foreach ($items as $item) {
                     echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
                     echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
@@ -75,7 +75,7 @@
                     <p class="productTitle">French Buttercream</p>
                     <p class="productPrice">5.00 $</p>
                 </div>
-                <form action="index.php" method="post">
+                <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="French Buttercream">
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
                 </form>
@@ -89,7 +89,7 @@
                     <p class="productTitle">Red lentil soup with beet greens</p>
                     <p class="productPrice">3.00 $</p>
                 </div>
-                <form action="index.php" method="post">
+                <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Red lentil soup with beet greens">
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
                 </form>
@@ -103,7 +103,7 @@
                     <p class="productTitle">Special Homemade Sweet</p>
                     <p class="productPrice">4.00 $</p>
                 </div>
-                <form action="index.php" method="post">
+                <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Special Homemade Sweet">
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
                 </form>
@@ -117,7 +117,7 @@
                     <p class="productTitle">Burger Menu</p>
                     <p class="productPrice">15.00 $</p>
                 </div>
-                <form action="index.php" method="post">
+                <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Burger Menu">
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
                 </form>
