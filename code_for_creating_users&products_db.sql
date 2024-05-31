@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS products (
 -- Create the 'users' table
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    firstName VARCHAR(255) NOT NULL UNIQUE,
-    lastName VARCHAR(255) NOT NULL UNIQUE,
+    firstName VARCHAR(255) NOT NULL,
+    lastName VARCHAR(255) NOT NULL,
     emailAdress VARCHAR(255) NOT NULL UNIQUE,
     phoneNumber VARCHAR(255) NOT NULL UNIQUE,
     passwrd VARCHAR(255) NOT NULL,
