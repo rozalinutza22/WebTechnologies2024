@@ -71,6 +71,13 @@
                 </li>
             </ul>
         </form>
+
+        <?php
+            if (isset($_GET['error']) && $_GET['error'] == 'email_or_phone_duplicate') {
+                echo "<p style='color:red;'>Email-ul sau numărul de telefon există deja. Te rugăm să folosești alt email sau alt număr de telefon.</p>";
+            }
+        ?>
+
         <img src="images/logo.png" alt="logo">
     </body>
 </html>

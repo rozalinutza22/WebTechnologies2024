@@ -31,12 +31,34 @@ $connection = include(dirname(__DIR__).'/includes/config_db.php');
             $this->email = $email;
             $this->pass = $pass;
             $this->phone = $phone;
-            $sql = "INSERT INTO users (firstName, lastName, emailAdress, passwrd, phoneNumber) VALUES ('$fname', '$lname', '$email', '$pass', '$phone')";
-            
-            if ($this->conn->query($sql) === TRUE) {
-                return true;
-            } else {
-                return false;
+            // $sql = "INSERT INTO users (firstName, lastName, emailAdress, passwrd, phoneNumber) VALUES ('$fname', '$lname', '$email', '$pass', '$phone')";
+            $sql = "INSERT INTO users (firstName, lastName, emailAdress, passwrd, phoneNumber) VALUES (?, ?, ?, ?, ?)";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            if (! $stmt->prepare($sql)) {
+                die("SQL error : " . $this->conn->error);
+            }
+
+            $stmt->bind_param("sssss", $fname, $lname, $email, $pass, $phone);
+            // $stmt->execute();
+
+            try {
+                $stmt->execute();
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    if (strpos($errorMessage, 'emailAdress') !== false) {
+                        return "Duplicate email";
+                    } elseif (strpos($errorMessage, 'phoneNumber') !== false) {
+                        return "Duplicate phone";
+                    } else {
+                        return "Duplicate entry";
+                    }
+                } else {
+                    return "Database error";
+                }
             }
         }
 
