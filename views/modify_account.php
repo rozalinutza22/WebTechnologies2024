@@ -24,7 +24,7 @@
 
         <h1>Modify your account</h1>
 
-        <form class="forms" action="modify_account.php" method="post">
+        <form class="forms" action="/modif" method="post">
             <ul>
                 <li>
                     <label class="input-group">First Name</label>
@@ -59,7 +59,7 @@
                     <label class="input-group">Phone number</label>
                     <br>
                     <br>
-                    <input type="tel" id="phone_number" name="user_phone"  pattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" >
+                    <input type="tel" id="phone_number" name="user_phone"  ppattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" >
                 </li>
                 <li>
                     <br>

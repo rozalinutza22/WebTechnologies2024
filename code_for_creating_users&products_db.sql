@@ -49,6 +49,7 @@ CREATE TABLE IF NOT EXISTS users (
     phoneNumber VARCHAR(255) NOT NULL UNIQUE,
     vegetarian INT NOT NULL,
     admin INT NOT NULL,
+    allergens VARCHAR(255),
     session_token VARCHAR(255),
     last_login TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     session_expiry TIMESTAMP DEFAULT CURRENT_TIMESTAMP

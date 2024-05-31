@@ -36,6 +36,12 @@ if ($requestUri === '/login') {
 } elseif ($requestUri === '/modify') {
     require '../views/modify_account.php';
 
+} elseif ($requestUri === '/signup') {
+    require '../includes/create_acc.php';
+
+} elseif ($requestUri === '/modif') {
+    require '../includes/modify_acc.php';
+ 
 } else {
     echo '404 Not Found';
 }

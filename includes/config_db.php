@@ -10,5 +10,4 @@
         die ('Failed to connect to MySql database...');
     }
 
-return $mysql;
 

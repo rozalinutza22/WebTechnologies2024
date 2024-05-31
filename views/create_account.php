@@ -12,27 +12,27 @@
         <h1>Create an account for free!</h1>
         <br> <br> <br>
 
-        <form class="forms" action="includes/create_acc.php" method="post" novalidate>
+        <form class="forms" action="/signup" method="post" novalidate>
             <ul>
                 <li>
                     <label class="input-group">First Name</label>
                     <br>
                     <br>
-                    <input autofocus type="text" id="first_name" name="user_name" placeholder="Ex: Anna" required>
+                    <input autofocus type="text" id="first_name" name="user_fname" placeholder="Ex: Anna" required>
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Last Name</label>
                     <br>
                     <br>
-                    <input type="text" id="last_name" name="user_name" placeholder="Ex: Gomez" required>
+                    <input type="text" id="last_name" name="user_lname" placeholder="Ex: Gomez" required>
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Email</label>
                     <br>
                     <br>
-                    <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" required>
+                    <input type="text" id="email_name" name="user_email" placeholder="Ex: anna223@gmail.com" required>
                 </li>
                 <li>
                     <br>
@@ -67,7 +67,7 @@
                 </li>
                 <li>
                     <br>
-                    <button id="create" name="create_acc">Create account</button>
+                    <button id="create" name="submit">Create account</button>
                 </li>
             </ul>
         </form>
