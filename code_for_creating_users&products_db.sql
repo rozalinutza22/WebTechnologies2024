@@ -47,6 +47,7 @@ CREATE TABLE IF NOT EXISTS users (
     lastName VARCHAR(255) NOT NULL UNIQUE,
     emailAdress VARCHAR(255) NOT NULL UNIQUE,
     phoneNumber VARCHAR(255) NOT NULL UNIQUE,
+    passwrd VARCHAR(255) NOT NULL,
     vegetarian INT NOT NULL,
     admin INT NOT NULL,
     allergens VARCHAR(255),
