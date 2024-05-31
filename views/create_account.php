@@ -63,7 +63,7 @@
                 <li>
                     <br>
                     <p>Add here the allergens you are allergic to:</p>
-                    <textarea id="allergens"></textarea>
+                    <textarea id="allergens" name="allergens"></textarea>
                 </li>
                 <li>
                     <br>

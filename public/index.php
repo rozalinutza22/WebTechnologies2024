@@ -37,10 +37,10 @@ if ($requestUri === '/login') {
     require '../views/modify_account.php';
 
 } elseif ($requestUri === '/signup') {
-    require '../includes/create_acc.php';
+    require '../controllers/create_account_controller.php';
 
 } elseif ($requestUri === '/modif') {
-    require '../includes/modify_acc.php';
+    require '../controllers/modify_controller.php';
  
 } else {
     echo '404 Not Found';

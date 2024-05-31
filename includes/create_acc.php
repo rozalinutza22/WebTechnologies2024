@@ -18,5 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         } else {
             $isAdmin = 0;
         }
+
+        if (isset($_POST['allergens'])) {
+            $allergens = $_POST['allergens'];
+            $allergens2 = htmlspecialchars($allergens, ENT_QUOTES, 'UTF-8');
+        }
     }
 }
