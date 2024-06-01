@@ -99,6 +99,7 @@ $connection = include(dirname(__DIR__).'/includes/config_db.php');
             $this->conn->close();
         }
 
+        //destructor
         //get
 
     }

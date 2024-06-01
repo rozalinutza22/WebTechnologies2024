@@ -30,37 +30,37 @@
                     <label class="input-group">First Name</label>
                     <br>
                     <br>
-                    <input autofocus type="text" id="first_name" name="user_name" placeholder="Ex: Anna" >
+                    <input autofocus type="text" id="first_name" name="fname" placeholder="Ex: Anna" >
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Last Name</label>
                     <br>
                     <br>
-                    <input type="text" id="last_name" name="user_name" placeholder="Ex: Gomez" >
+                    <input type="text" id="last_name" name="lname" placeholder="Ex: Gomez" >
                 </li>
-                <li>
+                <!-- <li>
                     <br>
                     <label class="input-group">Email</label>
                     <br>
                     <br>
                     <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" >
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <br>
                     <label class="input-group">Password</label>
                     <br>
                     <br>
                     <input type="password" id="password" name="user_password" > <br>
                     <small id="strong_pass"> Use a strong password!</small>
-                </li>
-                <li>
+                </li> -->
+                <!-- <li>
                     <br>
                     <label class="input-group">Phone number</label>
                     <br>
                     <br>
                     <input type="tel" id="phone_number" name="user_phone"  ppattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" >
-                </li>
+                </li> -->
                 <li>
                     <br>
                     <input type="checkbox" id="vegetarian" name="vegetarian" value="Vegetarian">
@@ -70,6 +70,11 @@
                     <br>
                     <p>Add here the allergens you are allergic to:</p>
                     <textarea id="allergens"></textarea>
+                </li>
+                <li>
+                    <br>
+                    <br>
+                    <button id="mod" name="change_pass">Change password</button>
                 </li>
                 <li>
                     <br>

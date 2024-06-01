@@ -129,12 +129,17 @@ textarea {
 
 #create {
     width: 15%;
-    font-size: calc(0.9rem + 0.7vw);
+    font-size: calc(0.3rem + 0.5vw);
     cursor: pointer;
     margin-bottom: 30%;
     color: brown;
     font-family: 'Inter';
     border-color: black;
+}
+
+#mod {
+    width: 10%;
+    font-size: calc(0.3rem + 0.5vw);
 }
 
 #first_name,
