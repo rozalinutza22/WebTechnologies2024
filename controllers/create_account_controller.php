@@ -12,6 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         die("Password is required! Go back to the form!");
     }
 
+    if (empty($_POST["user_email"])) {
+        die("Phone number is required! Go back to the form!");
+    }
+
     if ( ! filter_var($_POST["user_email"], FILTER_VALIDATE_EMAIL)) {
         die("Valid email is required!");
     }
