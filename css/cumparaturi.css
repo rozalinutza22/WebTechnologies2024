@@ -103,7 +103,7 @@ nav ul li a:hover {
 .box {
     background-color: #ffb238; 
     width: 40%; 
-    height: 9em;
+    height: 14em;
     margin: 2% 0; 
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
     border: 2px black solid;
@@ -173,6 +173,13 @@ nav ul li a:hover {
 
 .specialButtonProduct{
     background-color: #fabc3c;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+.favorites {
+    background-color: hsl(21, 95%, 61%);
     height: 50px;
     width: 100px;
     margin-left: 10%;
@@ -275,6 +282,13 @@ nav ul li a:hover {
     }
     .specialButtonProduct{
         background-color: #fabc3c;
+        height: 50px;
+        width: 100px;
+        margin-left: 10%;
+        margin-top: 10%;
+    }
+    .favorites {
+        background-color: hsl(21, 95%, 61%);
         height: 50px;
         width: 100px;
         margin-left: 10%;

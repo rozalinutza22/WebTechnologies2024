@@ -80,6 +80,7 @@
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
                    </div>
                 </form>
             </div>
@@ -97,6 +98,7 @@
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
     </div>
                 </form>
             </div>
@@ -114,6 +116,7 @@
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
     </div>
                 </form>
             </div>
@@ -131,6 +134,7 @@
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
                      </div>
                 </form>
             </div>
