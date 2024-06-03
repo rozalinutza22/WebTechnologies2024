@@ -77,8 +77,10 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="French Buttercream">
+                    <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                   </div>
                 </form>
             </div>
         </div>
@@ -92,8 +94,10 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Red lentil soup with beet greens">
+                    <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+    </div>
                 </form>
             </div>
         </div>
@@ -107,8 +111,10 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Special Homemade Sweet">
+                    <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+    </div>
                 </form>
             </div>
         </div>
@@ -122,8 +128,10 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Burger Menu">
+                    <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                     </div>
                 </form>
             </div>
         </div>

@@ -173,10 +173,15 @@ nav ul li a:hover {
 
 .specialButtonProduct{
     background-color: #fabc3c;
-    height: 30%;
-    width: 70%;
+    height: 50px;
+    width: 100px;
     margin-left: 10%;
     margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: column;
 }
 
 .productImage{
@@ -270,14 +275,18 @@ nav ul li a:hover {
     }
     .specialButtonProduct{
         background-color: #fabc3c;
-        height: 70%;
-        width: 70%;
+        height: 50px;
+        width: 100px;
         margin-left: 10%;
-        margin-bottom: 20%;
-    } 
+        margin-top: 10%;
+    }
 
     nav ul li {
         margin-right: 1%;
+    }
+    .product_buttons{
+        display: flex;
+        flex-direction: row;
     }
 /* 
     .box {
@@ -335,8 +344,8 @@ nav ul li a:hover {
     }
     .specialButtonProduct{
         background-color: #fabc3c;
-        height: 70%;
-        width: 70%;
+        height: 50px;
+        width: 100px;
         margin-left: 10%;
         margin-top: 10%;
     }
