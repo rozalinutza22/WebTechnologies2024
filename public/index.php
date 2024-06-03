@@ -24,7 +24,7 @@ if ($requestUri === '/login') {
     require '../views/create_account.php';
 
 
-} elseif ($requestUri === '/produs') {
+} elseif ($requestUri === '/product') {
     require '../views/produs.php';
 
 } elseif ($requestUri === '/lists') {
