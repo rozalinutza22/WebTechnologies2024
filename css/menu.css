@@ -146,12 +146,18 @@ p {
         1px 1px 0 #000; 
 }
 
+
 .specialButtonProduct{
     background-color: #fabc3c;
-    height: 30%;
-    width: 70%;
+    height: 50px;
+    width: 100px;
     margin-left: 10%;
     margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: column;
 }
 
 .productImage{
@@ -241,13 +247,19 @@ p {
         grid-template-columns: 1fr 1fr;
     }
 
-    .specialButtonProduct{
-        background-color: #fabc3c;
-        height: 70%;
-        width: 70%;
-        margin-left: 10%;
-        margin-top: 10%;
-    }
+    
+.specialButtonProduct{
+    background-color: #fabc3c;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: column;
+}
 
     .productPrice {
         display: flex;
@@ -276,16 +288,22 @@ p {
 
     .productDetails{
         display:grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
-    .specialButtonProduct{
-        background-color: #fabc3c;
-        height: 70%;
-        width: 70%;
-        margin-left: 10%;
-        margin-bottom: 20%;
-    } 
+   
+.specialButtonProduct{
+    background-color: #fabc3c;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: row;
+}
 
     .productPrice {
         display: flex;
@@ -313,7 +331,7 @@ p {
 
     .productDetails{
         display: grid;
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr 1fr;
     }
 
     .productPrice {
@@ -321,13 +339,19 @@ p {
         flex-direction: column;
     }
 
-    .specialButtonProduct{
-        background-color: #fabc3c;
-        height: 40%;
-        width: 40%;
-        margin-left: 10%;
-        margin-top: 10%;
-    }
+    
+.specialButtonProduct{
+    background-color: #fabc3c;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: row;
+}
 
     .productPrice {
         display: flex;
@@ -362,13 +386,19 @@ p {
         grid-template-columns: 1fr 1fr;
     }
 
-    .specialButtonProduct{
-        background-color: #fabc3c;
-        height: 70%;
-        width: 70%;
-        margin-left: 10%;
-        margin-top: 10%;
-    }
+    
+.specialButtonProduct{
+    background-color: #fabc3c;
+    height: 50px;
+    width: 100px;
+    margin-left: 10%;
+    margin-top: 10%;
+}
+
+.product_buttons{
+    display: flex;
+    flex-direction: row;
+}
 
     .productPrice {
         display: flex;
@@ -406,10 +436,15 @@ p {
 
     .specialButtonProduct{
         background-color: #fabc3c;
-        height: 30%;
-        width: 30%;
+        height: 50px;
+        width: 100px;
         margin-left: 10%;
         margin-top: 10%;
+    }
+    
+    .product_buttons{
+        display: flex;
+        flex-direction: row;
     }
 }
 

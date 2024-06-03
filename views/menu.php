@@ -58,7 +58,10 @@
             <p class="productTitle">French Buttercream</p>
             <p class="productPrice">5.00 $</p>
           </div>
-          <a href="produs.html"><button class="specialButtonProduct" >View details</button></a>
+          <div class="product_buttons">
+                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+          </div>
           <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
           </div>
       </div>
@@ -70,7 +73,10 @@
             <p class="productTitle">Red lentil soup with beet greens</p>
             <p class="productPrice">3.00 $</p>
           </div>
-          <a href="produs.html"><button class="specialButtonProduct">View details</button></a>
+          <div class="product_buttons">
+                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+          </div>
           <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
           </div>
       </div>
@@ -82,7 +88,10 @@
             <p class="productTitle">Special Homemade Sweet</p>
             <p class="productPrice">4.00 $</p>
           </div>
-          <a href="produs.html"><button class="specialButtonProduct">View details</button></a>
+          <div class="product_buttons">
+                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+           </div>
           <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
         </div>
       </div>
@@ -94,7 +103,10 @@
             <p class="productTitle">Burger Menu</p>
             <p class="productPrice">15.00 $</p>
           </div>
-          <a href="produs.html"><button class="specialButtonProduct">View details</button></a>
+          <div class="product_buttons">
+                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+          </div>
           <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
         </div>
       </div>
