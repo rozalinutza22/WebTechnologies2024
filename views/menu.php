@@ -61,8 +61,9 @@
           <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
           </div>
-          <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
+          
           </div>
       </div>
 
@@ -70,14 +71,14 @@
         <div class="productDetails">
           <img src="images/red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup"> 
           <div class="productText">
-            <p class="productTitle">Red lentil soup with beet greens</p>
+            <p class="productTitle">Red lentil soup</p>
             <p class="productPrice">3.00 $</p>
           </div>
           <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
           </div>
-          <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
           </div>
       </div>
 
@@ -91,8 +92,8 @@
           <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
            </div>
-          <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
         </div>
       </div>
 
@@ -106,8 +107,8 @@
           <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
           </div>
-          <a href="cumparaturi.html"><button class="favorites">&#9829</button></a>
         </div>
       </div>
     </div>

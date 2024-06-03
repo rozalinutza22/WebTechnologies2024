@@ -89,7 +89,7 @@
             <div class="productDetails">
                 <img src="images/red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup">
                 <div class="productText">
-                    <p class="productTitle">Red lentil soup with beet greens</p>
+                    <p class="productTitle">Red lentil soup</p>
                     <p class="productPrice">3.00 $</p>
                 </div>
                 <form action="/lists" method="post">
