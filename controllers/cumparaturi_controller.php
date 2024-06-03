@@ -35,5 +35,5 @@ function calculateTotal($items) {
 $lists = $model->getAllLists();
 
 // // Include the view file
-require_once '../views/cumparaturi_view.php';
+// require_once '../views/cumparaturi_view.php';
 ?>

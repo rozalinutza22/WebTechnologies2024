@@ -9,8 +9,8 @@ class UserController {
             $password = $_POST['user_password'];
             $stayConnected = isset($_POST['stay_connected']);
 
-            // Here you would typically validate the user's credentials
-            // For the sake of this example, we will assume validation is successful
+            // validate the user's credentials
+            // we will assume validation is successful
 
             // If 'Stay connected' is checked, set a cookie
             if ($stayConnected) {
