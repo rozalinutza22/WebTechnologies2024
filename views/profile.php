@@ -77,7 +77,7 @@
                 <h3>Vegetarian</h3>
                 <p>
                     <?php 
-                        if (empty($_SESSION[$name])) echo "No";
+                        if (empty($_SESSION[$name])) echo 'No';
                         else echo "Yes";
                     ?>
                 </p>
@@ -89,7 +89,7 @@
                 <h3>Admin</h3>
                 <p>
                     <?php 
-                        if (empty($_SESSION[$name])) echo "No";
+                        if (empty($_SESSION[$name])) echo 'No';
                         else echo "Yes";
                     ?>
                 </p>
