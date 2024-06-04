@@ -1,3 +1,23 @@
+<?php
+    session_start();
+
+    $user_fname = $_SESSION["user_fname"];
+    $user_lname = $_SESSION["user_lname"];
+    $user_email = $_SESSION["user_email"];
+    $user_phone = $_SESSION["user_phone"];
+    // $allergens = $_SESSION["allergens"];
+
+    foreach(array('vegetarian', 'admin') as $name) {
+        $_SESSION[$name] = (isset($_POST[$name])) ? $_POST[$name] : "";
+    }
+
+    foreach(array('allergens') as $alg) {
+        $_SESSION[$alg] = (isset($_POST[$alg])) ? $_POST[$alg] : "";
+    }
+    
+?>
+
+
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -27,47 +47,70 @@
         <div class="user_info">
             <div class="info">
                 <h3>First name</h3>
-                <p>Your first name</p>
+                <p> <?php echo $user_fname; ?> </p>
             </div>
 
             <br>
 
             <div class="info">
                 <h3>Last name</h3>
-                <p>Your last name</p>
+                <p><?php echo $user_lname; ?></p>
             </div>
 
             <br>
 
             <div class="info">
                 <h3>Email adress</h3>
-                <p>Your email adress</p>
+                <p><?php echo $user_email; ?></p>
             </div>
 
             <br>
 
             <div class="info">
                 <h3>Phone number</h3>
-                <p>Your phone number</p>
+                <p><?php echo $user_phone; ?></p>
             </div>
 
             <br>
 
             <div class="info">
                 <h3>Vegetarian</h3>
-                <p>Yes/No</p>
+                <p>
+                    <?php 
+                        if (empty($_SESSION[$name])) echo "No";
+                        else echo "Yes";
+                    ?>
+                </p>
             </div>
 
             <br>
             
             <div class="info">
                 <h3>Admin</h3>
-                <p>Yes/No</p>
+                <p>
+                    <?php 
+                        if (empty($_SESSION[$name])) echo "No";
+                        else echo "Yes";
+                    ?>
+                </p>
+            </div>
+
+            <br>
+
+            <div class="info">
+                <h3>Allergens</h3>
+                <p>
+                    <?php 
+                        if (empty($_SESSION[$alg])) echo 'None';
+                        else echo $_SESSION[$alg];   
+                    ?>
+                </p>
             </div>
         </div>
 
-      <a href="modify_account.html"><button id="create" name="create_acc">Modify</button></a>
+      <a href="/modify"><button id="create" name="create_acc">Modify</button></a>
       <button class="import">Import</button>
       <button class="export">Export</button>
+      <a href="/logout"><button class="logout">Logout</button>
     </body>
 </html>

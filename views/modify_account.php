@@ -46,14 +46,14 @@
                     <br>
                     <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" >
                 </li> -->
-                <!-- <li>
+                <li>
                     <br>
                     <label class="input-group">Password</label>
                     <br>
                     <br>
-                    <input type="password" id="password" name="user_password" > <br>
+                    <input type="password" id="password" name="user_pass" > <br>
                     <small id="strong_pass"> Use a strong password!</small>
-                </li> -->
+                </li>
                 <!-- <li>
                     <br>
                     <label class="input-group">Phone number</label>
@@ -71,11 +71,11 @@
                     <p>Add here the allergens you are allergic to:</p>
                     <textarea id="allergens"></textarea>
                 </li>
-                <li>
+                <!-- <li>
                     <br>
                     <br>
                     <button id="mod" name="change_pass">Change password</button>
-                </li>
+                </li> -->
                 <li>
                     <br>
                     <br>

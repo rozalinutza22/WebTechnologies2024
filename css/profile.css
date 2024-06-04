@@ -119,6 +119,14 @@ p {
     right: 1%;
 }
 
+.logout {
+    max-width: 77%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    right: 89%;
+}
+
 .circular-image {
     width: 200px; 
     height: 200px;
@@ -155,6 +163,14 @@ p {
         position: fixed;
         bottom: 5%;
         right: 95%;
+    }
+
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 89%;
     }
 
     .import {
@@ -195,6 +211,14 @@ p {
         right: 95%;
     }
 
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 85%;
+    }
+
     .import {
         max-width: 7%;
         height: auto;
@@ -231,6 +255,14 @@ p {
         position: fixed;
         bottom: 5%;
         right: 90%;
+    }
+
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 80%;
     }
 
     .import {
@@ -271,6 +303,14 @@ p {
         right: 85%;
     }
 
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 75%;
+    }
+
     .import {
         max-width: 10%;
         height: auto;
@@ -307,6 +347,14 @@ p {
         position: fixed;
         bottom: 5%;
         right: 85%;
+    }
+
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 65%;
     }
 
     .import {
@@ -350,7 +398,15 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 70%;
+        right: 80%;
+    }
+
+    .logout {
+        max-width: 77%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        right: 55%;
     }
 
     .import {
@@ -358,7 +414,7 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 35%;
+        right: 25%;
     }
     
     .export {

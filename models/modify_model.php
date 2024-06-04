@@ -4,9 +4,9 @@
         private $fname;
         private $lname;
         private $email;
-        private $phone;
         private $isVegetarian;
         private $allergens;
+        private $pass;
 
         private $servername = "localhost";
         private $username = "root";
@@ -26,7 +26,6 @@
             $this->fname = $fname;
             $this->lname = $lname;
             $this->email = $email;
-            $this->phone = $phone;
 
             $sql = "UPDATE users set firstName=?, lastName=? where emailAdress=?";
             $stmt = $this->conn->stmt_init();
@@ -36,9 +35,8 @@
             $stmt->execute();
 
             if ($this->conn->query($sql) === TRUE) {
-                // return true;
-                echo "Your data has been modified successfully!"
-                header("Location: /menu");
+                echo "Your data has been modified successfully!";
+                header("Location: /profile");
                 exit;
             } else {
                 return false;
@@ -60,8 +58,7 @@
             $stmt->execute();
 
             if ($this->conn->query($sql) === TRUE) {
-                // return true;
-                echo "Your data has been modified successfully!"
+                echo "Your data has been modified successfully!";
                 header("Location: /profile");
                 exit;
             } else {
@@ -84,8 +81,7 @@
             $stmt->execute();
 
             if ($this->conn->query($sql) === TRUE) {
-                // return true;
-                echo "Your data has been modified successfully!"
+                echo "Your data has been modified successfully!";
                 header("Location: /profile");
                 exit;
             } else {
@@ -103,8 +99,25 @@
             $stmt->execute();
 
             if ($this->conn->query($sql) === TRUE) {
-                // return true;
-                echo "Your data has been modified successfully!"
+                echo "Your data has been modified successfully!";
+                header("Location: /profile");
+                exit;
+            } else {
+                return false;
+            }
+        }
+
+        public function updateAllergens($allergens, $email) {
+            $this->allergens = $allergens;
+            $sql = "UPDATE users set allergens=? where emailAdress=?";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            $stmt->bind_param("ss", $allergens, $email);
+            $stmt->execute();
+
+            if ($this->conn->query($sql) === TRUE) {
+                echo "Your data has been modified successfully!";
                 header("Location: /profile");
                 exit;
             } else {
@@ -122,8 +135,7 @@
             $stmt->execute();
 
             if ($this->conn->query($sql) === TRUE) {
-                // return true;
-                echo "Your data has been modified successfully!"
+                echo "Your data has been modified successfully!";
                 header("Location: /profile");
                 exit;
             } else {
@@ -131,5 +143,22 @@
             }
         }
 
+        public function updatePass($pass, $email) {
+            $this->pass = $pass;
+            $sql = "UPDATE users set pass=? where emailAdress=?";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            $stmt->bind_param("ss", $pass, $email);
+            $stmt->execute();
+
+            if ($this->conn->query($sql) === TRUE) {
+                echo "Your data has been modified successfully!";
+                header("Location: /profile");
+                exit;
+            } else {
+                return false;
+            }
+        }
 
     }

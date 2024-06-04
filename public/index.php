@@ -42,6 +42,9 @@ if ($requestUri === '/login') {
 } elseif ($requestUri === '/modif') {
     require '../controllers/modify_controller.php';
  
-} else {
+} elseif ($requestUri === '/logout') {
+    require '../includes/logout.php';
+ 
+}else {
     echo '404 Not Found';
 }

@@ -8,6 +8,18 @@ $model = new SignUpModel();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 
+    session_start();
+    $_SESSION["user_password"] = htmlentities($_POST["user_password"]);
+    $_SESSION["user_fname"] = htmlentities($_POST["user_fname"]);
+    $_SESSION["user_lname"] = htmlentities($_POST["user_lname"]);
+    $_SESSION["user_email"] = htmlentities($_POST["user_email"]);
+    $_SESSION["user_phone"] = htmlentities($_POST["user_phone"]);
+    // $_SESSION["vegetarian"] = htmlentities($_POST["vegetarian"]);
+    // $_SESSION["admin"] = htmlentities($_POST["admin"]);
+    // $_SESSION["allergens"] = htmlentities($_POST["allergens"]);
+
+    // header("Location: /profile");
+
     if (empty($_POST["user_password"])) {
         die("Password is required! Go back to the form!");
     }
@@ -47,22 +59,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     if (isset($_POST['vegetarian']) && $_POST['vegetarian'] === 'Vegetarian') {
         $isVegetarian = 1;
         $model->isVegetarian($email);
+        $_SESSION["vegetarian"] = 'Yes';
     } else {
         $isVegetarian = 0;
+        $_SESSION["vegetarian"] = 'No';
     }
 
     if (isset($_POST['admin']) && $_POST['admin'] === 'Admin') {
         $isAdmin = 1;
         $model->isAdmin($email);
+        $_SESSION["admin"] = 'Yes';
     } else {
         $isAdmin = 0;
+        $_SESSION["admin"] = 'No';
     }
 
     if (isset($_POST['allergens'])) {
+        $_SESSION["allergens"] = htmlentities($_POST["allergens"]);
         $allergens = $_POST['allergens'];
         $allergens2 = htmlspecialchars($allergens, ENT_QUOTES, 'UTF-8');
         $model->insertAllergens($allergens2, $email);
-    }
+    } 
 
     header("Location: /menu");
     exit();

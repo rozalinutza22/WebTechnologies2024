@@ -9,11 +9,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create_acc'])) {
     $last_name = $_POST['lname'];
 
     if (isset($_POST['fname']) && isset($_POST['lname'])) {
-        $model->updateUser($fname, $lname, $email);
+        $model->updateUser($first_name, $last_name, $email);
     } else if (isset($_POST['fname'])) {
-        $model->updateUserFname($fname, $email);
+        $model->updateUserFname($first_name, $email);
     }else if (isset($_POST['lname'])) {
-        $model->updateUserLname($lname, $email);
+        $model->updateUserLname($last_name, $email);
     }else {
         
     }
