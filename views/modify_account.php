@@ -1,3 +1,14 @@
+<?php
+    session_start();
+    $user_fname = $_SESSION["user_fname"];
+    $user_lname = $_SESSION["user_lname"];
+    $user_email = $_SESSION["user_email"];
+    $user_phone = $_SESSION["user_phone"];
+    $allerg = $_SESSION["allergens"];
+    $veg = $_SESSION["vegetarian"];
+    $admin = $_SESSION["admin"];
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
     <head>
@@ -30,22 +41,15 @@
                     <label class="input-group">First Name</label>
                     <br>
                     <br>
-                    <input autofocus type="text" id="first_name" name="fname" placeholder="Ex: Anna" >
+                    <input autofocus type="text" id="first_name" name="fname" placeholder=<?php echo $user_fname; ?> >
                 </li>
                 <li>
                     <br>
                     <label class="input-group">Last Name</label>
                     <br>
                     <br>
-                    <input type="text" id="last_name" name="lname" placeholder="Ex: Gomez" >
+                    <input type="text" id="last_name" name="lname" placeholder=<?php echo $user_lname; ?> >
                 </li>
-                <!-- <li>
-                    <br>
-                    <label class="input-group">Email</label>
-                    <br>
-                    <br>
-                    <input type="text" id="email_name" name="user_name" placeholder="Ex: anna223@gmail.com" >
-                </li> -->
                 <li>
                     <br>
                     <label class="input-group">Password</label>
@@ -54,22 +58,15 @@
                     <input type="password" id="password" name="user_pass" > <br>
                     <small id="strong_pass"> Use a strong password!</small>
                 </li>
-                <!-- <li>
-                    <br>
-                    <label class="input-group">Phone number</label>
-                    <br>
-                    <br>
-                    <input type="tel" id="phone_number" name="user_phone"  ppattern="[0-9]{4}-[0-9]{3}-[0-9]{3}" placeholder="Ex: 0700000000" >
-                </li> -->
                 <li>
                     <br>
                     <input type="checkbox" id="vegetarian" name="vegetarian" value="Vegetarian">
                     <label class="input-group" for="vegetarian"> Vegetarian diet</label><br>
-                </li>
+                </li> 
                 <li>
                     <br>
                     <p>Add here the allergens you are allergic to:</p>
-                    <textarea id="allergens"></textarea>
+                    <textarea id="allergens" name="allergens" placeholder=<?php echo $allerg; ?> ></textarea>
                 </li>
                 <!-- <li>
                     <br>

@@ -1,4 +1,5 @@
 <?php
+    // session_start();
 
     class ModifyModel {
         private $fname;
@@ -22,88 +23,51 @@
             }
         }
 
-        public function updateUser($fname, $lname, $email) {
-            $this->fname = $fname;
-            $this->lname = $lname;
-            $this->email = $email;
-
-            $sql = "UPDATE users set firstName=?, lastName=? where emailAdress=?";
-            $stmt = $this->conn->stmt_init();
-            $stmt->prepare($sql);
-
-            $stmt->bind_param("sss", $fname, $lname, $email);
-            $stmt->execute();
-
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
-            }
-
-        }
-
         public function updateUserFname($fname, $email) {
             $this->fname = $fname;
-            $this->lname = $lname;
-            $this->email = $email;
-            $this->phone = $phone;
 
-            $sql = "UPDATE users set firstName=? where emailAdress=?";
+            $sql = "UPDATE users SET firstName=? WHERE emailAdress=?";
             $stmt = $this->conn->stmt_init();
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $fname, $email);
-            $stmt->execute();
+            // $stmt->execute();
 
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
+            try {
+                $stmt->execute();
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    return $errorMessage;
+                } else {
+                    return "Database error";
+                }
             }
 
         }
 
         public function updateUserLname($lname, $email) {
-            $this->fname = $fname;
             $this->lname = $lname;
-            $this->email = $email;
-            $this->phone = $phone;
 
             $sql = "UPDATE users set lastName=? where emailAdress=?";
             $stmt = $this->conn->stmt_init();
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $lname, $email);
-            $stmt->execute();
+            // $stmt->execute();
 
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
-            }
-        }
-
-        public function updateVeg($allergens, $email) {
-            $this->allergens = $allergens;
-            $sql = "UPDATE users set allergens=? where emailAdress=?";
-            $stmt = $this->conn->stmt_init();
-            $stmt->prepare($sql);
-
-            $stmt->bind_param("ss", $allergens, $email);
-            $stmt->execute();
-
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
+            try {
+                $stmt->execute();
+                // $_SESSION['user_lname'] = $lname;
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    return $errorMessage;
+                } else {
+                    return "Database error";
+                }
             }
         }
 
@@ -114,14 +78,19 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $allergens, $email);
-            $stmt->execute();
+            // $stmt->execute();
 
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
+            try {
+                $stmt->execute();
+                // $_SESSION['allergens'] = $allergens;
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    return $errorMessage;
+                } else {
+                    return "Database error";
+                }
             }
         }
 
@@ -132,33 +101,44 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("s", $email);
-            $stmt->execute();
+            // $stmt->execute();
 
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
+            try {
+                $stmt->execute();
+                // $_SESSION['vegetarian'] = 1;
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    return $errorMessage;
+                } else {
+                    return "Database error";
+                }
             }
         }
 
         public function updatePass($pass, $email) {
-            $this->pass = $pass;
-            $sql = "UPDATE users set pass=? where emailAdress=?";
+            $this->pass = password_hash($pass, PASSWORD_DEFAULT);
+            $sql = "UPDATE users set passwrd=? where emailAdress=?";
             $stmt = $this->conn->stmt_init();
             $stmt->prepare($sql);
 
-            $stmt->bind_param("ss", $pass, $email);
-            $stmt->execute();
+            $stmt->bind_param("ss", $this->pass, $email);
+            // $stmt->execute();
 
-            if ($this->conn->query($sql) === TRUE) {
-                echo "Your data has been modified successfully!";
-                header("Location: /profile");
-                exit;
-            } else {
-                return false;
+            try {
+                $stmt->execute();
+                return true; 
+            } catch (mysqli_sql_exception $e) {
+                if ($e->getCode() == 1062) { 
+                    $errorMessage = $e->getMessage();
+                    return $errorMessage;
+                } else {
+                    return "Database error";
+                }
             }
         }
 
     }
+
+    // header("Location: /profile");
