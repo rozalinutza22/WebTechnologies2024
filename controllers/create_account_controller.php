@@ -48,18 +48,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         if (isset($_POST['vegetarian']) && $_POST['vegetarian'] === 'Vegetarian') {
             $isVegetarian = 1;
             $model->isVegetarian($email);
-            // $_SESSION["vegetarian"] = 'Yes';
+            $_SESSION["vegetarian"] = 1;
         } else {
             $isVegetarian = 0;
             // $_SESSION["vegetarian"] = 'No';
+            $_SESSION["vegetarian"] = 0;
         }
     
         if (isset($_POST['admin']) && $_POST['admin'] === 'Admin') {
             $isAdmin = 1;
             $model->isAdmin($email);
-            // $_SESSION["admin"] = 'Yes';
+            $_SESSION["admin"] = 1;
         } else {
             $isAdmin = 0;
+            $_SESSION["admin"] = 0;
             // $_SESSION["admin"] = 'No';
         }
     

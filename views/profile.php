@@ -7,13 +7,17 @@
     $user_phone = $_SESSION["user_phone"];
     // $allergens = $_SESSION["allergens"];
 
-    foreach(array('vegetarian', 'admin') as $name) {
-        $_SESSION[$name] = (isset($_POST[$name])) ? $_POST[$name] : "";
-    }
+    // foreach(array('vegetarian', 'admin') as $name) {
+    //     $_SESSION[$name] = (isset($_POST[$name])) ? $_POST[$name] : "";
+    // }
 
-    foreach(array('allergens') as $alg) {
-        $_SESSION[$alg] = (isset($_POST[$alg])) ? $_POST[$alg] : "";
-    }
+    // foreach(array('allergens') as $alg) {
+    //     $_SESSION[$alg] = (isset($_POST[$alg])) ? $_POST[$alg] : "nimic";
+    // }
+
+    $allerg = $_SESSION["allergens"];
+    $veg = $_SESSION["vegetarian"];
+    $admin = $_SESSION["admin"];
     
 ?>
 
@@ -77,8 +81,11 @@
                 <h3>Vegetarian</h3>
                 <p>
                     <?php 
-                        if (empty($_SESSION[$name])) echo 'No';
-                        else echo "Yes";
+                        // if (empty($_SESSION[$name])) echo 'No';
+                        // else echo "Yes";
+
+                        if ($veg === 0) echo 'No';
+                        else echo 'Yes';
                     ?>
                 </p>
             </div>
@@ -89,8 +96,12 @@
                 <h3>Admin</h3>
                 <p>
                     <?php 
-                        if (empty($_SESSION[$name])) echo 'No';
-                        else echo "Yes";
+                        // if (empty($_SESSION[$name])) echo 'No';
+                        // else echo "Yes";
+
+                        if ($admin === 0) echo 'No';
+                        else echo 'Yes';
+                        // echo 'da';
                     ?>
                 </p>
             </div>
@@ -101,8 +112,8 @@
                 <h3>Allergens</h3>
                 <p>
                     <?php 
-                        if (empty($_SESSION[$alg])) echo 'None';
-                        else echo $_SESSION[$alg];   
+                        if (empty($allerg)) echo 'None';
+                        else echo $allerg;
                     ?>
                 </p>
             </div>
