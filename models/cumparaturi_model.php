@@ -38,6 +38,33 @@ class ShoppingListModel {
         return $items;
     }
 
+    public function removeFromFav($item_name) {
+        // First, get the id of the 'Favourites' list
+        $sql = "SELECT id FROM lists WHERE name='Favourites'";
+        $result = $this->conn->query($sql);
+        
+        if ($result && $result->num_rows > 0) {
+            // Fetch the id
+            $row = $result->fetch_assoc();
+            $favourites_id = $row['id'];
+        
+            // Delete item using the fetched id
+            $stmt = $this->conn->prepare("DELETE FROM items WHERE list_id = ? AND name = ?");
+            $stmt->bind_param("is", $favourites_id, $item_name); // i - integer, s - string
+            
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            } else {
+                $stmt->close();
+                return false;
+            }
+        } else {
+            return false; // Handle the case where the 'Favourites' list was not found
+        }
+    }
+    
+
     public function addList($list_name) {
         $sql = "INSERT INTO lists (name) VALUES ('$list_name')";
         if ($this->conn->query($sql) === TRUE) {

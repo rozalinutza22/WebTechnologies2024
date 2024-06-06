@@ -31,6 +31,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_favourites']))
     exit();
 }
 
+//Handle remove item from favourites request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourites'])) {
+    $item_name = $_POST['item_name'];
+    $model->removeFromFav($item_name);
+    // Redirect to refresh the page after adding the list
+    header("Location: /lists"); //doesnt want to redirect bc of css
+    exit();
+}
+
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;

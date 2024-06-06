@@ -171,7 +171,11 @@ nav ul li a:hover {
 }
 
 .denumire{
-    float: left;
+    float: left; 
+    margin: 3px;
+}
+.removeButton{
+    float: left; 
     margin: 3px;
 }
 
