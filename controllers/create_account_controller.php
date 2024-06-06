@@ -14,11 +14,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $_SESSION["user_lname"] = htmlentities($_POST["user_lname"]);
     $_SESSION["user_email"] = htmlentities($_POST["user_email"]);
     $_SESSION["user_phone"] = htmlentities($_POST["user_phone"]);
-    // $_SESSION["vegetarian"] = htmlentities($_POST["vegetarian"]);
-    // $_SESSION["admin"] = htmlentities($_POST["admin"]);
-    // $_SESSION["allergens"] = htmlentities($_POST["allergens"]);
-
-    // header("Location: /profile");
 
     if (empty($_POST["user_password"])) {
         die("Password is required! Go back to the form!");
@@ -51,7 +46,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $_SESSION["vegetarian"] = 1;
         } else {
             $isVegetarian = 0;
-            // $_SESSION["vegetarian"] = 'No';
             $_SESSION["vegetarian"] = 0;
         }
     
@@ -62,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
         } else {
             $isAdmin = 0;
             $_SESSION["admin"] = 0;
-            // $_SESSION["admin"] = 'No';
         }
     
         if (isset($_POST['allergens'])) {

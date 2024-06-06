@@ -5,16 +5,6 @@
     $user_lname = $_SESSION["user_lname"];
     $user_email = $_SESSION["user_email"];
     $user_phone = $_SESSION["user_phone"];
-    // $allergens = $_SESSION["allergens"];
-
-    // foreach(array('vegetarian', 'admin') as $name) {
-    //     $_SESSION[$name] = (isset($_POST[$name])) ? $_POST[$name] : "";
-    // }
-
-    // foreach(array('allergens') as $alg) {
-    //     $_SESSION[$alg] = (isset($_POST[$alg])) ? $_POST[$alg] : "nimic";
-    // }
-
     $allerg = $_SESSION["allergens"];
     $veg = $_SESSION["vegetarian"];
     $admin = $_SESSION["admin"];

@@ -23,6 +23,7 @@
             }
         }
 
+
         public function updateUserFname($fname, $email) {
             $this->fname = $fname;
 
@@ -31,7 +32,6 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $fname, $email);
-            // $stmt->execute();
 
             try {
                 $stmt->execute();
@@ -55,11 +55,9 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $lname, $email);
-            // $stmt->execute();
 
             try {
                 $stmt->execute();
-                // $_SESSION['user_lname'] = $lname;
                 return true; 
             } catch (mysqli_sql_exception $e) {
                 if ($e->getCode() == 1062) { 
@@ -78,11 +76,9 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $allergens, $email);
-            // $stmt->execute();
 
             try {
                 $stmt->execute();
-                // $_SESSION['allergens'] = $allergens;
                 return true; 
             } catch (mysqli_sql_exception $e) {
                 if ($e->getCode() == 1062) { 
@@ -101,11 +97,9 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("s", $email);
-            // $stmt->execute();
 
             try {
                 $stmt->execute();
-                // $_SESSION['vegetarian'] = 1;
                 return true; 
             } catch (mysqli_sql_exception $e) {
                 if ($e->getCode() == 1062) { 
@@ -124,7 +118,6 @@
             $stmt->prepare($sql);
 
             $stmt->bind_param("ss", $this->pass, $email);
-            // $stmt->execute();
 
             try {
                 $stmt->execute();
@@ -140,5 +133,3 @@
         }
 
     }
-
-    // header("Location: /profile");
