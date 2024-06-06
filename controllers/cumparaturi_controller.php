@@ -21,6 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_list'])) {
     exit();
 }
 
+//Handle add to favourites request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_favourites'])) {
+    $item_name = $_POST['product_name'];
+    $item_price = $_POST['product_price'];
+    $model->addToFav($item_name, $item_price);
+    // Redirect to refresh the page after adding the list
+    header("Location: /lists"); //doesnt want to redirect bc of css
+    exit();
+}
+
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;

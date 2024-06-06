@@ -47,6 +47,44 @@ class ShoppingListModel {
         }
     }
 
+    // public function addToFav($item_name, $item_price){
+    //     $sql = "DECLARE favourites_id INT; 
+    //     SELECT id INTO favourites_id FROM lists where name='Favourites'; 
+    //     INSERT INTO items(list_id, name, price) VALUES (favourites_id, '$item_name', '$item_price')";
+    //     if ($this->conn->query($sql) === TRUE) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
+    public function addToFav($item_name, $item_price) {
+        // First, get the id of the 'Favourites' list
+        $sql = "SELECT id FROM lists WHERE name='Favourites'";
+        $result = $this->conn->query($sql);
+        
+        if ($result && $result->num_rows > 0) {
+            // Fetch the id
+            $row = $result->fetch_assoc();
+            $favourites_id = $row['id'];
+    
+            // Now, insert the new item using the fetched id
+            $stmt = $this->conn->prepare("INSERT INTO items (list_id, name, price) VALUES (?, ?, ?)");
+            $stmt->bind_param("iss", $favourites_id, $item_name, $item_price);
+    
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            } else {
+                $stmt->close();
+                return false;
+            }
+        } else {
+            // Handle the case where the 'Favourites' list was not found
+            return false;
+        }
+    }
+    
+
     public function deleteList($list_id) {
         $sql = "DELETE FROM lists WHERE id=$list_id";
         if ($this->conn->query($sql) === TRUE) {

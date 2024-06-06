@@ -65,6 +65,7 @@ CREATE TABLE IF NOT EXISTS preferences (
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+INSERT INTO lists(name) VALUES ('Favourites');
  
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Orangesaft', 3.5, 'Juices and nectars', 'orange juice', '-', 1, 3, 100,

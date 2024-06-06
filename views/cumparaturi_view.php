@@ -31,14 +31,42 @@
     </div>
 
     <div class="container">
-        <?php
-        if (!empty($lists)) {
-            foreach ($lists as $list) {
+         <?php
+
+    echo "<div class='favourites-box'>";
+    echo "<div class='titluLista'> Favourites </div>";
+
+    // Display 'Favourites' list items
+    $favouritesList = null;
+    foreach ($lists as $list) {
+        if ($list['name'] === 'Favourites') {
+            $favouritesList = $list;
+            break;
+        }
+    }
+
+    if ($favouritesList) {
+        $items = $model->getListItems($favouritesList['id']);
+        foreach ($items as $item) {
+            echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
+            echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
+            echo "<div style='clear: both;'></div>";
+        }
+    } else {
+        echo "<p>No items found in Favourites list.</p>";
+    }
+
+    echo "</div>";
+
+    // Display other lists
+    if (!empty($lists)) {
+        foreach ($lists as $list) {
+            if ($list['name'] != 'Favourites') {
                 echo "<div class='white-box'>";
                 echo "<div class='titluLista'>" . htmlspecialchars($list['name']) . "</div>";
 
                 // Display list items
-                $items = $model->getListItems($list['id']); 
+                $items = $model->getListItems($list['id']);
                 foreach ($items as $item) {
                     echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
                     echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
@@ -59,11 +87,13 @@
 
                 echo "</div>";
             }
-        } else {
-            echo "<p>No lists found. Add a new list to get started.</p>";
         }
-        ?>
-    </div>
+    } else {
+        echo "<p>No lists found. Add a new list to get started.</p>";
+    }
+    ?>
+</div>
+
 
     <div class="other">
         <h1 class="subtitle">Other things you might like:</h1>
@@ -77,10 +107,11 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="French Buttercream">
+                    <input type="hidden" name="product_price" value="5.00">
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                    </div>
                 </form>
             </div>
@@ -95,11 +126,12 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Red lentil soup with beet greens">
+                    <input type="hidden" name="product_price" value="3.00">
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
-    </div>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+</div>
                 </form>
             </div>
         </div>
@@ -113,10 +145,11 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Special Homemade Sweet">
+                    <input type="hidden" name="product_price" value="4.00">
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
     </div>
                 </form>
             </div>
@@ -131,10 +164,11 @@
                 </div>
                 <form action="/lists" method="post">
                     <input type="hidden" name="product_name" value="Burger Menu">
+                    <input type="hidden" name="product_price" value="15.00">
                     <div class="product_buttons">
                     <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                      </div>
                 </form>
             </div>
