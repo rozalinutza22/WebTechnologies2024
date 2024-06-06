@@ -57,10 +57,25 @@ class ShoppingListModel {
             $row = $result->fetch_assoc();
             $favourites_id = $row['id'];
     
+            // Check if the item is already in the 'Favourites' list
+            $check_sql = "SELECT id FROM items WHERE list_id = ? AND name = ?";
+            $check_stmt = $this->conn->prepare($check_sql);
+            $check_stmt->bind_param("is", $favourites_id, $item_name);
+            $check_stmt->execute();
+            $check_result = $check_stmt->get_result();
+    
+            if ($check_result->num_rows > 0) {
+                // Item already exists in the 'Favourites' list, do nothing
+                $check_stmt->close();
+                return false;
+            }
+    
+            $check_stmt->close();
+        
             // Now, insert the new item using the fetched id
             $stmt = $this->conn->prepare("INSERT INTO items (list_id, name, price) VALUES (?, ?, ?)");
             $stmt->bind_param("iss", $favourites_id, $item_name, $item_price);
-    
+        
             if ($stmt->execute()) {
                 $stmt->close();
                 return true;
