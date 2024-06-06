@@ -52,9 +52,15 @@
             echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
             echo "<div style='clear: both;'></div>";
         }
-    } else {
-        echo "<p>No items found in Favourites list.</p>";
-    }
+    
+    echo "<hr>";
+
+    echo "<div style='float: left;'>Total:</div>";
+    echo "<div style='float: right;'>$" . calculateTotal($items) . "</div>";
+    echo "<div style='clear: both;'></div>";
+} else {
+    echo "<p>No items found in Favourites list.</p>";
+}
 
     echo "</div>";
 

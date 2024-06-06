@@ -47,16 +47,6 @@ class ShoppingListModel {
         }
     }
 
-    // public function addToFav($item_name, $item_price){
-    //     $sql = "DECLARE favourites_id INT; 
-    //     SELECT id INTO favourites_id FROM lists where name='Favourites'; 
-    //     INSERT INTO items(list_id, name, price) VALUES (favourites_id, '$item_name', '$item_price')";
-    //     if ($this->conn->query($sql) === TRUE) {
-    //         return true;
-    //     } else {
-    //         return false;
-    //     }
-    // }
     public function addToFav($item_name, $item_price) {
         // First, get the id of the 'Favourites' list
         $sql = "SELECT id FROM lists WHERE name='Favourites'";
