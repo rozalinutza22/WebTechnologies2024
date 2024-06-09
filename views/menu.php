@@ -1,3 +1,9 @@
+<?php
+  session_start();
+  $nm = $_SESSION["user_fname"];
+?>
+
+
 <!DOCTYPE html>
 <html lang="en-US">
   <head>
@@ -40,9 +46,10 @@
     <div class="container">
       <h4 class="filter">Filter by</h4>
         <div class="filter-container">
-            <label><input type="checkbox" id="sizeSmall"> Small</label>
-            <label><input type="checkbox" id="sizeMedium"> Medium</label>
-            <label><input type="checkbox" id="sizeLarge"> Large</label>
+            <label><input type="checkbox" id="product_name"> Name</label>
+            <label><input type="checkbox" id="product_perishability"> Perishability</label>
+            <label><input type="checkbox" id="product_price"> Price</label>
+            <button type="submit">Apply filters</button>
         </div>
     </div>
 
