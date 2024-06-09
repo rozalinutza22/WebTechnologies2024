@@ -17,7 +17,7 @@
   <body>
     <nav>
         <ul>
-          <li><a href="/principal">Home</a></li>
+          <li><a href="/menu">Home</a></li>
           <li><a href="/lists">My lists</a></li>
           <li><a href="/profile">Profile</a></li>
         </ul>
