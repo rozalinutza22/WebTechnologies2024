@@ -27,8 +27,8 @@
 
         <div class="search-container">
           <form action="/action_page.php">
-            <input type="text" placeholder="Search.." name="search">
-            <button type="submit"><i class="fa fa-search"></i></button>
+            <input type="text" placeholder="Search.." name="search" class="sc">
+            <button type="submit" class="searchB"><i class="fa fa-search"></i></button>
           </form>
         </div>
     </div>
