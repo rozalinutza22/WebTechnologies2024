@@ -1,6 +1,9 @@
 <?php
   session_start();
-  $nm = $_SESSION["user_fname"];
+  $firstName = $_SESSION["user_fname"];
+  $lastName = $_SESSION["user_lname"];
+  $email = $_SESSION["user_email"];
+
 ?>
 
 
@@ -32,9 +35,9 @@
       <div class="searchSection">
 
         <div class="search-container">
-          <form action="/action_page.php">
+          <form action="/search" method="post">
             <input type="text" placeholder="Search.." name="search" class="sc">
-            <button type="submit" class="searchB"><i class="fa fa-search"></i></button>
+            <button type="submit" name="search_product" class="sButton">Search product</button>
           </form>
         </div>
     </div>
@@ -54,10 +57,8 @@
     </div>
 
     <br>
-    <!-- <br>
-    <br> -->
 
-    <div class="other">
+    <!-- <div class="other">
       <div class="box">
         <div class="productDetails">
           <img src="images/frenchButtercream.png" class="productImage" alt="imagine biscuiti"> 
@@ -118,7 +119,41 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <?php
+    if (isset($_SESSION["searchResults"])) {
+        $searchResults = $_SESSION["searchResults"];
+
+        if (!empty($searchResults)) {
+            foreach ($searchResults as $product) {
+                // $imagePath = "../public/products_images/{$product['image']}";
+                $imagePath = "../public/products_images/{$product['image']}";
+
+                echo "<div class='box'>";
+                echo "<div class='productDetails'>";
+                echo "<img src='{$imagePath}' class='productImage' alt='{$product['name']}'>";
+                echo "<div class='productText'>";
+                echo "<p class='productTitle'>{$product['name']}</p>";
+                echo "<p class='productPrice'>{$product['price']} $</p>";
+                echo "</div>";
+                echo "<div class='product_buttons'>";
+                echo "<button type='button' class='specialButtonProduct' onclick='window.location.href=\"/product/{$product['id']}\"'>View details</button>";
+                echo "<button type='submit' name='add_to_list' class='specialButtonProduct'>Add to List</button>";
+                echo "<button class='favorites' onclick='window.location.href=\"/menu\"'>&#9829;</button>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>No results found.</p>";
+        }
+
+        unset($_SESSION["searchResults"]);
+    } else {
+        echo "<p>No results found.</p>";
+    }
+    ?>
 
   </body>
 </html>

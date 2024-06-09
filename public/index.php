@@ -45,6 +45,9 @@ if ($requestUri === '/login') {
 } elseif ($requestUri === '/logout') {
     require '../includes/logout.php';
  
+}elseif ($requestUri === '/search') {
+    require '../controllers/menu_controller.php';
+ 
 }else {
     echo '404 Not Found';
 }
