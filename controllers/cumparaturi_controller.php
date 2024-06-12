@@ -3,14 +3,19 @@
 include(dirname(__DIR__).'/models/cumparaturi_model.php');
 $model = new ShoppingListModel();
 
+// userId from cookies for when it will be set up
+//$userId = isset($_COOKIE['userId']) ? (int)$_COOKIE['userId'] : null;
+$userId = 1;
+
 // Handle add list request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_list'])) {
     $list_name = $_POST['list_name'];
-    $model->addList($list_name);
+    $model->addList($list_name, $userId); 
     // Redirect to refresh the page after adding the list
-    header("Location: /lists"); //doesnt want to redirect bc of css
+    header("Location: /lists");
     exit();
 }
+
 
 // Handle delete list request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_list'])) {
@@ -26,8 +31,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_favourites']))
     $item_name = $_POST['product_name'];
     $item_price = $_POST['product_price'];
     $model->addToFav($item_name, $item_price);
+    $model->updatePreferences($userId, $item_name);
     // Redirect to refresh the page after adding the list
-    header("Location: /lists"); //doesnt want to redirect bc of css
+    header("Location: /lists");
+    exit();
+}
+
+if (isset($_POST['view_details'])) {
+    $item_name = $_POST['product_name'];
+    $model->updatePreferences($userId, $item_name);
+    // Redirect to the product details page
+    header("Location: /product?name=" . urlencode($item_name));
     exit();
 }
 
@@ -36,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourite
     $item_name = $_POST['item_name'];
     $model->removeFromFav($item_name);
     // Redirect to refresh the page after adding the list
-    header("Location: /lists"); //doesnt want to redirect bc of css
+    header("Location: /lists"); 
     exit();
 }
 
@@ -50,10 +64,11 @@ function calculateTotal($items) {
 }
 
 // Fetch all lists
-$lists = $model->getAllLists();
+$lists = $model->getAllLists($userId);
+
+// Fetch recommended products for the current user 
+$recommendedProducts = $model->showRecommendedProducts($userId);
 
 include(dirname(__DIR__).'/views/cumparaturi_view.php');
 
-// Include the view file
-// require_once '../views/cumparaturi_view.php';
 ?>

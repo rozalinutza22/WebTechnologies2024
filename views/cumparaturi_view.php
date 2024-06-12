@@ -68,121 +68,65 @@
 
     echo "</div>";
 
-    // Display other lists
-    if (!empty($lists)) {
-        foreach ($lists as $list) {
-            if ($list['name'] != 'Favourites') {
-                echo "<div class='white-box'>";
-                echo "<div class='titluLista'>" . htmlspecialchars($list['name']) . "</div>";
+// Display other lists
+if (!empty($lists)) {
+    foreach ($lists as $list) {
+        if ($list['name'] != 'Favourites') {
+            echo "<div class='white-box'>";
+            echo "<div class='titluLista'>" . htmlspecialchars($list['name']) . "</div>";
 
-                // Display list items
-                $items = $model->getListItems($list['id']);
-                foreach ($items as $item) {
-                    echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
-                    echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
-                    echo "<div style='clear: both;'></div>";
-                }
-
-                echo "<hr>";
-
-                echo "<div style='float: left;'>Total:</div>";
-                echo "<div style='float: right;'>$" . calculateTotal($items) . "</div>";
+            // Display list items
+            $items = $model->getListItems($list['id']);
+            foreach ($items as $item) {
+                echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
+                echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
                 echo "<div style='clear: both;'></div>";
-
-                // Form to delete list
-                echo "<form action='/lists' method='post'>";
-                echo "<input type='hidden' name='list_id' value='" . htmlspecialchars($list['id']) . "'>";
-                echo "<button type='submit' name='delete_list' class='deleteButton' onclick='return confirm(\"Are you sure you want to delete this list?\")'>Delete</button>";
-                echo "</form>";
-
-                echo "</div>";
             }
+
+            echo "<hr>";
+
+            echo "<div style='float: left;'>Total:</div>";
+            echo "<div style='float: right;'>$" . calculateTotal($items) . "</div>";
+            echo "<div style='clear: both;'></div>";
+
+            // Form to delete list
+            echo "<form action='/lists' method='post'>";
+            echo "<input type='hidden' name='list_id' value='" . htmlspecialchars($list['id']) . "'>";
+            echo "<button type='submit' name='delete_list' class='deleteButton' onclick='return confirm(\"Are you sure you want to delete this list?\")'>Delete</button>";
+            echo "</form>";
+
+            echo "</div>";
         }
-    } else {
-        echo "<p>No lists found. Add a new list to get started.</p>";
     }
-    ?>
+}
+
+?>
 </div>
 
 
     <div class="other">
         <h1 class="subtitle">Other things you might like:</h1>
-
-        <div class="box">
-            <div class="productDetails">
-                <img src="images/frenchButtercream.png" class="productImage" alt="imagine biscuiti">
-                <div class="productText">
-                    <p class="productTitle">French Buttercream</p>
-                    <p class="productPrice">5.00 $</p>
-                </div>
-                <form action="/lists" method="post">
-                    <input type="hidden" name="product_name" value="French Buttercream">
-                    <input type="hidden" name="product_price" value="5.00">
-                    <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
-                   </div>
-                </form>
+    
+        <?php foreach ($recommendedProducts as $product): ?>
+    <div class="box">
+        <div class="productDetails">
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <div class="productText">
+                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
+                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
-        </div>
-
-        <div class="box">
-            <div class="productDetails">
-                <img src="images/red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup">
-                <div class="productText">
-                    <p class="productTitle">Red lentil soup</p>
-                    <p class="productPrice">3.00 $</p>
-                </div>
-                <form action="/lists" method="post">
-                    <input type="hidden" name="product_name" value="Red lentil soup with beet greens">
-                    <input type="hidden" name="product_price" value="3.00">
-                    <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
+            <form action="/lists" method="post">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+                <div class="product_buttons">
+                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
                     <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
-</div>
-                </form>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="productDetails">
-                <img src="images/prajiturele.png" class="productImage" alt="imagine prajiturele">
-                <div class="productText">
-                    <p class="productTitle">Special Homemade Sweet</p>
-                    <p class="productPrice">4.00 $</p>
                 </div>
-                <form action="/lists" method="post">
-                    <input type="hidden" name="product_name" value="Special Homemade Sweet">
-                    <input type="hidden" name="product_price" value="4.00">
-                    <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+            </form>
+        </div>
     </div>
-                </form>
-            </div>
-        </div>
-
-        <div class="box">
-            <div class="productDetails">
-                <img src="images/burgerMenu.png" class="productImage" alt="imagine meniu">
-                <div class="productText">
-                    <p class="productTitle">Burger Menu</p>
-                    <p class="productPrice">15.00 $</p>
-                </div>
-                <form action="/lists" method="post">
-                    <input type="hidden" name="product_name" value="Burger Menu">
-                    <input type="hidden" name="product_price" value="15.00">
-                    <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
-                     </div>
-                </form>
-            </div>
-        </div>
+<?php endforeach; ?>
 
     </div>
 

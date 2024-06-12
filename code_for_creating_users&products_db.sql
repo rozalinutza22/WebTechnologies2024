@@ -4,21 +4,6 @@ CREATE DATABASE IF NOT EXISTS cupo_db;
 -- Use the database
 USE cupo_db;
 
--- Create the 'lists' table
-CREATE TABLE IF NOT EXISTS lists (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    name VARCHAR(255) NOT NULL UNIQUE
-);
-
--- Create the 'items' table
-CREATE TABLE IF NOT EXISTS items (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    list_id INT NOT NULL,
-    name VARCHAR(255) NOT NULL,
-    price DECIMAL(10, 2),
-    FOREIGN KEY (list_id) REFERENCES lists(id) ON DELETE CASCADE
-);
-
 -- Create the 'products' table
 CREATE TABLE IF NOT EXISTS products (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -56,16 +41,37 @@ CREATE TABLE IF NOT EXISTS users (
     session_expiry TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Create the 'lists' table
+CREATE TABLE IF NOT EXISTS lists (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL UNIQUE,
+    user_id INT,
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Create the 'items' table
+CREATE TABLE IF NOT EXISTS items (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    list_id INT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    price DECIMAL(10, 2),
+    FOREIGN KEY (list_id) REFERENCES lists(id) ON DELETE CASCADE
+);
+
+
 -- Create the 'preferences' table
 CREATE TABLE IF NOT EXISTS preferences (
     id INT AUTO_INCREMENT PRIMARY KEY,
     user_id INT NOT NULL,
     preference_name VARCHAR(255) NOT NULL,
     preference_value VARCHAR(255) NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users(id)
+    FOREIGN KEY (user_id) REFERENCES users(id),
+    count INT DEFAULT 1
 );
+INSERT INTO users (id, firstName, lastName, emailAdress, phoneNumber, passwrd, admin) 
+VALUES (1, 'Maricica', 'Maria', 'maricica@gmail.com', '0769999999', PASSWORD('cevaparola'), 0); 
 
-INSERT INTO lists(name) VALUES ('Favourites');
+INSERT INTO lists(name, user_id) VALUES ('Favourites', 1); 
  
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Orangesaft', 3.5, 'Juices and nectars', 'orange juice', '-', 1, 3, 100,
