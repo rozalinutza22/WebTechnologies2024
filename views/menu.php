@@ -58,102 +58,42 @@
 
     <br>
 
-    <!-- <div class="other">
-      <div class="box">
-        <div class="productDetails">
-          <img src="images/frenchButtercream.png" class="productImage" alt="imagine biscuiti"> 
-          <div class="productText">
-            <p class="productTitle">French Buttercream</p>
-            <p class="productPrice">5.00 $</p>
-          </div>
-          <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
-          </div>
-          
-          </div>
-      </div>
-
-      <div class="box">
-        <div class="productDetails">
-          <img src="images/red-lentil-soup-with-beet-greens.jpg" class="productImage" alt="imagine lentil soup"> 
-          <div class="productText">
-            <p class="productTitle">Red lentil soup</p>
-            <p class="productPrice">3.00 $</p>
-          </div>
-          <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
-          </div>
-          </div>
-      </div>
-
-      <div class="box">
-        <div class="productDetails">
-          <img src="images/prajiturele.png" class="productImage" alt="imagine prajiturele"> 
-          <div class="productText">
-            <p class="productTitle">Special Homemade Sweet</p>
-            <p class="productPrice">4.00 $</p>
-          </div>
-          <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
-           </div>
-        </div>
-      </div>
-
-      <div class="box">
-        <div class="productDetails">
-          <img src="images/burgerMenu.png" class="productImage" alt="imagine meniu"> 
-          <div class="productText">
-            <p class="productTitle">Burger Menu</p>
-            <p class="productPrice">15.00 $</p>
-          </div>
-          <div class="product_buttons">
-                    <button type="button" class="specialButtonProduct" onclick="window.location.href='/product'">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" onclick="window.location.href='/menu'">&#9829</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <?php
-    if (isset($_SESSION["searchResults"])) {
-        $searchResults = $_SESSION["searchResults"];
-
+    <div class="other">
+        <?php 
+        if (isset($_SESSION["searchResults"])) {
+          $searchResults = $_SESSION["searchResults"]; 
         if (!empty($searchResults)) {
-            foreach ($searchResults as $product) {
-                // $imagePath = "../public/products_images/{$product['image']}";
-                $imagePath = "../public/products_images/{$product['image']}";
-
-                echo "<div class='box'>";
-                echo "<div class='productDetails'>";
-                echo "<img src='{$imagePath}' class='productImage' alt='{$product['name']}'>";
-                echo "<div class='productText'>";
-                echo "<p class='productTitle'>{$product['name']}</p>";
-                echo "<p class='productPrice'>{$product['price']} $</p>";
-                echo "</div>";
-                echo "<div class='product_buttons'>";
-                echo "<button type='button' class='specialButtonProduct' onclick='window.location.href=\"/product/{$product['id']}\"'>View details</button>";
-                echo "<button type='submit' name='add_to_list' class='specialButtonProduct'>Add to List</button>";
-                echo "<button class='favorites' onclick='window.location.href=\"/menu\"'>&#9829;</button>";
-                echo "</div>";
-                echo "</div>";
-                echo "</div>";
-            }
-        } else {
-            echo "<p>No results found.</p>";
-        }
-
-        unset($_SESSION["searchResults"]);
-    } else {
+          foreach ($searchResults as $product): ?>
+    <div class="box">
+        <div class="productDetails">
+          <?php $imagePath = "../public/products_images/{$product['image']}";?>
+            <img src="../public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <div class="productText">
+                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
+                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
+            </div>
+            <form action="/lists" method="post">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+                <div class="product_buttons">
+                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+                </div>
+            </form>
+        </div>
+    </div>
+      <?php endforeach; 
+      } else {
         echo "<p>No results found.</p>";
+      }
+
+      unset($_SESSION["searchResults"]);
+    } else {
+      echo "<p>No results found.</p>";
     }
     ?>
 
+  </div>
   </body>
 </html>
