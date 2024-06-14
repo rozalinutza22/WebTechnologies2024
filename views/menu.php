@@ -89,11 +89,33 @@
       }
 
       unset($_SESSION["searchResults"]);
-    } else {
-      echo "<p>No results found.</p>";
-    }
-    ?>
+    } else { ?>
 
+      <?php 
+      $allProducts = $_SESSION["allProducts"];
+      foreach ($allProducts as $product): ?>
+      <div class="box">
+        <div class="productDetails">
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <div class="productText">
+                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
+                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
+            </div>
+            <form action="/lists" method="post">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+                <div class="product_buttons">
+                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <?php endforeach; ?>
+
+    </div>
+    <?php } ?>
   </div>
   </body>
 </html>

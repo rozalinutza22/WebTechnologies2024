@@ -38,7 +38,18 @@ class MenuModel {
     }
 
     public function getAllProducts() {
+        $stmt = $this->conn->prepare("SELECT * FROM products");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
 
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $allProducts = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+        return $allProducts;
     }
 
 }
