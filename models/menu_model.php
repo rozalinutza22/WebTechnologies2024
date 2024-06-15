@@ -38,7 +38,7 @@ class MenuModel {
     }
 
     public function getAllProducts() {
-        $stmt = $this->conn->prepare("SELECT * FROM products");
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY category asc");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
@@ -51,7 +51,6 @@ class MenuModel {
         $stmt->close();
         return $allProducts;
     }
-
 }
 
 ?>

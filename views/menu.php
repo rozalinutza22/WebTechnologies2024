@@ -52,7 +52,7 @@
             <label><input type="checkbox" id="product_name"> Name</label>
             <label><input type="checkbox" id="product_perishability"> Perishability</label>
             <label><input type="checkbox" id="product_price"> Price</label>
-            <button type="submit">Apply filters</button>
+            <button type="submit" name="filter_category">Apply filters</button>
         </div>
     </div>
 
@@ -93,7 +93,16 @@
 
       <?php 
       $allProducts = $_SESSION["allProducts"];
-      foreach ($allProducts as $product): ?>
+      $currentCategory = null;
+ 
+      foreach ($allProducts as $product): 
+        if ($product['category'] !== $currentCategory):
+          if ($currentCategory !== null): 
+          endif;
+          $currentCategory = $product['category'];
+          echo "<h3>" . htmlspecialchars($currentCategory) . ":</h3>";
+        endif;
+      ?>
       <div class="box">
         <div class="productDetails">
             <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
@@ -112,10 +121,14 @@
             </form>
         </div>
       </div>
-      <?php endforeach; ?>
+      <?php endforeach; 
+      ?>
 
     </div>
     <?php } ?>
   </div>
+
+  <!-- pentru filtrare -->
+
   </body>
 </html>
