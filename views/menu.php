@@ -49,10 +49,12 @@
     <div class="container">
       <h4 class="filter">Filter by</h4>
         <div class="filter-container">
-            <label><input type="checkbox" id="product_name"> Name</label>
+            <!-- <label><input type="checkbox" id="product_name"> Name</label>
             <label><input type="checkbox" id="product_perishability"> Perishability</label>
-            <label><input type="checkbox" id="product_price"> Price</label>
-            <button type="submit" name="filter_category">Apply filters</button>
+            <label><input type="checkbox" id="product_price"> Price</label> -->
+            <button type="submit" name="filter_name">Name</button>
+            <button type="submit" name="filter_perishability">Perishability</button>
+            <button type="submit" name="filter_price">Price</button>
         </div>
     </div>
 
