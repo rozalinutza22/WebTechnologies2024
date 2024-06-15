@@ -127,6 +127,14 @@ p {
     right: 89%;
 }
 
+.access_admin{
+    max-width: 77%;
+    height: auto;
+    bottom: 55%; 
+    position: relative;
+    left: 35%;
+}
+
 .circular-image {
     width: 200px; 
     height: 200px;
