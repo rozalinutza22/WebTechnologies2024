@@ -15,6 +15,35 @@
         exit();
     }
 
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filter_name'])) {
+        $productsByName = $model->filterByName();
+
+        session_start();
+        $_SESSION["productsByName"] = $productsByName;
+        header("Location: /menu"); 
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filter_price'])) {
+        $productsByPrice = $model->filterByPrice();
+
+        session_start();
+        $_SESSION["productsByPrice"] = $productsByPrice;
+        header("Location: /menu"); 
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['filter_perishability'])) {
+        $productsByPerishability = $model->filterByPerishability();
+
+        session_start();
+        $_SESSION["productsByPerishability"] = $productsByPerishability;
+        header("Location: /menu"); 
+        exit();
+    }
+
+
+
     include(dirname(__DIR__).'/views/menu.php');
 
 ?>

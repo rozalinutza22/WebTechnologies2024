@@ -51,6 +51,51 @@ class MenuModel {
         $stmt->close();
         return $allProducts;
     }
+
+    public function filterByName() {
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY category asc, name asc");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $allProducts = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+        return $allProducts;
+    }
+
+    public function filterByPrice() {
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY price asc");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $allProducts = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+        return $allProducts;
+    }
+
+    public function filterByPerishability() {
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY perishability asc");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $allProducts = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+        return $allProducts;
+    }
 }
 
 ?>
