@@ -124,7 +124,7 @@ class ShoppingListModel {
         //var_dump($bindParams); --has the correct info
         //var_dump($types); --string
     
-        $stmt->execute(); //TODO: Array to string conversion error so solve 
+        @ $stmt->execute(); //TODO: Array to string conversion error so solve 
         $result = $stmt->get_result();
         $products = [];
         while ($row = $result->fetch_assoc()) {
