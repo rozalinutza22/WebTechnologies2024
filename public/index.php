@@ -1,8 +1,5 @@
 <?php
 
-require_once '../controllers/login_controller.php';
-
-// Simple routing logic 
 $requestUri = $_SERVER['REQUEST_URI'];
 
 
@@ -10,11 +7,7 @@ if (strpos($requestUri, '/product') === 0) {
     require_once '../controllers/product_controller.php';
 }
 elseif ($requestUri === '/login') {
-    require __DIR__ . '/../views/login_view.php';
-
-} elseif ($requestUri === '/user/login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
-    $controller = new UserController();
-    $controller->login();
+    require_once '../controllers/login_controller.php';
 
 } elseif ($requestUri === '/menu') {
     require '../views/menu.php';

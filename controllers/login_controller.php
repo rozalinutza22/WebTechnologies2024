@@ -1,30 +1,34 @@
 <?php
 
-class UserController {
-    public function login() {
-        // Check if the form is submitted
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // Get the form data
-            $username = $_POST['user_name'];
-            $password = $_POST['user_password'];
-            $stayConnected = isset($_POST['stay_connected']);
+include(dirname(__DIR__).'/models/login_model.php');
+$loginModel = new LoginModel();
 
-            // validate the user's credentials
-            // we will assume validation is successful
+ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-            // If 'Stay connected' is checked, set a cookie
-            if ($stayConnected) {
-                setcookie('user_name', $username, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                setcookie('user_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-            }
+ $firstName = $_POST['user_name'];
+ $password = $_POST['user_password'];
+ $stayConnected = isset($_POST['stay_connected']);
 
-            // Redirect to the menu page
-            header('Location: /menu');
-            exit();
-        } else {
-            // Show the login form
-            // require '../views/login.php';
-            header('Location: /login');
+ $user = $loginModel->validateCredentials($firstName, $password);
+
+if ($user) {
+ if ($stayConnected) {
+  setcookie('user_id', $user['id'], time() + (30 * 24 * 60 * 60), '/'); // 30 days
+  setcookie('user_token', $user['session_token'], time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                   }
+
+       header('Location: /menu');
+       exit();
+ } else {
+  header('Location: /login?error=invalid_credentials');
+ exit();
         }
-    }
-}
+ } else {
+    include(dirname(__DIR__).'/views/login_view.php');
+     header('Location: /login');
+      exit();
+        }
+
+include(dirname(__DIR__).'/views/login_view.php');
+
+?>
