@@ -24,21 +24,20 @@
           <img src="images/<?php echo htmlspecialchars($productDetails['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($productDetails['name']); ?>">
             <div class="ProductText">
                 <p class="Title"><?php echo htmlspecialchars($productDetails['name']); ?></p>
-                <p class="Description">Ingredients: <?php echo htmlspecialchars($productDetails['ingredients']); ?></p>
-                <p>Allergens: <?php echo htmlspecialchars($productDetails['allergens']); ?></p>
-                <p>
-                Suitable for vegetarian diet:
+                <p class="subtitle">Ingredients:</p><p> <?php echo htmlspecialchars($productDetails['ingredients']); ?></p>
+                <p class="subtitle">Allergens:</p><p> <?php echo htmlspecialchars($productDetails['allergens']); ?></p>
+                <p class="subtitle">Suitable for vegetarian diet:</p><p>
                 <?php echo $productDetails['vegetarian'] == 1 ? 'Yes' : 'No'; ?>
             </p>
-            <p>Perishability: <?php echo htmlspecialchars($productDetails['perishability']); ?></p>
-            <p>Valability: <?php echo htmlspecialchars($productDetails['valability']); ?></p>
-            <p>Region: <?php echo htmlspecialchars($productDetails['region']); ?></p>
-            <p>Stores: <?php echo htmlspecialchars($productDetails['stores']); ?></p>
-            <p>Quantity: <?php echo htmlspecialchars($productDetails['quantity']); ?></p>
-            <p>Brand: <?php echo htmlspecialchars($productDetails['brand']); ?></p>
-            <p>Origin of ingredients: <?php echo htmlspecialchars($productDetails['originOfIngredients']); ?></p>
-            <p>Packaging: <?php echo htmlspecialchars($productDetails['packaging']); ?></p>
-            <p>NutriScore: <?php echo htmlspecialchars($productDetails['NutriScore']); ?></p>
+            <p class="subtitle">Perishability:</p><p><?php echo htmlspecialchars($productDetails['perishability']); ?></p>
+            <p class="subtitle">Valability:</p><p><?php echo htmlspecialchars($productDetails['valability']); ?></p>
+            <p class="subtitle">Region:</p><p> <?php echo htmlspecialchars($productDetails['region']); ?></p>
+            <p class="subtitle">Stores:</p><p><?php echo htmlspecialchars($productDetails['stores']); ?></p>
+            <p class="subtitle">Quantity:</p><p><?php echo htmlspecialchars($productDetails['quantity']); ?></p>
+            <p class="subtitle">Brand:</p><p><?php echo htmlspecialchars($productDetails['brand']); ?></p>
+            <p class="subtitle">Origin of ingredients:</p><p><?php echo htmlspecialchars($productDetails['originOfIngredients']); ?></p>
+            <p class="subtitle">Packaging:</p><p><?php echo htmlspecialchars($productDetails['packaging']); ?></p>
+            <p class="subtitle">Nutri score:</p><p><?php echo htmlspecialchars($productDetails['NutriScore']); ?></p>
           </div>
         <?php else : ?>
             <p>No product details available.</p>

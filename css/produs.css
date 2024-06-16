@@ -163,8 +163,8 @@ a:hover {
     3px 3px 0 #000;  
 }
 
-.Description{
-    font: 3em / 1.2 Inter;
+.subtitle{
+    font: 2em / 1.2 Inter;
 }
 
 @media screen and (max-width: 750px) {
