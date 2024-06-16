@@ -51,7 +51,7 @@ if ($requestUri === '/login') {
 }elseif ($requestUri === '/access-admin') {
     require '../includes/admin.php';
 }elseif ($requestUri === '/modify-admin') {
-    require '../includes/admin.php';
+    require '../controllers/admin_controller.php';
 }else {
     echo '404 Not Found';
 }

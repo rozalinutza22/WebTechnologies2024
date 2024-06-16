@@ -31,8 +31,8 @@
         
         <div class="adminButtons">
             <form action="/modify-admin" method="post">
-                <button type="submit" name="filter_name">Delete all users</button>
-                <button class="create-user">Create new user</button>
+                <button type="submit" name="delete-users">Delete all users</button>
+                <button type="submit" name="create-user" class="create-user">Create new user</button>
             </form>
         </div>
 
@@ -41,7 +41,7 @@
 
         <div class="deleteUserId">
           <form action="/modify-admin" method="post">
-            <input type="text" placeholder="Insert user id" name="search" class="sc">
+            <input type="text" placeholder="Insert user id" name="delete-user" class="sc">
             <button type="submit" name="deleteUser" class="sButton">Delete user</button>
           </form>
         </div>
@@ -62,7 +62,7 @@
 
         <div class="deleteAllListId">
           <form action="/modify-admin" method="post">
-            <input type="text" placeholder="Insert user id" name="search" class="sc">
+            <input type="text" placeholder="Insert user id" name="deleteAllL" class="sc">
             <button type="submit" name="deleteAllLists" class="sButton">Delete all lists</button>
           </form>
         </div>
