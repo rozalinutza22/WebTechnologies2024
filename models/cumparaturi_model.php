@@ -112,7 +112,7 @@ class ShoppingListModel {
         }
         $query .= " ORDER BY RAND() LIMIT ?";
         $types .= 'i'; //'i' for integer limit
-        $bindParams[] = $limit;
+        $bindParams[] = $limit; 
     
         $stmt = $this->conn->prepare($query);
     
