@@ -50,8 +50,16 @@ if ($requestUri === '/login') {
  
 }elseif ($requestUri === '/access-admin') {
     require '../includes/admin.php';
+
 }elseif ($requestUri === '/modify-admin') {
     require '../controllers/admin_controller.php';
+
+}elseif ($requestUri === '/new-user') {
+    require '../includes/create_new_user.php';
+
+}elseif ($requestUri === '/new-user-form') {
+    require '../controllers/create_new_user_controller.php';
+
 }else {
     echo '404 Not Found';
 }

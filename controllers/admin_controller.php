@@ -34,5 +34,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteAllLists'])) {
     exit();
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['create-user'])) {
+    header("Location: /new-user"); 
+    exit();
+}
+
 include(dirname(__DIR__).'/includes/admin.php');
 ?>
