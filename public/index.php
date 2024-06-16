@@ -48,6 +48,10 @@ if ($requestUri === '/login') {
 }elseif ($requestUri === '/search') {
     require '../controllers/menu_controller.php';
  
+}elseif ($requestUri === '/access-admin') {
+    require '../includes/admin.php';
+}elseif ($requestUri === '/modify-admin') {
+    require '../includes/admin.php';
 }else {
     echo '404 Not Found';
 }

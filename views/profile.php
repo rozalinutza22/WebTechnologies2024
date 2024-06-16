@@ -109,7 +109,7 @@
             </div>
             <br>
             <br>
-            <a href="/menu"><button class="access_admin">Access admin</button>
+            <a href="/access-admin"><button class="access_admin">Access admin</button>
         </div>
 
       <a href="/modify"><button id="create" name="create_acc">Modify</button></a>
