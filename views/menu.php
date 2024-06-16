@@ -69,8 +69,8 @@
           foreach ($searchResults as $product): ?>
     <div class="box">
         <div class="productDetails">
-          <?php $imagePath = "../public/products_images/{$product['image']}";?>
-            <img src="../public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+          <?php $imagePath = "images/{$product['image']}";?>
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
             <div class="productText">
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
@@ -108,7 +108,7 @@
       ?>
       <div class="box">
         <div class="productDetails">
-            <img src="/public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
             <div class="productText">
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
@@ -149,7 +149,7 @@
 
     <div class="box">
         <div class="productDetails">
-            <img src="/public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
             <div class="productText">
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
