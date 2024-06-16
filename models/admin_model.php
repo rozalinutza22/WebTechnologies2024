@@ -64,6 +64,15 @@ class AdminModel {
         $stmt->close();
     }
 
+    public function deleteAll() {
+        $stmt = $this->conn->prepare("DELETE FROM lists");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+        $stmt->close();
+    }
 
 }
 
