@@ -5,7 +5,11 @@ require_once '../controllers/login_controller.php';
 // Simple routing logic 
 $requestUri = $_SERVER['REQUEST_URI'];
 
-if ($requestUri === '/login') {
+
+if (strpos($requestUri, '/product') === 0) {
+    require_once '../controllers/product_controller.php';
+}
+elseif ($requestUri === '/login') {
     require __DIR__ . '/../views/login_view.php';
 
 } elseif ($requestUri === '/user/login' && $_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -15,17 +19,11 @@ if ($requestUri === '/login') {
 } elseif ($requestUri === '/menu') {
     require '../views/menu.php';
 
-
 } elseif ($requestUri === '/profile') {
     require '../views/profile.php';
 
-
 } elseif ($requestUri === '/create-account') {
     require '../views/create_account.php';
-
-
-} elseif ($requestUri === '/product') {
-    require '../views/produs.php';
 
 } elseif ($requestUri === '/lists') {
     require_once '../controllers/cumparaturi_controller.php';

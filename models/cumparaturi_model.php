@@ -267,8 +267,7 @@ class ShoppingListModel {
             return false;
         }
     }
-    
-
+   
     public function deleteList($list_id) {
         $sql = "DELETE FROM lists WHERE id=$list_id";
         if ($this->conn->query($sql) === TRUE) {

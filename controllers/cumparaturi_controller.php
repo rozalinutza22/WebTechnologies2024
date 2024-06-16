@@ -7,6 +7,7 @@ $model = new ShoppingListModel();
 //$userId = isset($_COOKIE['userId']) ? (int)$_COOKIE['userId'] : null;
 $userId = 1;
 
+
 // Handle add list request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_list'])) {
     $list_name = $_POST['list_name'];
@@ -15,7 +16,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_list'])) {
     header("Location: /lists");
     exit();
 }
-
 
 // Handle delete list request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_list'])) {
@@ -37,6 +37,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_favourites']))
     exit();
 }
 
+//Handle view details button with redirect to product page
 if (isset($_POST['view_details'])) {
     $item_name = $_POST['product_name'];
     $model->updatePreferences($userId, $item_name);
