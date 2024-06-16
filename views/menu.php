@@ -123,44 +123,8 @@
         </div>
       </div>
       <?php endforeach; 
-      } else if (isset($_SESSION["productsByName"])) { 
+      }
       ?>
-
-    <?php  
-      $result = $_SESSION["productsByName"]; 
-      if (!empty($result)) {
-        $currentCategory = null;
-        foreach ($result as $product): 
-          if ($product['category'] !== $currentCategory):
-            if ($currentCategory !== null): 
-            endif;
-            $currentCategory = $product['category'];
-            echo "<h3>" . htmlspecialchars($currentCategory) . ":fjg</h3>";
-          endif;
-      ?>
-      <div class="box">
-        <div class="productDetails">
-            <img src="/public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
-            <div class="productText">
-                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
-                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
-            </div>
-            <form action="/lists" method="post">
-                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
-                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
-                <div class="product_buttons">
-                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
-                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
-                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
-                </div>
-            </form>
-        </div>
-      </div>
-      <?php endforeach; } 
-      } 
-      ?>
-  </div>
-  </div>
 
   <!-- pentru filtrare -->
 
