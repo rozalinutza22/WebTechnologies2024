@@ -3,7 +3,9 @@
   $firstName = $_SESSION["user_fname"];
   $lastName = $_SESSION["user_lname"];
   $email = $_SESSION["user_email"];
-
+  // $productsByName = $_SESSION["productsByName"];
+  // $productsByPrice = $_SESSION["productsByPrice"];
+  // $productsByPerishability = $_SESSION["productsByPerishability"];
 ?>
 
 
@@ -90,7 +92,7 @@
       }
 
       unset($_SESSION["searchResults"]);
-    } else if (!isset($_SESSION["searchResults"]) && isset($_SESSION["productsByName"])) { ?>
+    } else { ?>
 
       <?php 
       $allProducts = $_SESSION["allProducts"];
@@ -127,6 +129,46 @@
       ?>
 
   <!-- pentru filtrare -->
+
+  <?php
+    if (isset($_SESSION['productsByName'])) { ?>
+
+    <?php
+      $currentCategory = null;
+      $productsByName = $_SESSION['productsByName'];
+      echo "<h2>de aici incepe</h2 <br>";
+ 
+      foreach ($productsByName as $product): 
+        if ($product['category'] !== $currentCategory):
+          if ($currentCategory !== null): 
+          endif;
+          $currentCategory = $product['category'];
+          echo "<h3>" . htmlspecialchars($currentCategory) . ":</h3>";
+        endif;
+    ?>
+
+    <div class="box">
+        <div class="productDetails">
+            <img src="/public/products_images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <div class="productText">
+                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
+                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
+            </div>
+            <form action="/lists" method="post">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+                <div class="product_buttons">
+                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <?php endforeach; 
+      }
+      unset($_SESSION["productsByName"]);
+      ?>
 
   </body>
 </html>
