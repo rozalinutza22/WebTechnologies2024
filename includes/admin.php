@@ -32,7 +32,7 @@
         <div class="adminButtons">
             <form action="/modify-admin" method="post">
                 <button type="submit" name="filter_name">Delete all users</button>
-                <button type="submit" name="create_user">Create new user</button>
+                <button class="create-user">Create new user</button>
             </form>
         </div>
 
@@ -42,7 +42,7 @@
         <div class="deleteUserId">
           <form action="/modify-admin" method="post">
             <input type="text" placeholder="Insert user id" name="search" class="sc">
-            <button type="submit" name="search_product" class="sButton">Delete user</button>
+            <button type="submit" name="deleteUser" class="sButton">Delete user</button>
           </form>
         </div>
 
@@ -51,8 +51,9 @@
 
         <div class="deleteListId">
           <form action="/modify-admin" method="post">
-            <input type="text" placeholder="Insert list id" name="search" class="sc">
-            <button type="submit" name="search_product" class="sButton">Delete list</button>
+            <input type="text" placeholder="Insert user id" name="searchUser" class="sc">
+            <input type="text" placeholder="Insert list id" name="searchList" class="sc">
+            <button type="submit" name="deleteList" class="sButton">Delete list</button>
           </form>
         </div>
 
@@ -62,7 +63,7 @@
         <div class="deleteAllListId">
           <form action="/modify-admin" method="post">
             <input type="text" placeholder="Insert user id" name="search" class="sc">
-            <button type="submit" name="search_product" class="sButton">Delete all lists</button>
+            <button type="submit" name="deleteAllLists" class="sButton">Delete all lists</button>
           </form>
         </div>
 
