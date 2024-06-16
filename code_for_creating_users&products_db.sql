@@ -116,7 +116,7 @@ originOfIngredients, packaging, NutriScore, image) VALUES('Belvita', 14.2, 'Snac
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Oreo', 4.9, 'Sweet snacks', 'wheat flour, sugar, palm oil, rapeseed oil, 
 low-fat cocoa pulp 4,3%, wheat starch, glucose-fructose syrup', 'gluten, soybeans', 1, 2, 200, 'Germany', 'Cora', '154g',
-'Mondelez', 'Germany', 'composite-carton', 'E', 'Oreo.jpg');
+'Mondelez', 'Germany', 'composite-carton', 'E', 'Oreo.png');
 
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Ferrero Rocher', 25.0, 'Sweet snacks', 'milk chocolate 30%, hazelnuts, 
@@ -153,7 +153,7 @@ sugar, palm oil, salt', 'eggs, gluten, milk', 0, 2, 200, 'Spain', 'Carrefour', '
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Fig Rolls', 13.4, 'Sweet snacks', '32% figs, fortified wheat flour, sugar, palm oil, 
 glucose synup, partially inverted sugar syrup, whey powder', 'milk, gluten', 0, 3, 50, 'France', 'Lidl', '200g', 'Lidl', 'France', 'paper',
-'D', 'Fig.jpg');
+'D', 'Fig.png');
 
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Californian Almond', 3.5, 'Nuts', 'Nuts', 'nuts', 1, 3, 40, 'Romania', 'Lidl',
