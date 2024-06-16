@@ -29,8 +29,8 @@
                 <p class="subtitle">Suitable for vegetarian diet:</p><p>
                 <?php echo $productDetails['vegetarian'] == 1 ? 'Yes' : 'No'; ?>
             </p>
-            <p class="subtitle">Perishability:</p><p><?php echo htmlspecialchars($productDetails['perishability']); ?></p>
-            <p class="subtitle">Valability:</p><p><?php echo htmlspecialchars($productDetails['valability']); ?></p>
+            <p class="subtitle">After opening the package, consume in approximatively (days):</p><p><?php echo htmlspecialchars($productDetails['perishability']); ?></p>
+            <p class="subtitle">Product valability in months:</p><p><?php echo htmlspecialchars($productDetails['valability']); ?></p>
             <p class="subtitle">Region:</p><p> <?php echo htmlspecialchars($productDetails['region']); ?></p>
             <p class="subtitle">Stores:</p><p><?php echo htmlspecialchars($productDetails['stores']); ?></p>
             <p class="subtitle">Quantity:</p><p><?php echo htmlspecialchars($productDetails['quantity']); ?></p>
