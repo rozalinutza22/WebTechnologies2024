@@ -68,10 +68,6 @@ CREATE TABLE IF NOT EXISTS preferences (
     FOREIGN KEY (user_id) REFERENCES users(id),
     count INT DEFAULT 1
 );
-INSERT INTO users (id, firstName, lastName, emailAdress, phoneNumber, passwrd, admin) 
-VALUES (1, 'Maricica', 'Maria', 'maricica@gmail.com', '0769999999', PASSWORD('cevaparola'), 0); 
-
-INSERT INTO lists(name, user_id) VALUES ('Favourites', 1); 
  
 INSERT INTO products(name, price, category, ingredients, allergens, vegetarian, perishability, valability, region, stores, quantity, brand,
 originOfIngredients, packaging, NutriScore, image) VALUES('Orangesaft', 3.5, 'Juices and nectars', 'orange juice', '-', 1, 3, 100,

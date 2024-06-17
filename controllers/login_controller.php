@@ -1,34 +1,55 @@
 <?php
+session_start();
 
 include(dirname(__DIR__).'/models/login_model.php');
 $loginModel = new LoginModel();
 
- if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+// Verifică dacă utilizatorul este deja autentificat
+if (isset($_SESSION["email"])) {
+    header("Location: /menu");
+    exit();
+}
 
- $firstName = $_POST['user_name'];
- $password = $_POST['user_password'];
- $stayConnected = isset($_POST['stay_connected']);
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $email = $_POST['email'];
+    $password = $_POST['password'];
+    $stayConnected = isset($_POST['stay_connected']) ? $_POST['stay_connected'] : '';
 
- $user = $loginModel->validateCredentials($firstName, $password);
+    $user = $loginModel->validateCredentials($email, $password);
 
-if ($user) {
- if ($stayConnected) {
-  setcookie('user_id', $user['id'], time() + (30 * 24 * 60 * 60), '/'); // 30 days
-  setcookie('user_token', $user['session_token'], time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                   }
+    if($user=="Incorrect password."){
+       echo "Wrong password! Try again.";
+}
+    else if($user=="Incorect email."){
+       echo "Wrong email! Try again.";
+    }
+else if ($user) {
+       
+        $_SESSION["email"] = $user['emailAdress'];
 
-       header('Location: /menu');
-       exit();
- } else {
-  header('Location: /login?error=invalid_credentials');
- exit();
+        // Dacă a bifat cookies
+        if ($stayConnected) {
+            setcookie('email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+            setcookie('password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+        } else {
+            // Dacă nu a selectat cookies, șterge cookies existente
+            if (isset($_COOKIE["email"])) {
+                setcookie("email", "", time() - 3600, "/");
+            }
+            if (isset($_COOKIE["password"])) {
+                setcookie("password", "", time() - 3600, "/");
+            }
         }
- } else {
+
+        header("Location: /menu");
+        exit();
+    } else {
+        header("Location: /login?error=1");
+        exit();
+    }
+} else {
     include(dirname(__DIR__).'/views/login_view.php');
-     header('Location: /login');
-      exit();
-        }
+}
 
-include(dirname(__DIR__).'/views/login_view.php');
-
+$loginModel->closeConnection();
 ?>

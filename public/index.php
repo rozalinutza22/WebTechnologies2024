@@ -2,7 +2,6 @@
 
 $requestUri = $_SERVER['REQUEST_URI'];
 
-
 if (strpos($requestUri, '/product') === 0) {
     require_once '../controllers/product_controller.php';
 }
