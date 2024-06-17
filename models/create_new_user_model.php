@@ -61,35 +61,50 @@
         
         public function insertAllergens($allergens, $email) {
             $this->allergens = $allergens;
-            $sql = "UPDATE users SET allergens='$allergens' WHERE emailAdress='$email'";
 
-            if ($this->conn->query($sql) === TRUE) {
-                return true;
-            } else {
-                return false;
+            $sql = "UPDATE users SET allergens=? WHERE emailAdress=?";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            if (! $stmt->prepare($sql)) {
+                die("SQL error : " . $this->conn->error);
             }
+
+            $stmt->bind_param("ss", $allergens, $email);
+            $stmt->execute();
+            $stmt->close();
         }
 
         public function isAdmin($email) {
             $this->isAdmin = 1;
-            $sql = "UPDATE users SET admin=1 WHERE emailAdress='$email'";
 
-            if ($this->conn->query($sql) === TRUE) {
-                return true;
-            } else {
-                return false;
+            $sql = "UPDATE users SET admin=1 WHERE emailAdress=?";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            if (! $stmt->prepare($sql)) {
+                die("SQL error : " . $this->conn->error);
             }
+
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->close();
         }
 
         public function isVegetarian($email) {
             $this->isVegetarian = 1;
-            $sql = "UPDATE users SET vegetarian=1 WHERE emailAdress='$email'";
 
-            if ($this->conn->query($sql) === TRUE) {
-                return true;
-            } else {
-                return false;
+            $sql = "UPDATE users SET vegetarian=1 WHERE emailAdress=?";
+            $stmt = $this->conn->stmt_init();
+            $stmt->prepare($sql);
+
+            if (! $stmt->prepare($sql)) {
+                die("SQL error : " . $this->conn->error);
             }
+
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $stmt->close();
         }
 
         public function closeConnection() {
