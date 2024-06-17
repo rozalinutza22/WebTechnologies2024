@@ -109,7 +109,13 @@
             </div>
             <br>
             <br>
-            <a href="/access-admin"><button class="access_admin">Access admin</button>
+
+            <?php 
+                if ($admin == 1): ?>
+                    <a href="/access-admin"><button class="access_admin">Access admin</button>
+                <?php else: ?>
+                    <p>You do not have access here</p>
+                <?php endif; ?>        
         </div>
 
       <a href="/modify"><button id="create" name="create_acc">Modify</button></a>
