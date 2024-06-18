@@ -68,7 +68,7 @@ class MenuModel {
     }
 
     public function filterByPrice() {
-        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY price asc");
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY category asc, price asc");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
@@ -83,7 +83,7 @@ class MenuModel {
     }
 
     public function filterByPerishability() {
-        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY perishability asc");
+        $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY category asc, perishability asc");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
