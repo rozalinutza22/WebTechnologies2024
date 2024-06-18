@@ -12,8 +12,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteUser'])) {
 }   
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-users'])) {
-    $res = $model->deleteAll();
-    $allProducts = $model->deleteAllUsers();
+    $res = $model->deleteAllUsersLists();
+    $allProducts = $model->deleteAllUsersPref();
+    $all = $model ->deleteAllUsers();
 
     header("Location: /access-admin"); 
     exit();

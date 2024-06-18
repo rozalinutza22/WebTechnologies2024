@@ -22,7 +22,29 @@ class AdminModel {
     }
 
     public function deleteAllUsers() {
-        $stmt = $this->conn->prepare("DELETE FROM users");
+        $stmt = $this->conn->prepare("DELETE FROM users WHERE admin=0");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function deleteAllUsersLists() {
+        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id IN (SELECT id FROM users WHERE admin = 0)");
+
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function deleteAllUsersPref() {
+        $stmt = $this->conn->prepare("DELETE FROM preferences WHERE user_id IN (SELECT id FROM users WHERE admin = 0)");
+        
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
