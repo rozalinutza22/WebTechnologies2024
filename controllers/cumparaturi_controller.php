@@ -3,9 +3,8 @@
 include(dirname(__DIR__).'/models/cumparaturi_model.php');
 $model = new ShoppingListModel();
 
-// userId from cookies for when it will be set up
-//$userId = isset($_COOKIE['userId']) ? (int)$_COOKIE['userId'] : null;
-$userId = 1;
+// userId from sessions for when it will be set up
+$userId = isset($_COOKIE['id']) ? (int)$_COOKIE['id'] : 1;
 
 
 // Handle add list request
@@ -30,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete_list'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_favourites'])) {
     $item_name = $_POST['product_name'];
     $item_price = $_POST['product_price'];
-    $model->addToFav($item_name, $item_price);
+    $model->addToFav($item_name, $item_price, $userId);
     $model->updatePreferences($userId, $item_name);
     // Redirect to refresh the page after adding the list
     header("Location: /lists");
@@ -49,7 +48,7 @@ if (isset($_POST['view_details'])) {
 //Handle remove item from favourites request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourites'])) {
     $item_name = $_POST['item_name'];
-    $model->removeFromFav($item_name);
+    $model->removeFromFav($item_name, $userId);
     // Redirect to refresh the page after adding the list
     header("Location: /lists"); 
     exit();

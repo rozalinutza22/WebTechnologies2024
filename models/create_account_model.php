@@ -59,8 +59,74 @@ $connection = include(dirname(__DIR__).'/includes/config_db.php');
                     return "Database error";
                 }
             }
+            //functie pt a ii adauga lista de favorite
+            addDefaultList();
         }
 
+        //creeaza lista Favourites 
+        private function addDefaultList() {
+
+            //gaseste userId generat automat de baza de date a utilizatorului adaugat
+            $user = getTheAddedUser($email);
+            $userId = $user['id']; 
+            $listName = 'Favourites';
+    
+            $query = "SELECT * FROM lists WHERE name = ? AND user_id = ?";
+            $stmt = $this->conn->prepare($query);
+    
+            if (!$stmt) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("si", $listName, $userId);
+    
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+    
+            if ($result->num_rows === 0) {
+                $insertQuery = "INSERT INTO lists (name, user_id) VALUES (?, ?)";
+                $insertStmt = $this->conn->prepare($insertQuery);
+    
+                if (!$insertStmt) {
+                    die("Prepare failed: " . $this->conn->error);
+                }
+    
+                $insertStmt->bind_param("si", $listName, $userId);
+    
+                $insertStmt->execute();
+    
+                $insertStmt->close();
+            }
+    
+            $stmt->close();
+        }
+
+        //gaseste informatiile despre user-ul abia adaugat, in special pt user id
+        private function getTheAddedUser($email) {
+            $query = "SELECT * FROM users WHERE emailAdress = ?";
+            $stmt = $this->conn->prepare($query);
+    
+            if (!$stmt) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("s", $email);
+    
+            $stmt->execute();
+    
+            $result = $stmt->get_result();
+    
+            if ($result->num_rows > 0) {
+                $user = $result->fetch_assoc();
+                return $user;
+            } else {
+                return "Incorrect email."; 
+            }
+    
+            $stmt->close();
+        }
+    
         public function insertAllergens($allergens, $email) {
             $this->allergens = $allergens;
 

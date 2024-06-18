@@ -191,9 +191,11 @@ class ShoppingListModel {
         return $items;
     }
 
-    public function removeFromFav($item_name) {
-        $sql = "SELECT id FROM lists WHERE name='Favourites'";
-        $result = $this->conn->query($sql);
+    public function removeFromFav($item_name, $userId) {
+        $stmt = $this->conn->prepare("SELECT id FROM lists WHERE user_id = ? AND name = ?");
+        $stmt->bind_param("is", $userId, 'Favourites');
+        $stmt->execute();
+        $result = $stmt->get_result();
         
         if ($result && $result->num_rows > 0) {
             // Fetch the id
@@ -228,9 +230,11 @@ class ShoppingListModel {
     }
     
 
-    public function addToFav($item_name, $item_price) {
-        $sql = "SELECT id FROM lists WHERE name='Favourites'";
-        $result = $this->conn->query($sql);
+    public function addToFav($item_name, $item_price, $userId) {
+        $stmt = $this->conn->prepare("SELECT id FROM lists WHERE user_id = ? AND name = ?");
+        $stmt->bind_param("is", $userId, 'Favourites');
+        $stmt->execute();
+        $result = $stmt->get_result();
         
         if ($result && $result->num_rows > 0) {
             // Fetch the id

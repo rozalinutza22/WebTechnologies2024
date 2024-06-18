@@ -32,11 +32,14 @@ else if ($user) {
         $_SESSION["allergens"] = $user['allergens'];
         $_SESSION["admin"] = $user['admin'];
         $_SESSION['vegetarian'] = $user['vegetarian'];
+        $_SESSION['user_id'] = $user['id'];
+        $id = $user['id'];
 
         // Dacă a bifat cookies
         if ($stayConnected) {
             setcookie('email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
             setcookie('password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+            setcookie('id', $id, time() + (30 * 24 * 60 * 60), '/');
         } else {
             // Dacă nu a selectat cookies, șterge cookies existente
             if (isset($_COOKIE["email"])) {
