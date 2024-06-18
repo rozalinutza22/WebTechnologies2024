@@ -5,7 +5,7 @@ include(dirname(__DIR__).'/models/login_model.php');
 $loginModel = new LoginModel();
 
 // Verifică dacă utilizatorul este deja autentificat
-if (isset($_SESSION["email"])) {
+if (isset($_SESSION["user_email"])) {
     header("Location: /menu");
     exit();
 }
@@ -25,7 +25,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 else if ($user) {
        
-        $_SESSION["email"] = $user['emailAdress'];
+        $_SESSION["user_email"] = $user['emailAdress'];
+        $_SESSION["user_fname"] = $user['firstName'];
+        $_SESSION["user_lname"] = $user['lastName'];
+        $_SESSION["user_phone"] = $user['phoneNumber'];
+        $_SESSION["allergens"] = $user['allergens'];
+        $_SESSION["admin"] = $user['admin'];
+        $_SESSION['vegetarian'] = $user['vegetarian'];
 
         // Dacă a bifat cookies
         if ($stayConnected) {
