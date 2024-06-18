@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
     $_SESSION["user_email"] = htmlentities($_POST["user_email"]);
     $_SESSION["user_phone"] = htmlentities($_POST["user_phone"]);
 
+
     if (empty($_POST["user_password"])) {
         die("Password is required! Go back to the form!");
     }
@@ -64,6 +65,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             $allergens2 = htmlspecialchars($allergens, ENT_QUOTES, 'UTF-8');
             $model->insertAllergens($allergens2, $email);
         } 
+
+        $user = $model->getTheAddedUser($email);
+        if($user){
+            $_SESSION['user_id'] = $user['id'];
+            $userID = $user['id'];
+            //functie pt a ii adauga lista de favorite
+            $model->addDefaultList($userID);
+        }else{
+            echo "Error in finding the added user";
+        }
 
         header("Location: /menu");
         exit;

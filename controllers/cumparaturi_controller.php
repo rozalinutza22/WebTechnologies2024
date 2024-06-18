@@ -1,10 +1,12 @@
 <?php
 
+session_start();
+
 include(dirname(__DIR__).'/models/cumparaturi_model.php');
 $model = new ShoppingListModel();
 
 // userId from sessions for when it will be set up
-$userId = isset($_COOKIE['id']) ? (int)$_COOKIE['id'] : 1;
+$userId = $_SESSION['user_id'];
 
 
 // Handle add list request

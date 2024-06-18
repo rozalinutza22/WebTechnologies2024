@@ -39,7 +39,7 @@
     // Display 'Favourites' list items
     $favouritesList = null;
     foreach ($lists as $list) {
-        if ($list['name'] === 'Favourites') {
+        if ($list['name'] === 'Favourites' && $_SESSION['user_id'] == $list['user_id']) {
             $favouritesList = $list;
             break;
         }

@@ -192,8 +192,9 @@ class ShoppingListModel {
     }
 
     public function removeFromFav($item_name, $userId) {
+        $listName = "Favourites";
         $stmt = $this->conn->prepare("SELECT id FROM lists WHERE user_id = ? AND name = ?");
-        $stmt->bind_param("is", $userId, 'Favourites');
+        $stmt->bind_param("is", $userId, $listName);
         $stmt->execute();
         $result = $stmt->get_result();
         
@@ -231,8 +232,9 @@ class ShoppingListModel {
     
 
     public function addToFav($item_name, $item_price, $userId) {
+        $listName = 'Favourites';
         $stmt = $this->conn->prepare("SELECT id FROM lists WHERE user_id = ? AND name = ?");
-        $stmt->bind_param("is", $userId, 'Favourites');
+        $stmt->bind_param("is", $userId, $listName);
         $stmt->execute();
         $result = $stmt->get_result();
         

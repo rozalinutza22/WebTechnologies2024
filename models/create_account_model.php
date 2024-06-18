@@ -59,25 +59,18 @@ $connection = include(dirname(__DIR__).'/includes/config_db.php');
                     return "Database error";
                 }
             }
-            //functie pt a ii adauga lista de favorite
-            addDefaultList();
         }
 
         //creeaza lista Favourites 
-        private function addDefaultList() {
-
-            //gaseste userId generat automat de baza de date a utilizatorului adaugat
-            $user = getTheAddedUser($email);
-            $userId = $user['id']; 
+        public function addDefaultList($userId) {
             $listName = 'Favourites';
-    
+
             $query = "SELECT * FROM lists WHERE name = ? AND user_id = ?";
             $stmt = $this->conn->prepare($query);
     
             if (!$stmt) {
                 die("Prepare failed: " . $this->conn->error);
             }
-    
             $stmt->bind_param("si", $listName, $userId);
     
             $stmt->execute();
@@ -103,7 +96,7 @@ $connection = include(dirname(__DIR__).'/includes/config_db.php');
         }
 
         //gaseste informatiile despre user-ul abia adaugat, in special pt user id
-        private function getTheAddedUser($email) {
+        public function getTheAddedUser($email) {
             $query = "SELECT * FROM users WHERE emailAdress = ?";
             $stmt = $this->conn->prepare($query);
     
