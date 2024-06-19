@@ -122,5 +122,11 @@
       <button class="import">Import</button>
       <button class="export">Export</button>
       <a href="/logout"><button class="logout">Logout</button>
+
+      <div class="userButtons">
+            <form action="/delete_acc" method="post">
+                <button type="submit" name="delete-user">Delete account</button>
+            </form>
+        </div>
     </body>
 </html>

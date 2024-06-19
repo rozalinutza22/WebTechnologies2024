@@ -50,6 +50,9 @@ elseif ($requestUri === '/login') {
 }elseif ($requestUri === '/new-user-form') {
     require '../controllers/create_new_user_controller.php';
 
+}elseif ($requestUri === '/delete_acc') {
+    require '../controllers/profile_controller.php';
+
 }else {
     echo '404 Not Found';
 }

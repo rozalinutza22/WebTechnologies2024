@@ -135,6 +135,14 @@ p {
     left: 35%;
 }
 
+/* .userButtons{
+    max-width: 70%;
+    height: auto;
+    bottom: 75%; 
+    position: relative;
+    right: 15%;
+} */
+
 .circular-image {
     width: 200px; 
     height: 200px;

@@ -1,11 +1,12 @@
 <?php
+  include(dirname(__DIR__).'/models/menu_model.php');
   session_start();
   $firstName = $_SESSION["user_fname"];
   $lastName = $_SESSION["user_lname"];
   $email = $_SESSION["user_email"];
-  // $productsByName = $_SESSION["productsByName"];
-  // $productsByPrice = $_SESSION["productsByPrice"];
-  // $productsByPerishability = $_SESSION["productsByPerishability"];
+  $m = new MenuModel();
+  $allProducts = $m->getAllProducts();
+  $_SESSION["allProducts"] = $allProducts;
 ?>
 
 
