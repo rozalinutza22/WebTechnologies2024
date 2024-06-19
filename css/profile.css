@@ -135,13 +135,13 @@ p {
     left: 35%;
 }
 
-/* .userButtons{
-    max-width: 70%;
+.delUser{
+    max-width: 77%;
     height: auto;
-    bottom: 75%; 
+    bottom: 55%; 
     position: relative;
-    right: 15%;
-} */
+    left: 45%;
+}
 
 .circular-image {
     width: 200px; 

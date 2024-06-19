@@ -3,14 +3,14 @@
 
     $model = new MenuModel();
 
-    if (isset($_SESSION['user_email'])) {
-        $allProducts = $model->getAllProducts();
+    // if (isset($_SESSION['user_email'])) {
+    //     $allProducts = $model->getAllProducts();
 
-        session_start();
-        $_SESSION["allProducts"] = $allProducts;
-        header("Location: /menu"); 
-        exit();
-    }
+    //     session_start();
+    //     $_SESSION["allProducts"] = $allProducts;
+    //     header("Location: /menu"); 
+    //     exit();
+    // }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_product'])) {
         $product_name = $_POST['search'];

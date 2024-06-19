@@ -125,7 +125,7 @@
 
       <div class="userButtons">
             <form action="/delete_acc" method="post">
-                <button type="submit" name="delete-user">Delete account</button>
+                <button type="submit" name="delete-user" class="delUser">Delete account</button>
             </form>
         </div>
     </body>
