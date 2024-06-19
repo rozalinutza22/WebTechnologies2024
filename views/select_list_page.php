@@ -11,6 +11,10 @@ if (empty($lists)) {
     echo "No lists found.";
 }
 
+$product = handleProductDetails($model);
+
+$item_name = isset($product['name']) ? $product['name'] : '';
+
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +41,7 @@ if (empty($lists)) {
 
     <div class="container">
         <h2>Select a List for the Product</h2>
-        <form method="post" action="/lists">
+        <form method="post" action="/selectList?name=<?php echo urlencode($item_name); ?>">
             <input type="hidden" name="action" value="add_to_list">
             <select name="list_id" required>
                 <option value="">Select List</option>
