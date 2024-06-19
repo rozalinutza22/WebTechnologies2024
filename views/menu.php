@@ -136,7 +136,6 @@
     <?php
       $currentCategory = null;
       $productsByName = $_SESSION['productsByName'];
-      echo "<h2>dupa nume</h2 <br>";
  
       foreach ($productsByName as $product): 
         if ($product['category'] !== $currentCategory):
@@ -176,7 +175,6 @@
     <?php
       $currentCategory = null;
       $productsByPrice = $_SESSION['productsByPrice'];
-      echo "<h2>dupa pret</h2 <br>";
  
       foreach ($productsByPrice as $product): 
         if ($product['category'] !== $currentCategory):
@@ -216,7 +214,6 @@
     <?php
       $currentCategory = null;
       $productsByPrice = $_SESSION['productsByPerishability'];
-      echo "<h2>dupa perisabilitate</h2 <br>";
  
       foreach ($productsByPrice as $product): 
         if ($product['category'] !== $currentCategory):
