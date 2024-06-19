@@ -119,11 +119,15 @@
         </div>
 
       <a href="/modify"><button id="create" name="create_acc">Modify</button></a>
-      <button class="import">Import</button>
-      <button class="export">Export</button>
+
+      <form action="/delete_acc" method="post">
+        <button type="submit" class="import" name="import">Import</button>
+        <button type="submit" class="export" name="export">Export</button>
+      </form>
+
       <a href="/logout"><button class="logout">Logout</button>
 
-      <div class="userButtons">
+        <div class="userButtons">
             <form action="/delete_acc" method="post">
                 <button type="submit" name="delete-user" class="delUser">Delete account</button>
             </form>

@@ -65,5 +65,21 @@
             $stmt->execute();
             $stmt->close();
         }
+
+        public function exportJson($id) {
+            $sql = "SELECT * FROM users WHERE id = ?";
+            $stmt = $this->conn->prepare($sql);
+            $stmt->bind_param("i", $id);
+        
+            if ($stmt->execute()) {
+                $result = $stmt->get_result();
+                $userData = $result->fetch_assoc();
+            } else {
+                echo "Error: " . $stmt->error;
+            }
+        
+            $stmt->close();
+            return $userData;
+        }
     }
 ?>
