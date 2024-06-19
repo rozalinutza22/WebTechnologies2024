@@ -7,6 +7,7 @@ class ProductModel {
     private $dbname = "cupo_db";
     private $conn;
 
+
     public function __construct() {
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
         if ($this->conn->connect_error) {

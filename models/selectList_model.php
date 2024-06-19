@@ -6,6 +6,7 @@ class SelectListModel{
     private $password = "";
     private $dbname = "cupo_db";
     private $conn;
+    public $productInfo;
 
     public function __construct() {
         $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);

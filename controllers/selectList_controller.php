@@ -1,12 +1,18 @@
 <?php
 session_start();
-include(dirname(__DIR__).'/models/selectList_model.php');
+require_once(dirname(__DIR__).'/models/selectList_model.php');
+
 $model = new SelectListModel();
 
 $userId = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
 
-function handleProductDetails() {
-    global $model;
+if (!$userId) {
+    die("User not logged in.");
+}
+
+$lists = $model->getAllLists($userId);
+
+function handleProductDetails($model) {
     if (isset($_GET['name'])) {
         $productName = $_GET['name'];
         $productDetails = $model->getProductByName($productName);
@@ -20,9 +26,12 @@ function handleProductDetails() {
     }
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_list'])) {
-    $product_name = $_POST['product_name'];
-    $product_price = $_POST['product_price'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_item_to_list'])) {
+    $product = handleProductDetails($model);
+
+    if($product){
+    $product_name = $product['name'];
+    $product_price = $product['price'];
     $list_id = $_POST['list_id'];
 
     // Call the model function to add the product to the list
@@ -36,4 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_to_list'])) {
     header("Location: /lists");
     exit();
 }
+}
+
+include(dirname(__DIR__).'/views/select_list_page.php');
+
 ?>

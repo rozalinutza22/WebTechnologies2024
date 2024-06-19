@@ -1,11 +1,16 @@
 <?php
-session_start();
+// session_start();
 
 $user_id = $_SESSION['user_id'];
 
-include(dirname(__DIR__).'/models/selectList_model.php');
+require_once(dirname(__DIR__).'/models/selectList_model.php');
 $model = new SelectListModel();
 $lists = $model->getAllLists($user_id);
+
+if (empty($lists)) {
+    echo "No lists found.";
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -30,17 +35,9 @@ $lists = $model->getAllLists($user_id);
         <div class="search-container"></div>
     </div>
 
-    <div class="add-list-form">
-       <form action="/lists" method="post"> 
-            <label for="list-name">Insert list name:</label>
-            <input type="text" id="list-name" name="list_name" required>
-            <button type="submit" name="add_list">Add List</button>
-        </form>
-    </div>
-
     <div class="container">
         <h2>Select a List for the Product</h2>
-        <form method="post" action="selectList_controller.php">
+        <form method="post" action="/lists">
             <input type="hidden" name="action" value="add_to_list">
             <select name="list_id" required>
                 <option value="">Select List</option>
@@ -54,9 +51,9 @@ $lists = $model->getAllLists($user_id);
                 }
                 ?>
             </select>
-            <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($_GET['name']); ?>">
-            <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($_GET['price']); ?>">
-            <button type="submit" name="add_to_list">Add</button>
+            
+            <input type="hidden" name="product_name" value="<?php echo isset($_GET['name']) ? htmlspecialchars($_GET['name']) : ''; ?>">
+            <button type="submit" name="add_item_to_list">Add</button>
         </form>
     </div>
 

@@ -66,11 +66,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourite
     exit();
 }
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['select_list'])){
-    $product_id = $_POST['product_id'];
-    header("Location: /selectList");
-}
-
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;
