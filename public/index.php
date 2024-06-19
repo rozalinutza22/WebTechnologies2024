@@ -7,6 +7,9 @@ if (strpos($requestUri, '/product') === 0) {
 }
 elseif ($requestUri === '/login') {
     require_once '../controllers/login_controller.php';
+}
+elseif (strpos($requestUri, '/selectList') === 0) {
+    require_once '../controllers/selectList_controller.php';
 
 } elseif ($requestUri === '/menu') {
     require '../views/menu.php';

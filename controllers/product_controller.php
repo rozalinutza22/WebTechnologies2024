@@ -3,10 +3,8 @@
 include(dirname(__DIR__).'/models/product_model.php');
 $model = new ProductModel();
 
-// userId from cookies for when it will be set up
-//$userId = isset($_COOKIE['userId']) ? (int)$_COOKIE['userId'] : null;
-$userId = 1;
-
+// userId from sessions
+$userId = isset($_SESSION['userId']) ? (int)$_SESSION['userId'] : null;
 
 function handleProductDetails() {
     global $model;

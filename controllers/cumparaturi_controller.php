@@ -47,6 +47,16 @@ if (isset($_POST['view_details'])) {
     exit();
 }
 
+//Handle add to list button with redirect to select lists page
+if (isset($_POST['add_to_list'])) {
+    $item_name = $_POST['product_name'];
+    $item_price = $_POST['product_price'];
+    $model->updatePreferences($userId, $item_name);
+    // Redirect to the product details page
+    header("Location: /selectList?name=" . urlencode($item_name));
+    exit();
+}
+
 //Handle remove item from favourites request
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourites'])) {
     $item_name = $_POST['item_name'];
@@ -54,6 +64,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourite
     // Redirect to refresh the page after adding the list
     header("Location: /lists"); 
     exit();
+}
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['select_list'])){
+    $product_id = $_POST['product_id'];
+    header("Location: /selectList");
 }
 
 // Function to calculate total of items in a list
