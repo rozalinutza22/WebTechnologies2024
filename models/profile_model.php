@@ -32,13 +32,13 @@
             $stmt->close();
         }
 
-        public function deleteUser($email) {
-            $stmt = $this->conn->prepare("DELETE FROM users WHERE emailAdress=?");
+        public function deleteUser($id) {
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE id=?");
             if ($stmt === false) {
                 die("Prepare failed: " . $this->conn->error);
             }
     
-            $stmt->bind_param("s", $email);
+            $stmt->bind_param("i", $id);
             $stmt->execute();
             $stmt->close();
         }

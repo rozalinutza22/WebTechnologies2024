@@ -8,7 +8,7 @@
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['delete-user'])) {
         $res = $model->deleteUserLists($_SESSION['user_id']);
         $allProducts = $model->deleteUserPref($_SESSION['user_id']);
-        $all = $model ->deleteUser($_SESSION['user_email']);
+        $all = $model ->deleteUser($_SESSION['user_id']);
     
         header("Location: /principal"); 
         exit();
