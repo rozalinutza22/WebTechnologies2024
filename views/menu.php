@@ -91,6 +91,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -100,7 +101,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
     </div>
       <?php endforeach; 
       } else {
@@ -129,6 +129,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -138,7 +139,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
       </div>
       <?php endforeach; 
       }
@@ -169,6 +169,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -178,7 +179,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
       </div>
       <?php endforeach; 
       }
@@ -208,6 +208,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -217,7 +218,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
       </div>
       <?php endforeach; 
       }
@@ -247,6 +247,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -256,7 +257,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
       </div>
       <?php endforeach; 
       }
@@ -289,6 +289,7 @@
                 <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
                 <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
             </div>
+            </div>
             <form action="/lists" method="post">
                 <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
                 <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
@@ -298,7 +299,6 @@
                     <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
                 </div>
             </form>
-        </div>
       </div>
       <?php endforeach; 
         }else echo "No results found.";

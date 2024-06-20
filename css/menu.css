@@ -347,10 +347,10 @@ p {
         display: flex;
         flex-direction: column;
         align-items:flex-start;
-        margin-left: 8%;
+        margin-left: 10%;
     }
     .box {
-        width: 70%; 
+        width: 80%; 
         height: 15em;
         display:flex;
         flex-direction: column;
@@ -440,6 +440,9 @@ p {
         padding: 10px;
         font-size: 1em;
     }
+    .product_buttons{
+        margin-right: 5%;
+    }
 
     .categories {
         float: right;
@@ -462,12 +465,11 @@ p {
         font-size: 0.9em;
     }
 
-    
     .boxes {
         display: flex;
         flex-direction: column;
         align-items:flex-start;
-        margin-left: 8%;
+        margin-left: 10%;
     }
     .box {
         width: 100%; 
@@ -478,8 +480,6 @@ p {
     }
     .productText{
         display:flex;
-        /* flex-direction: column; */
-        float: right;
     }
     .productDetails{
         display:grid;
@@ -489,7 +489,7 @@ p {
         background-color: #fabc3c;
         height: 50px;
         width: 100px;
-        margin-left: 10%;
+        margin-left: 5%;
         cursor: pointer;
     }
 
