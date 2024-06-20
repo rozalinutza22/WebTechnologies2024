@@ -102,7 +102,7 @@ nav ul li a:hover {
 
 .box {
     background-color: #ffb238; 
-    width: 40%; 
+    width: 50%; 
     height: 14em;
     margin: 2% 0; 
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
@@ -199,24 +199,27 @@ nav ul li a:hover {
     height: 50px;
     width: 100px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 2%;
+    cursor: pointer;
 }
 .favorites {
     background-color: hsl(21, 95%, 61%);
     height: 50px;
     width: 100px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 2%;
+    cursor: pointer;
 }
 
 .product_buttons{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .productImage{
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
-    margin: 6%;
+    margin-left: 6%;
+    margin-top: 6%;
     height: 6em;
     border-radius: 10px;
 }
@@ -240,7 +243,7 @@ nav ul li a:hover {
 
 .productDetails{
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
 } 
 
@@ -283,26 +286,56 @@ nav ul li a:hover {
 }
 
 @media screen and (max-width: 850px) {
+    .favourites-box {
+        background-color: hsl(21, 95%, 61%);
+        position: relative;
+        /* right: auto; */
+        width: 90%; 
+    }
 
-     .boxes {
+    .boxes {
         display: flex;
         flex-direction: column;
         align-items:flex-start;
         margin-left: 8%;
     }
     .box {
-        width: 100%; 
+        width: 70%; 
         height: 15em;
-       display:flex;
-    }
-    .productText{
         display:flex;
         flex-direction: column;
-        
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 10%;
+        margin-right: 10%;;
     }
+    .productText{
+        flex-grow: 1;
+    }
+
     .productDetails{
-        display:grid;
-        grid-template-columns: 1fr 1fr;
+       display:grid;
+       grid-template-columns: 1fr 1fr; 
+    } 
+    .product_buttons{
+        display: flex;
+        flex-direction: row;
+    }
+    
+    .productImage{
+        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
+        height: 6em;
+        border-radius: 10px;
+    }
+    
+    .productTitle{
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .productPrice{
+        margin-bottom: 10px;
     }
     .specialButtonProduct{
         background-color: #fabc3c;
@@ -310,6 +343,7 @@ nav ul li a:hover {
         width: 100px;
         margin-left: 10%;
         margin-top: 10%;
+        cursor: pointer;
     }
     .favorites {
         background-color: hsl(21, 95%, 61%);
@@ -317,6 +351,7 @@ nav ul li a:hover {
         width: 100px;
         margin-left: 10%;
         margin-top: 10%;
+        cursor: pointer;
     }
 
     nav ul li {
@@ -326,18 +361,6 @@ nav ul li a:hover {
         display: flex;
         flex-direction: row;
     }
-/* 
-    .box {
-        background-color: #ffb238; 
-        width: 90%;
-        height: 9em;
-        margin: 2% 0; 
-        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
-        border: 2px black solid;
-        border-radius: 10px;
-        display:flex;
-        align-items: center;
-    } */
     .white-box {
         width: 90%; 
         margin: 0 auto; 
@@ -359,7 +382,8 @@ nav ul li a:hover {
 
 }
 
-@media screen and (max-width: 370px){
+@media screen and (max-width: 380px){
+    
     .boxes {
         display: flex;
         flex-direction: column;
@@ -369,12 +393,14 @@ nav ul li a:hover {
     .box {
         width: 100%; 
         height: 15em;
-       display:flex;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
     }
     .productText{
         display:flex;
-        flex-direction: column;
-        
+        /* flex-direction: column; */
+        float: right;
     }
     .productDetails{
         display:grid;
@@ -385,7 +411,7 @@ nav ul li a:hover {
         height: 50px;
         width: 100px;
         margin-left: 10%;
-        margin-top: 10%;
+        cursor: pointer;
     }
 
     .detaliiFinal{
