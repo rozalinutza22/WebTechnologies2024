@@ -49,10 +49,12 @@
 
         <div class="searchCat-container">
           <form action="/search" method="post">
-            <input type="text" placeholder="Search.." name="search" class="sc">
+            <input type="text" placeholder="Search.." name="search_ct" class="sc">
             <button type="submit" name="search_category" class="sButton">Search category</button>
           </form>
         </div>
+        <br>
+        <br>
         <div class="categories">
           <div class="content">
             <h2>Categories</h2>
@@ -106,7 +108,7 @@
       }
 
       unset($_SESSION["searchResults"]);
-    } else if (!isset($_SESSION["searchResults"]) && !isset($_SESSION["productsByName"]) && !isset($_SESSION["productsByPrice"]) && !isset($_SESSION["productsByPerishability"])){ ?>
+    } else if (!isset($_SESSION["searchResults"]) && !isset($_SESSION["productsByName"]) && !isset($_SESSION["productsByPrice"]) && !isset($_SESSION["productsByPerishability"]) && !isset($_SESSION["searchByCat"])){ ?>
 
       <?php 
       $allProducts = $_SESSION["allProducts"];
@@ -259,6 +261,49 @@
       <?php endforeach; 
       }
       unset($_SESSION["productsByPerishability"]);
+      ?>
+
+      <!-- cautam dupa categorie -->
+
+      <?php
+    if (isset($_SESSION["searchByCat"])) { ?>
+
+    <?php
+      $productsByCat = $_SESSION["searchByCat"];
+      $currentCategory = null;
+      if (!empty($productsByCat)) {
+ 
+        foreach ($productsByCat as $product): 
+        if ($product['category'] !== $currentCategory):
+          if ($currentCategory !== null): 
+          endif;
+          $currentCategory = $product['category'];
+          echo "<h3>" . htmlspecialchars($currentCategory) . ":</h3>";
+        endif;
+    ?>
+
+    <div class="box">
+        <div class="productDetails">
+            <img src="images/<?php echo htmlspecialchars($product['image']); ?>" class="productImage" alt="<?php echo htmlspecialchars($product['name']); ?>">
+            <div class="productText">
+                <p class="productTitle"><?php echo htmlspecialchars($product['name']); ?></p>
+                <p class="productPrice"><?php echo htmlspecialchars($product['price']); ?> $</p>
+            </div>
+            <form action="/lists" method="post">
+                <input type="hidden" name="product_name" value="<?php echo htmlspecialchars($product['name']); ?>">
+                <input type="hidden" name="product_price" value="<?php echo htmlspecialchars($product['price']); ?>">
+                <div class="product_buttons">
+                    <button type="submit" name="view_details" class="specialButtonProduct">View details</button>
+                    <button type="submit" name="add_to_list" class="specialButtonProduct">Add to List</button>
+                    <button class="favorites" type="submit" name="add_to_favourites">&#9829</button>
+                </div>
+            </form>
+        </div>
+      </div>
+      <?php endforeach; 
+        }else echo "No results found.";
+      }
+      unset($_SESSION["searchByCat"]);
       ?>
 
   </body>

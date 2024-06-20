@@ -37,6 +37,22 @@ class MenuModel {
         return $products;
     }
 
+    public function getCategoryProducts($category) {
+        $stmt = $this->conn->prepare("SELECT * FROM products WHERE category = ?");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("s", $category);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $products = $result->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->close();
+        return $products;
+    }
+
     public function getAllProducts() {
         $stmt = $this->conn->prepare("SELECT * FROM products ORDER BY category asc");
         if ($stmt === false) {

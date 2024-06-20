@@ -3,15 +3,6 @@
 
     $model = new MenuModel();
 
-    // if (isset($_SESSION['user_email'])) {
-    //     $allProducts = $model->getAllProducts();
-
-    //     session_start();
-    //     $_SESSION["allProducts"] = $allProducts;
-    //     header("Location: /menu"); 
-    //     exit();
-    // }
-
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_product'])) {
         $product_name = $_POST['search'];
         $searchResults = $model->getProductDetails($product_name);
@@ -20,6 +11,16 @@
         session_start();
         $_SESSION["searchResults"] = $searchResults;
         $_SESSION["allProducts"] = $allProducts;
+        header("Location: /menu"); 
+        exit();
+    }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['search_category'])) {
+        $category_name = $_POST['search_ct'];
+        $searchResults = $model->getCategoryProducts($category_name);
+
+        session_start();
+        $_SESSION["searchByCat"] = $searchResults;
         header("Location: /menu"); 
         exit();
     }
