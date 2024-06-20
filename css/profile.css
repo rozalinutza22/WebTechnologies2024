@@ -108,7 +108,8 @@ p {
     height: auto;
     position: fixed;
     bottom: 5%;
-    right: 5%;
+    /* right: 5%; */
+    left: 70%;
 }
 
 .export {
@@ -117,6 +118,14 @@ p {
     position: fixed;
     bottom: 5%;
     right: 1%;
+}
+
+.export_csv {
+    max-width: 7%;
+    height: auto;
+    position: fixed;
+    bottom: 5%;
+    left: 80%;
 }
 
 .logout {
@@ -190,11 +199,11 @@ p {
     }
 
     .import {
-        max-width: 7%;
+        max-width: 10%;
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 5%;
+        left: 80%;
     }
     
     .export {
@@ -203,6 +212,14 @@ p {
         position: fixed;
         bottom: 5%;
         right: 1%;
+    }
+
+    .export_csv {
+        max-width: 7%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 85%;
     }
 }
 
@@ -250,6 +267,14 @@ p {
         bottom: 5%;
         right: 1%;
     }
+
+    .export_csv {
+        max-width: 7%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 80%;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -296,6 +321,14 @@ p {
         bottom: 5%;
         right: 2%;
     }
+
+    .export_csv {
+        max-width: 7%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 80%;
+    }
 }
 
 @media (max-width: 768px) {
@@ -332,7 +365,8 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 15%;
+        left: 70%;
+        font-size: 0.7em;
     }
     
     .export {
@@ -340,7 +374,17 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 4%;
+        left: 90%;
+        font-size: 0.7em;
+    }
+
+    .export_csv {
+        max-width: 10%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 80%;
+        font-size: 0.7em;
     }
 }
 
@@ -378,7 +422,8 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 25%;
+        left: 62%;
+        font-size: 0.6em;
     }
     
     .export {
@@ -386,7 +431,17 @@ p {
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 6%;
+        left: 90%;
+        font-size: 0.6em;
+    }
+
+    .export_csv {
+        max-width: 10%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 79%;
+        font-size: 0.6em;
     }
 
     img {
@@ -426,19 +481,30 @@ p {
     }
 
     .import {
-        max-width: 30%;
+        max-width: 15%;
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 25%;
+        left: 47%;
+        font-size: 0.5em;
     }
     
     .export {
-        max-width: 30%;
+        max-width: 16%;
         height: auto;
         position: fixed;
         bottom: 5%;
-        right: 1%;
+        left: 85%;
+        font-size: 0.5em;
+    }
+
+    .export_csv {
+        max-width: 15%;
+        height: auto;
+        position: fixed;
+        bottom: 5%;
+        left: 66%;
+        font-size: 0.5em;
     }
 
     img {

@@ -30,4 +30,26 @@
             exit();
         }
     }
+
+    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
+        $userData = $model->exportJson($_SESSION['user_id']);
+        $id = $_SESSION['user_id'];
+
+        if ($userData) {
+            header('Content-Type: text/csv');
+            header('Content-Disposition: attachment; filename="user_' . $id . '.csv"');
+            
+            $output = fopen('php://output', 'w');
+            
+            fputcsv($output, array_keys($userData));
+            
+            fputcsv($output, $userData);
+            
+            fclose($output);
+        } else {
+            echo "User not found";
+            header("Location: /menu"); 
+            exit();
+        }
+    }
 ?>
