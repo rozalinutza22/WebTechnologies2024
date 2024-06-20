@@ -45,9 +45,22 @@
         </div>
     </div>
 
-    <br>
-    <br>
-    <br>
+    <div class="searchCategorySection">
+
+        <div class="searchCat-container">
+          <form action="/search" method="post">
+            <input type="text" placeholder="Search.." name="search" class="sc">
+            <button type="submit" name="search_category" class="sButton">Search category</button>
+          </form>
+        </div>
+        <div class="categories">
+          <div class="content">
+            <h2>Categories</h2>
+            <p>Beer, Breads, Breakfast cereals, Cheesecakes, Chocolate spreads,</p>
+            <p>Chocolates, Desserts, Hams, Juices and nectars, Meat alternatives</p>
+        </div>
+      </div>
+    </div>
 
     <div class="container">
       <h4 class="filter">Filter by</h4>

@@ -16,18 +16,29 @@
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export'])) {
         $res = $model->exportJson($_SESSION['user_id']);
+
+        if (!isset($_SESSION['user_email'])) {
+            die("n avem email.");
+        }
+
+        if (!isset($_SESSION['user_id'])) {
+            die("id-ul nu este setat.");
+        }
+
         $id = $_SESSION['user_id'];
+        // var_dump($res);
 
         if (!empty($res)) {
-            $jsonData = json_encode($res, JSON_PRETTY_PRINT);
-            
-            $filePath = 'C:\Users\helen.ro\Downloads\\user_' . $id . '_data.json';
-        
-            if (file_put_contents($filePath, $jsonData)) {
-                echo "Location: " . $filePath;
-            } else {
-                echo "Error, could not write the data.";
-            }
+            // $json = json_encode($res);
+            // $jsonLength = mb_strlen($json, '8bit');
+            // echo "Data:" . $json;
+            // header('Content-Type: application/json');
+            // header('Content-Disposition: attachment; filename="userData.json"');
+            // header('Content-Length: ' . $jsonLength);
+            // ob_start();
+            // echo $json;
+            // ob_end_flush();
+            file_put_contents('C:\Users\helen.ro\Downloads\userData.json', json_encode($res));
         } else {
             header("Location: /menu"); 
             exit();

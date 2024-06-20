@@ -21,7 +21,7 @@
         }
 
         public function getId($email) {
-            $stmt = $this->conn->prepare("SELECT id FROM users WHERE emailAdress = ?");
+            $stmt = $this->conn->prepare("SELECT id FROM users WHERE emailAdress=?");
 
             if ($stmt === false) {
                 die("Prepare failed: " . $this->conn->error);
@@ -29,7 +29,24 @@
 
             $stmt->bind_param("s", $email);
             $stmt->execute();
+            $result = $stmt->get_result();
+            $row = $result->fetch_assoc();
             $stmt->close();
+            return $row['id'] ?? null;
+        }
+
+        public function getName($email) {
+            $stmt = $this->conn->prepare("SELECT firstName FROM users WHERE emailAdress=?");
+
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+            return $result;
         }
 
         public function deleteUser($id) {
@@ -70,16 +87,10 @@
             $sql = "SELECT * FROM users WHERE id = ?";
             $stmt = $this->conn->prepare($sql);
             $stmt->bind_param("i", $id);
-        
-            if ($stmt->execute()) {
-                $result = $stmt->get_result();
-                $userData = $result->fetch_assoc();
-            } else {
-                echo "Error: " . $stmt->error;
-            }
-        
-            $stmt->close();
-            return $userData;
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $user = $result->fetch_assoc();
+            return $user;
         }
     }
 ?>
