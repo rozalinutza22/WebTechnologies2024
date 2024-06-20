@@ -66,6 +66,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_from_favourite
     exit();
 }
 
+//Handle remove item from list request
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_item_from_list'])) {
+    $list_name = $_POST['list_name'];
+    $item_name = $_POST['item_name'];
+    $model->removeProductFromList($item_name, $list_name, $userId);
+    // Redirect to refresh the page after adding the list
+    header("Location: /lists"); 
+    exit();
+}
+
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;

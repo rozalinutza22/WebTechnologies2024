@@ -78,6 +78,11 @@ if (!empty($lists)) {
             // Display list items
             $items = $model->getListItems($list['id']);
             foreach ($items as $item) {
+                echo "<form action='/lists' method='post'>";
+                echo "<input type='hidden' name='item_name' value='" . htmlspecialchars($item['name']) . "'>";
+                echo "<input type='hidden' name='list_name' value='". htmlspecialchars($list['name']) . "'>";
+                echo "<button type='submit' name='remove_item_from_list' class='removeButton' onclick='return confirm(\"Are you sure you want to remove this item?\")'>Remove</button>";
+                echo "</form>";
                 echo "<div class='denumire'>" . htmlspecialchars($item['name']) . "</div>";
                 echo "<div class='pret'>$" . htmlspecialchars($item['price']) . "</div>";
                 echo "<div style='clear: both;'></div>";

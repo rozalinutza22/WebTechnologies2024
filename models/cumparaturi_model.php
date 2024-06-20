@@ -218,6 +218,34 @@ class ShoppingListModel {
             return false; // 'Favourites' list was not found
         }
     }
+
+    public function removeProductFromList($item_name, $list_name, $userId) {
+        $listName = $list_name;
+        $stmt = $this->conn->prepare("SELECT id FROM lists WHERE user_id = ? AND name = ?");
+        $stmt->bind_param("is", $userId, $listName);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result && $result->num_rows > 0) {
+            // Fetch the id
+            $row = $result->fetch_assoc();
+            $favourites_id = $row['id'];
+        
+            // Delete item using the fetched id
+            $stmt = $this->conn->prepare("DELETE FROM items WHERE list_id = ? AND name = ?");
+            $stmt->bind_param("is", $favourites_id, $item_name); // i - integer, s - string
+            
+            if ($stmt->execute()) {
+                $stmt->close();
+                return true;
+            } else {
+                $stmt->close();
+                return false;
+            }
+        } else {
+            return false; //list was not found
+        }
+    }
     
 
     public function addList($list_name, $user_id) {
