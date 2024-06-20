@@ -5,6 +5,7 @@ $model = new AdminModel();
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['deleteUser'])) {
     $user_id = $_POST['delete-user'];
     $res = $model->deleteAllLists($user_id);
+    $c = $model->deleteUserPref($user_id);
     $allProducts = $model->deleteUserId($user_id);
     header("Location: /access-admin"); 
     exit();

@@ -31,7 +31,7 @@
         
         <div class="adminButtons">
             <form action="/modify-admin" method="post">
-                <button type="submit" name="delete-users">Delete all users</button>
+                <button type="submit" name="delete-users" onclick="return confirm('Are you sure you want to delete all users?');">Delete all users</button>
                 <button type="submit" name="create-user" class="create-user">Create new user</button>
             </form>
         </div>
@@ -42,7 +42,7 @@
         <div class="deleteUserId">
           <form action="/modify-admin" method="post">
             <input type="text" placeholder="Insert user id" name="delete-user" class="sc">
-            <button type="submit" name="deleteUser" class="sButton">Delete user</button>
+            <button type="submit" name="deleteUser" class="sButton" onclick="return confirm('Are you sure you want to delete this user?');">Delete user</button>
           </form>
         </div>
 
@@ -53,7 +53,7 @@
           <form action="/modify-admin" method="post">
             <input type="text" placeholder="Insert user id" name="searchUser" class="sc">
             <input type="text" placeholder="Insert list id" name="searchList" class="sc">
-            <button type="submit" name="deleteList" class="sButton">Delete list</button>
+            <button type="submit" name="deleteList" class="sButton" onclick="return confirm('Are you sure you want to delete this list?');">Delete list</button>
           </form>
         </div>
 
@@ -63,7 +63,7 @@
         <div class="deleteAllListId">
           <form action="/modify-admin" method="post">
             <input type="text" placeholder="Insert user id" name="deleteAllL" class="sc">
-            <button type="submit" name="deleteAllLists" class="sButton">Delete all lists</button>
+            <button type="submit" name="deleteAllLists" class="sButton" onclick="return confirm('Are you sure you want to delete all the lists?');">Delete all lists</button>
           </form>
         </div>
 

@@ -53,6 +53,18 @@ class AdminModel {
         $stmt->close();
     }
 
+    public function deleteUserPref($id) {
+        $stmt = $this->conn->prepare("DELETE FROM preferences WHERE user_id=?");
+        
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+        
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
     public function deleteUserId($id) {
         $stmt = $this->conn->prepare("DELETE FROM users WHERE id=?");
         if ($stmt === false) {
