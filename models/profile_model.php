@@ -86,6 +86,7 @@
         public function exportJson($id) {
             $sql = "SELECT * FROM users WHERE id = ?";
             $stmt = $this->conn->prepare($sql);
+            
             $stmt->bind_param("i", $id);
             $stmt->execute();
             $result = $stmt->get_result();

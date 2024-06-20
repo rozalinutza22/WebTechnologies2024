@@ -125,11 +125,11 @@
         <button type="submit" class="export" name="export">Export</button>
       </form>
 
-      <a href="/logout"><button class="logout">Logout</button>
+      <a href="/logout"><button class="logout" onclick="return confirm('Are you sure you want to logout?');">Logout</button>
 
         <div class="userButtons">
             <form action="/delete_acc" method="post">
-                <button type="submit" name="delete-user" class="delUser">Delete account</button>
+                <button type="submit" name="delete-user" class="delUser" onclick="return confirm('Are you sure you want to delete this account?');">Delete account</button>
             </form>
         </div>
     </body>

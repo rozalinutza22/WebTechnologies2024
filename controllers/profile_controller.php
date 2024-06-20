@@ -15,36 +15,19 @@
     }
 
     if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export'])) {
-        $res = $model->exportJson($_SESSION['user_id']);
-
-        if (!isset($_SESSION['user_email'])) {
-            die("n avem email.");
-        }
-
-        if (!isset($_SESSION['user_id'])) {
-            die("id-ul nu este setat.");
-        }
-
+        $userData = $model->exportJson($_SESSION['user_id']);
         $id = $_SESSION['user_id'];
-        // var_dump($res);
 
-        if (!empty($res)) {
-            // $json = json_encode($res);
-            // $jsonLength = mb_strlen($json, '8bit');
-            // echo "Data:" . $json;
-            // header('Content-Type: application/json');
-            // header('Content-Disposition: attachment; filename="userData.json"');
-            // header('Content-Length: ' . $jsonLength);
-            // ob_start();
-            // echo $json;
-            // ob_end_flush();
-            file_put_contents('C:\Users\helen.ro\Downloads\userData.json', json_encode($res));
+        if ($userData) {
+            header('Content-Type: application/json');
+            header('Content-Disposition: attachment; filename="user_' . $id . '.json"');
+        
+            echo json_encode($userData);
+            exit;
         } else {
+            echo "User not found";
             header("Location: /menu"); 
             exit();
         }
-    
-        header("Location: /profile"); 
-        exit();
     }
 ?>
