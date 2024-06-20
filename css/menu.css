@@ -144,7 +144,7 @@ p {
 
 .box {
     background-color: #ffb238;
-    width: 40%;
+    width: 50%;
     height: 14em;
     margin: 2% 0;
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
@@ -171,7 +171,8 @@ p {
     height: 50px;
     width: 100px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 2%;
+    cursor: pointer;
 }
 
 .favorites {
@@ -179,17 +180,19 @@ p {
     height: 50px;
     width: 100px;
     margin-left: 10%;
-    margin-top: 10%;
+    margin-top: 2%;
+    cursor: pointer;
 }
 
 .product_buttons {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
 }
 
 .productImage {
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
     margin: 6%;
+    margin-top: 10%;
     height: 6em;
     border-radius: 10px;
 }
@@ -213,7 +216,7 @@ p {
 
 .productDetails {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     align-items: center;
 }
 
@@ -239,7 +242,7 @@ p {
 
     .productDetails {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
 }
@@ -251,12 +254,6 @@ p {
         font-size: 1.5em;
     }
 
-    /* .box {
-        width: 100%; 
-        height: 25em;
-        display: flex;
-    } */
-
     .productText {
         display: flex;
         flex-direction: column;
@@ -264,18 +261,17 @@ p {
 
     .productDetails {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
 
     .product_buttons {
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
 
     .productPrice {
-        display: flex;
-        flex-direction: column;
+        margin-bottom: 10px;
     }
 }
 
@@ -300,7 +296,7 @@ p {
 
     .productDetails {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
 
@@ -309,14 +305,16 @@ p {
         height: 50px;
         width: 100px;
         margin-left: 10%;
-        margin-top: 10%;
+        margin-top: 2%;
+        cursor: pointer;
     }
 
     .favorites {
         height: 50px;
         width: 100px;
         margin-left: 10%;
-        margin-top: 10%;
+        margin-top: 2%;
+        cursor: pointer;
     }
 
     .product_buttons {
@@ -325,8 +323,7 @@ p {
     }
 
     .productPrice {
-        display: flex;
-        flex-direction: column;
+        align-self: center;
     }
 
     .categories {
@@ -338,51 +335,89 @@ p {
     }
 }
 
-@media screen and (max-width: 768px) {
-    .filter-container label {
-        flex: 100%;
-        margin: 5px 0;
-        font-size: 1em;
+@media screen and (max-width: 850px) {
+    .favourites-box {
+        background-color: hsl(21, 95%, 61%);
+        position: relative;
+        /* right: auto; */
+        width: 90%; 
     }
 
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        margin-left: 8%;
+    }
     .box {
-        width: 100%;
-        height: 10em;
-        display: flex;
-    }
-
-    .productText {
-        display: flex;
+        width: 70%; 
+        height: 15em;
+        display:flex;
         flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        margin-bottom: 10px;
+        margin-left: 10%;
+        margin-right: 10%;;
+    }
+    .productText{
+        flex-grow: 1;
     }
 
-    .productDetails {
-        display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
-    }
-
-    .productPrice {
+    .productDetails{
+       display:grid;
+       grid-template-columns: 1fr 1fr; 
+    } 
+    .product_buttons{
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
     }
-
-
-    .specialButtonProduct {
+    
+    .productImage{
+        box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3);
+        height: 6em;
+        border-radius: 10px;
+    }
+    
+    .productTitle{
+        font-weight: bold;
+        margin-bottom: 5px;
+    }
+    
+    .productPrice{
+        margin-bottom: 10px;
+    }
+    .specialButtonProduct{
         background-color: #fabc3c;
         height: 50px;
         width: 100px;
         margin-left: 10%;
         margin-top: 10%;
+        cursor: pointer;
+    }
+    .favorites {
+        background-color: hsl(21, 95%, 61%);
+        height: 50px;
+        width: 100px;
+        margin-left: 10%;
+        margin-top: 10%;
+        cursor: pointer;
     }
 
-    .product_buttons {
+    nav ul li {
+        margin-right: 1%;
+    }
+    .product_buttons{
         display: flex;
         flex-direction: row;
     }
+}
 
-    .productPrice {
-        display: flex;
-        flex-direction: column;
+@media screen and (max-width: 768px) {
+    .filter-container label {
+        flex: 100%;
+        margin: 5px 0;
+        font-size: 1em;
     }
 
     .categories {
@@ -406,39 +441,6 @@ p {
         font-size: 1em;
     }
 
-    .box {
-        width: 100%;
-        height: 15em;
-        display: flex;
-    }
-
-    .productText {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .productDetails {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-    .specialButtonProduct {
-        background-color: #fabc3c;
-        height: 50px;
-        width: 100px;
-        margin-left: 10%;
-        margin-top: 10%;
-    }
-
-    .product_buttons {
-        display: flex;
-        flex-direction: row;
-    }
-
-     .productPrice {
-        display: flex;
-        flex-direction: column;
-    } 
-
     .categories {
         float: right;
         right: 25%;
@@ -460,35 +462,37 @@ p {
         font-size: 0.9em;
     }
 
-    .box {
-        width: 100%;
-        height: 15em;
-        display: flex;
-    }
-
-    .productText {
+    
+    .boxes {
         display: flex;
         flex-direction: column;
-
+        align-items:flex-start;
+        margin-left: 8%;
     }
-
-    .productDetails {
-        display: grid;
+    .box {
+        width: 100%; 
+        height: 15em;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .productText{
+        display:flex;
+        /* flex-direction: column; */
+        float: right;
+    }
+    .productDetails{
+        display:grid;
         grid-template-columns: 1fr 1fr;
     }
-
-    .specialButtonProduct {
+    .specialButtonProduct{
         background-color: #fabc3c;
         height: 50px;
         width: 100px;
         margin-left: 10%;
-        margin-top: 10%;
+        cursor: pointer;
     }
 
-    .product_buttons {
-        display: flex;
-        flex-direction: row;
-    }
 
     .categories {
         float: left;
