@@ -65,7 +65,7 @@
     </div>
 
     <div class="container">
-      <h4 class="filter">Filter by</h4>
+      <h4 class="filter">Filter all products by</h4>
         <div class="filter-container">
           <form action="/search" method="post">
             <button type="submit" name="filter_name">Name</button>
