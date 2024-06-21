@@ -4,8 +4,8 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-# Route requests starting with 'api' to api.php
-RewriteRule ^api/(.*)$ api.php?request=$1 [L,QSA]
-
 # Otherwise, route the request to index.php
 RewriteRule ^ index.php [L]
+
+# Route requests starting with 'api' to api.php
+RewriteRule ^api/(.*)$ api.php?request=$1 [L,QSA]

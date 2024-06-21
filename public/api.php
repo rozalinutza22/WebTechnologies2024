@@ -1,11 +1,6 @@
 <?php
 
-header('Content-Type: application/json');
-
-$data = [
-    'message' => 'hello'
-];
-
-echo json_encode($data);
+$parts = explode("/", $_SERVER["REQUEST_URI"]);
+print_r($parts);
 
 ?>

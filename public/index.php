@@ -3,6 +3,13 @@
 $requestUri = $_SERVER['REQUEST_URI'];
 
 if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
+
+    if (strpos($_SERVER['REQUEST_URI'], '/users') === false) {
+        http_response_code(404); 
+        echo "404 Not Found";
+        exit;
+    }
+
     include_once 'api.php';
     exit; 
 }
