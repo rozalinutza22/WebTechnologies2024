@@ -127,6 +127,12 @@ p {
     bottom: 5%;
     left: 80%;
 }
+.imports{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 5%;
+}
 
 .logout {
     max-width: 77%;

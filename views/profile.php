@@ -109,6 +109,22 @@
             </div>
             <br>
             <br>
+            <div class ="imports">
+    <h2>Modify account by uploading a file:</h2>
+    <!-- Form pentru încărcarea unui fisier CSV -->
+    <form action="/delete_acc" method="post" enctype="multipart/form-data">
+        <label for="csv_file">Import CSV:</label>
+        <input type="file" name="csv_file" id="csv_file" accept=".csv">
+        <input type="submit" name="import_csv" value="Import CSV">
+    </form>
+
+    <!-- Form pentru încărcarea unui fisier JSON -->
+    <form action="/delete_acc" method="post" enctype="multipart/form-data">
+        <label for="json_file">Import JSON:</label>
+        <input type="file" name="json_file" id="json_file" accept=".json">
+        <input type="submit" name="import_json" value="Import JSON">
+    </form>
+</div>
 
             <?php 
                 if ($admin == 1): ?>
@@ -125,6 +141,7 @@
         <button type="submit" class="export" name="export">Export JSON</button>
         <button type="submit" class="export_csv" name="export_csv">Export CSV</button>
       </form>
+      
 
       <a href="/logout"><button class="logout" onclick="return confirm('Are you sure you want to logout?');">Logout</button>
 
@@ -133,5 +150,7 @@
                 <button type="submit" name="delete-user" class="delUser" onclick="return confirm('Are you sure you want to delete this account?');">Delete account</button>
             </form>
         </div>
+
+    
     </body>
 </html>

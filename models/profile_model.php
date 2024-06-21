@@ -93,5 +93,59 @@
             $user = $result->fetch_assoc();
             return $user;
         }
+       
+        public function processCSV($filePath) {
+            $handle = fopen($filePath, 'r');
+            if ($handle !== FALSE) {
+                while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                    $id = $this->conn->real_escape_string($data[0]);
+                    $firstName = $this->conn->real_escape_string($data[1]);
+                    $lastName = $this->conn->real_escape_string($data[2]);
+                    $emailAdress = $this->conn->real_escape_string($data[3]);
+                    $phoneNumber = $this->conn->real_escape_string($data[4]);
+                    $passwrd = $this->conn->real_escape_string($data[5]);
+                    $vegetarian = (int)$data[6];
+                    $admin = (int)$data[7];
+                    $allergens = $this->conn->real_escape_string($data[8]);
+                    $session_token = $this->conn->real_escape_string($data[9]);
+                    $last_login = $this->conn->real_escape_string($data[10]);
+                    $session_expiry = $this->conn->real_escape_string($data[11]);
+    
+                    $sql = "INSERT INTO users (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry) VALUES ('$id', '$firstName', '$lastName', '$emailAdress', '$phoneNumber', '$passwrd', $vegetarian, $admin, '$allergens', '$session_token', '$last_login', '$session_expiry') ON DUPLICATE KEY UPDATE firstName='$firstName', lastName='$lastName', emailAdress='$emailAdress', phoneNumber='$phoneNumber', passwrd='$passwrd', vegetarian=$vegetarian, admin=$admin, allergens='$allergens', session_token='$session_token', last_login='$last_login', session_expiry='$session_expiry'";
+                    if (!$this->conn->query($sql)) {
+                        echo "Error: " . $sql . "<br>" . $this->conn->error;
+                    }
+                }
+                fclose($handle);
+            }
+            return true;
+        }
+        
+        public function processJSON($filePath) {
+            $jsonContent = file_get_contents($filePath);
+            $data = json_decode($jsonContent, true);
+            if (json_last_error() === JSON_ERROR_NONE) {
+                $id = $this->conn->real_escape_string($data['id']);
+                $firstName = $this->conn->real_escape_string($data['firstName']);
+                $lastName = $this->conn->real_escape_string($data['lastName']);
+                $emailAdress = $this->conn->real_escape_string($data['emailAdress']);
+                $phoneNumber = $this->conn->real_escape_string($data['phoneNumber']);
+                $passwrd = $this->conn->real_escape_string($data['passwrd']);
+                $vegetarian = (int)$data['vegetarian'];
+                $admin = (int)$data['admin'];
+                $allergens = $this->conn->real_escape_string($data['allergens']);
+                $session_token = $this->conn->real_escape_string($data['session_token']);
+                $last_login = $this->conn->real_escape_string($data['last_login']);
+                $session_expiry = $this->conn->real_escape_string($data['session_expiry']);
+    
+                $sql = "INSERT INTO users (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry) VALUES ('$id', '$firstName', '$lastName', '$emailAdress', '$phoneNumber', '$passwrd', $vegetarian, $admin, '$allergens', '$session_token', '$last_login', '$session_expiry') ON DUPLICATE KEY UPDATE firstName='$firstName', lastName='$lastName', emailAdress='$emailAdress', phoneNumber='$phoneNumber', passwrd='$passwrd', vegetarian=$vegetarian, admin=$admin, allergens='$allergens', session_token='$session_token', last_login='$last_login', session_expiry='$session_expiry'";
+                if (!$this->conn->query($sql)) {
+                    echo "Error: " . $sql . "<br>" . $this->conn->error;
+                }
+    
+                return $data;
+            }
+            return false;
+        }
     }
 ?>
