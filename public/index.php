@@ -4,7 +4,7 @@ $requestUri = $_SERVER['REQUEST_URI'];
 
 if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
 
-    if (strpos($_SERVER['REQUEST_URI'], '/users') === false) {
+    if (strpos($_SERVER['REQUEST_URI'], '/users') === false && strpos($_SERVER['REQUEST_URI'], '/lists') === false) {
         http_response_code(404); 
         echo "404 Not Found";
         exit;
