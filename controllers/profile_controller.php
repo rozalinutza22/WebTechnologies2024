@@ -75,17 +75,47 @@
             }
         }
     }
-    
+
     function importCSV($filePath, $model) {
         // Apelează funcția din model pentru CSV
         $result = $model->processCSV($filePath);
         if ($result) {
             echo "CSV file imported successfully.";
-            return getUserData($filePath);
+            return getUserDataFromCSV($filePath); 
         } else {
             echo "Failed to import CSV file.";
             return false;
         }
+    }
+    
+    function getUserDataFromCSV($filePath) {
+        $handle = fopen($filePath, 'r');
+        $userData = [];
+    
+        if ($handle !== FALSE) {
+            $columns = fgetcsv($handle, 1000, ",");
+            
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                $userData[] = [
+                    'id' => $data[0],
+                    'firstName' => $data[1],
+                    'lastName' => $data[2],
+                    'emailAdress' => $data[3],
+                    'phoneNumber' => $data[4],
+                    'passwrd' => $data[5],
+                    'vegetarian' => (int)$data[6],
+                    'admin' => (int)$data[7],
+                    'allergens' => $data[8],
+                    'session_token' => $data[9],
+                    'last_login' => $data[10],
+                    'session_expiry' => $data[11]
+                ];
+            }
+    
+            fclose($handle);
+        }
+    
+        return $userData;
     }
     
     function importJSON($filePath, $model) {
@@ -98,31 +128,6 @@
             echo "Failed to import JSON file.";
             return false;
         }
-    }
-    
-    function getUserData($filePath) {
-        $handle = fopen($filePath, 'r');
-        if ($handle !== FALSE) {
-            $data = fgetcsv($handle, 1000, ",");
-            fclose($handle);
-            if ($data !== FALSE) {
-                return [
-                    'id' => $data[0],
-                    'firstName' => $data[1],
-                    'lastName' => $data[2],
-                    'emailAdress' => $data[3],
-                    'phoneNumber' => $data[4],
-                    'passwrd' => $data[5],
-                    'vegetarian' => $data[6],
-                    'admin' => $data[7],
-                    'allergens' => $data[8],
-                    'session_token' => $data[9],
-                    'last_login' => $data[10],
-                    'session_expiry' => $data[11]
-                ];
-            }
-        }
-        return false;
     }
     
     function updateSessionData($userData) {
