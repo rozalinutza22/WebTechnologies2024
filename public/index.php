@@ -2,6 +2,11 @@
 
 $requestUri = $_SERVER['REQUEST_URI'];
 
+if (strpos($_SERVER['REQUEST_URI'], '/api/') === 0) {
+    include_once 'api.php';
+    exit; 
+}
+
 if (strpos($requestUri, '/product') === 0) {
     require_once '../controllers/product_controller.php';
 }
