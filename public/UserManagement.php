@@ -200,12 +200,18 @@
                         "message" => "User $id updated successfully!"
                     ]);
                     break;
+                    
                 case "DELETE":
                     $this->deleteUserLists($id);
                     $this->deleteUserPref($id);
                     $this->deleteUser($id);
                     echo json_encode(["message" => "User $id has been deleted successfully!"]);
                     break;
+                default: 
+                http_response_code(405); 
+                header("Allow: GET, POST, PATCH, DELETE");
+
+                echo "Method not allowed in this format.\n";
             }
         }
 
