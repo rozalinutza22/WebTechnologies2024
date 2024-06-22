@@ -58,14 +58,11 @@
                 $csvFile = $_FILES['csv_file']['tmp_name'];
                 $userData = importCSV($csvFile, $model);
                 if ($userData) {
-                    updateSessionData($userData);
+                    updateSessionDataCSV($userData);
                     header("Location: /profile"); 
                      exit();
-                    } else {
-                        echo "Failed to parse CSV file.";
-                        header("Location: /menu"); 
-                        exit();
-                    }
+                }
+                
             }
         } elseif (isset($_POST['import_json'])) {
             if (isset($_FILES['json_file']) && $_FILES['json_file']['error'] == 0) {
@@ -85,43 +82,11 @@
         $result = $model->processCSV($filePath);
         if ($result) {
             echo "CSV file imported successfully.";
-            return getUserDataFromCSV($filePath); 
-        } else {                  ///here is the problem
+            return $result; 
+        } else {                 
             echo "Failed to import CSV file.";
             return false;
         }
-    }
-    
-    function getUserDataFromCSV($filePath) {
-        $handle = fopen($filePath, 'r');
-        $userData = [];
-
-        if ($handle !== FALSE) {
-            $columns = fgetcsv($handle, 1000, ",");
-
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-                $userData[] = [
-                    'id' => $data[0],
-                    'firstName' => $data[1],
-                    'lastName' => $data[2],
-                    'emailAdress' => $data[3],
-                    'phoneNumber' => $data[4],
-                    'passwrd' => $data[5],
-                    'vegetarian' => (int)$data[6],
-                    'admin' => (int)$data[7],
-                    'allergens' => $data[8],
-                    'session_token' => $data[9],
-                    'last_login' => $data[10],
-                    'session_expiry' => $data[11]
-                ];
-            }
-
-            fclose($handle);
-        }else{
-
-        }
-
-        return $userData;
     }
     
     function importJSON($filePath, $model) {
@@ -134,6 +99,20 @@
             echo "Failed to import JSON file.";
             return false;
         }
+    }
+
+    function updateSessionDataCSV($userData) {
+        $_SESSION['id'] = $userData[0];
+        $_SESSION['user_fname'] = $userData[1];
+        $_SESSION['user_lname'] = $userData[2];
+        $_SESSION['user_email'] = $userData[3];
+        $_SESSION['user_phone'] = $userData[4];
+        $_SESSION['vegetarian'] = $userData[5];
+        $_SESSION['admin'] = $userData[6];
+        $_SESSION['allergens'] = $userData[7];
+        $_SESSION['session_token'] = $userData[8];
+        $_SESSION['last_login'] = $userData[8];
+        $_SESSION['session_expiry'] = $userData[10];
     }
     
     function updateSessionData($userData) {

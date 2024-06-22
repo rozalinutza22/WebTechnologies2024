@@ -94,40 +94,41 @@
             return $user;
         }    
 
-        //function doesnt work properly
         public function processCSV($filePath) {
             $handle = fopen($filePath, 'r');
+        
             if ($handle === FALSE) {
                 echo "Failed to open CSV file.";
                 return false;
             }
         
             $columns = fgetcsv($handle, 1000, ",");
+        
             if (count($columns) != 12) {
                 echo "Invalid CSV format: The header row must have exactly 12 columns.";
                 fclose($handle);
                 return false;
             }
         
-             $stmt = $this->conn->prepare("
-            INSERT INTO users 
-                (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry)
-            VALUES 
-                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-            ON DUPLICATE KEY UPDATE 
-                firstName = VALUES(firstName), 
-                lastName = VALUES(lastName), 
-                emailAdress = VALUES(emailAdress), 
-                phoneNumber = VALUES(phoneNumber), 
-                passwrd = VALUES(passwrd), 
-                vegetarian = VALUES(vegetarian), 
-                admin = VALUES(admin), 
-                allergens = VALUES(allergens), 
-                session_token = VALUES(session_token), 
-                last_login = VALUES(last_login), 
-                session_expiry = VALUES(session_expiry)
-        ");        
-        
+            $stmt = $this->conn->prepare("
+                INSERT INTO users 
+                    (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry)
+                VALUES 
+                    (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                    firstName = VALUES(firstName), 
+                    lastName = VALUES(lastName), 
+                    emailAdress = VALUES(emailAdress), 
+                    phoneNumber = VALUES(phoneNumber), 
+                    passwrd = VALUES(passwrd), 
+                    vegetarian = VALUES(vegetarian), 
+                    admin = VALUES(admin), 
+                    allergens = VALUES(allergens), 
+                    session_token = VALUES(session_token), 
+                    last_login = VALUES(last_login), 
+                    session_expiry = VALUES(session_expiry)
+            ");
+
             if ($stmt === false) {
                 echo "Prepare failed: " . $this->conn->error;
                 fclose($handle);
@@ -139,10 +140,17 @@
                 $id, $firstName, $lastName, $emailAdress, $phoneNumber, $passwrd, $vegetarian, $admin, $allergens,
                 $session_token, $last_login, $session_expiry
             );
+        
 
-            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            if(($line = fgetcsv($handle, 1000, ",")) !== FALSE) {
+ 
+                $data = explode("," , $line[0]);
+        
                 if (count($data) != 12) {
-                    echo "Invalid data format: Each row must have exactly 12 columns.";
+                    echo "Invalid data format: Each row must have exactly 12 columns.Actual rows: \n";
+                    var_dump($data);
+                    header("/invalidDataFormat");
+                    exit();
                     $stmt->close();
                     fclose($handle);
                     return false;
@@ -172,8 +180,8 @@
             $stmt->close();
             fclose($handle);
         
-            return true;
-        }
+            return $data;
+        }        
         
         public function processJSON($filePath) {
             $jsonContent = file_get_contents($filePath);
