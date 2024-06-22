@@ -210,16 +210,82 @@ class ListManager {
     
         $stmt->close();
     }
+
+    public function addItemToList($id, $list_id, $product_id){
+          
+            $stmt_product = $this->conn->prepare("SELECT * FROM products WHERE id = ?");
+            if ($stmt_product === false) {
+                http_response_code(500);
+                echo json_encode(["error" => "Prepare failed: " . $this->conn->error]);
+                return;
+            }
+
+            $stmt_product->bind_param("i", $product_id);
+            $stmt_product->execute();
+            $result_product = $stmt_product->get_result();
+
+            if ($result_product->num_rows !== 1) {
+                http_response_code(404);
+                echo json_encode(["error" => "Product with ID $product_id not found."]);
+                return;
+            }
+
+            $product = $result_product->fetch_assoc();
+            $product_name = $product['name'];
+            $product_price = $product['price'];
+
+            $stmt_insert = $this->conn->prepare("
+                INSERT INTO items (list_id, name, price)
+                VALUES (?, ?, ?)
+            ");
+
+            if ($stmt_insert === false) {
+                http_response_code(500);
+                echo json_encode(["error" => "Prepare failed: " . $this->conn->error]);
+                return;
+            }
+
+            $stmt_insert->bind_param("iss", $list_id, $product_name, $product_price);
+            if (!$stmt_insert->execute()) {
+                http_response_code(500);
+                echo json_encode(["error" => "Execute failed: " . $stmt_insert->error]);
+                return;
+            }
+
+            http_response_code(200); 
+            echo json_encode(["message" => "Product added to list $list_id"]);
+
+            $stmt_product->close();
+            $stmt_insert->close();
+    }
     
 
-    public function processRequest($method, $id, $list_id) {
-        if($id && $list_id){
+    public function processRequest($method, $id, $list_id,$product_id) {
+        if($id && $list_id && $product_id){
+            $this->processItemRequest($method, $id, $list_id, $product_id);
+        }else if($id && $list_id){
             $this->processListRequest($method, $id, $list_id);
         }else if($id) {
             $this->processResourceRequest($method, $id);
         }else {
             $this->processCollectionRequest($method);
         }
+    }
+
+    private function processItemRequest($method, $id, $list_id, $product_id){
+        if ($this->getUserInfo($id) === "User does not exist in the database") {
+            http_response_code(404);
+            echo json_encode(["message" => "User does not exist in the database"]);
+            return;
+        }
+        switch ($method) {
+            case "POST" : 
+                $this->addItemToList($id, $list_id, $product_id);
+                break;
+            default:
+            echo "Method not allowed in this format.\n";
+        }
+
     }
 
     private function processListRequest($method, $id, $list_id) {
