@@ -93,13 +93,14 @@ class ListManager {
     }
 
     public function deleteUserLists($id) {
-        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=?");
-
+        $sql = "DELETE FROM lists WHERE user_id = ? AND name != ?";
+        $stmt = $this->conn->prepare($sql);
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
+        $sacredList = "Favourites";
 
-        $stmt->bind_param("i", $id);
+        $stmt->bind_param("is", $id, $sacredList);
         $stmt->execute();
     }
 
