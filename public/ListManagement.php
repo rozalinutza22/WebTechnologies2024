@@ -179,6 +179,39 @@ class ListManager {
         }else return $emp = "User does not exist in the database";
     }
 
+    public function printListItems($id, $list_id) {
+        $stmt = $this->conn->prepare("
+            SELECT id, name, price
+            FROM items
+            WHERE list_id = ? AND EXISTS (
+                SELECT 1
+                FROM lists
+                WHERE id = ? AND user_id = ?
+            )
+        ");
+    
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+    
+        $stmt->bind_param("iii", $list_id, $list_id, $id);
+        $stmt->execute();
+    
+        $stmt->bind_result($item_id, $item_name, $item_price);
+    
+        if ($stmt->fetch()) {
+            echo "Items in List ID $list_id:\n";
+            do {
+                echo "Item ID: $item_id, Name: $item_name, Price: $item_price\n";
+            } while ($stmt->fetch());
+        } else {
+            echo "No items found in List ID $list_id.\n";
+        }
+    
+        $stmt->close();
+    }
+    
+
     public function processRequest($method, $id, $list_id) {
         if($id && $list_id){
             $this->processListRequest($method, $id, $list_id);
@@ -190,7 +223,23 @@ class ListManager {
     }
 
     private function processListRequest($method, $id, $list_id) {
+        if ($this->getUserInfo($id) === "User does not exist in the database") {
+            http_response_code(404);
+            echo json_encode(["message" => "User does not exist in the database"]);
+            return;
+        }
         switch ($method) {
+            case "GET" : 
+                if ($this->isList($id, $list_id) == 0) {
+                    echo json_encode([
+                        "message" => "This list does not exist!"
+                    ]);
+                    break;
+                }
+                else{
+                $this->printListItems($id, $list_id);
+                break;
+            }
             case "DELETE":
                 if ($this->isList($id, $list_id) == 0) {
                     echo json_encode([
