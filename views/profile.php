@@ -77,9 +77,6 @@ if (isset($_SESSION["user_fname"])) {
                 <h3>Vegetarian</h3>
                 <p>
                     <?php 
-                        // if (empty($_SESSION[$name])) echo 'No';
-                        // else echo "Yes";
-
                         if ($veg === 0) echo 'No';
                         else echo 'Yes';
                     ?>
@@ -92,12 +89,8 @@ if (isset($_SESSION["user_fname"])) {
                 <h3>Admin</h3>
                 <p>
                     <?php 
-                        // if (empty($_SESSION[$name])) echo 'No';
-                        // else echo "Yes";
-
                         if ($admin === 0) echo 'No';
                         else echo 'Yes';
-                        // echo 'da';
                     ?>
                 </p>
             </div>
@@ -117,6 +110,7 @@ if (isset($_SESSION["user_fname"])) {
             <br>
             <div class ="imports">
     <h2>Modify account by uploading a file:</h2>
+    
     <!-- Form pentru încărcarea unui fisier CSV -->
     <form action="/delete_acc" method="post" enctype="multipart/form-data">
         <label for="csv_file">Import CSV:</label>
