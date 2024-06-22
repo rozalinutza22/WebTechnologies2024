@@ -61,11 +61,9 @@ class LoginManager {
                     // $_SESSION['vegetarian'] = $row['vegetarian'];
                     // $_SESSION['user_id'] = $row['id'];
 
-                    // setcookie('API_email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                    // setcookie('API_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                    // setcookie('API_id', $id, time() + (30 * 24 * 60 * 60), '/');
-
-                    // var_dump($_COOKIE["API_id"]);
+                    setcookie('API_email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    setcookie('API_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    setcookie('API_id', $id, time() + (30 * 24 * 60 * 60), '/');
 
 
                 } else {

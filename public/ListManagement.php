@@ -17,6 +17,8 @@ session_start();
 
 if (isset($_COOKIE["API_id"])) {
 }else{
+    echo "       \n";
+    var_dump($_COOKIE);
     echo "Must be logged in in order to manage lists.";
     exit();
 }

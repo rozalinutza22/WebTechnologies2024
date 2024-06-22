@@ -305,16 +305,14 @@ p {
         background-color: #fabc3c;
         height: 50px;
         width: 100px;
-        margin-left: 10%;
-        margin-top: 2%;
+        margin-left: 7%;
         cursor: pointer;
     }
 
     .favorites {
         height: 50px;
         width: 100px;
-        margin-left: 10%;
-        margin-top: 2%;
+        margin-left: 7%;
         cursor: pointer;
     }
 
