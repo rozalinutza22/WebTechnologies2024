@@ -6,7 +6,7 @@
         private $dbname = "cupo_db";        
         private $conn;
 
-        session_start();
+        // session_start();
     
         public function __construct() { 
             $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
@@ -249,6 +249,17 @@
             }
         }
 
+        public function logout() {
+            session_start();
+            session_destroy();
+
+            echo json_encode([
+                "message" => "Current user has been logged out successfully!"
+            ]);
+
+            exit;
+        }
+
         private function processListRequest($method, $id, $list_id) {
             switch ($method) {
                 case "DELETE":
@@ -296,13 +307,14 @@
                         "message" => "Users $id list $list_id has been deleted successfully!"
                     ]);
                     break;
+
                 default:
                 echo "Method not allowed in this format.\n";
             }
         }
 
         private function processResourceRequest($method, $id) {
-            if ($this->getUserInfo($id) === "User does not exist in the database") {
+            if ($this->getUserInfo($id) === "User does not exist in the database" && filter_var($id, FILTER_VALIDATE_INT) !== false) {
                 http_response_code(404);
                 echo json_encode(["message" => "User does not exist in the database"]);
                 return;
@@ -312,8 +324,20 @@
 
             switch ($method) {
                 case "GET":
-                    echo json_encode($this->getUserInfo($id));
-                    break;
+                    if (filter_var($id, FILTER_VALIDATE_INT) !== false) {
+                        echo json_encode($this->getUserInfo($id));
+                        break;
+                    }else if (filter_var($id, FILTER_VALIDATE_INT) === false) {
+                        if ($id === "logout") {
+                            $this->logout();
+                            break;
+                        }else {
+                            echo json_encode([
+                                "message" => "Incorrect  argument!"
+                            ]);
+                            break;
+                        }
+                    }
                 case "PATCH":
                     $data = (array) json_decode(file_get_contents("php://input"), true);
                     $errors = $this->getValidationErrors($data);
