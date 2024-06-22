@@ -1,5 +1,20 @@
 <?php
 
+session_start();
+
+if (isset($_SESSION["user_fname"])) {
+    $user_fname = $_SESSION["user_fname"];
+    $user_lname = $_SESSION["user_lname"];
+    $user_email = $_SESSION["user_email"];
+    $user_phone = $_SESSION["user_phone"];
+    $allerg = $_SESSION["allergens"];
+    $veg = $_SESSION["vegetarian"];
+    $admin = $_SESSION["admin"];
+} else {
+   echo "Must be logged in in order to manage lists.";
+   exit();
+}
+
 class ListManager {
     private $servername = "localhost";
     private $username = "root";
