@@ -219,6 +219,20 @@
         private function processListRequest($method, $id, $list_id) {
             switch ($method) {
                 case "DELETE":
+                    if (filter_var($list_id, FILTER_VALIDATE_INT) === false) {
+                        if ($list_id !== "all") {
+                            echo json_encode([
+                                "message" => "Incorrect argument!"
+                            ]);
+                            break;
+                        }else {
+                            echo json_encode([
+                                "message" => "Deleted all lists!"
+                            ]);
+                            break;
+                        }
+                    }
+
                     if ($this->isList($id, $list_id)) {
                         echo json_encode([
                             "message" => "This list does not exist!"

@@ -90,7 +90,7 @@ if (isset($_SESSION["user_fname"])) {
                 <p>
                     <?php 
                         if ($admin === 0) echo 'No';
-                        else if (admin === 1) echo 'Yes';
+                        else if ($admin === 1) echo 'Yes';
                     ?>
                 </p>
             </div>
