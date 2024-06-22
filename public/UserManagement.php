@@ -251,12 +251,17 @@
             switch ($method) {
                 case "DELETE":
                     if (filter_var($list_id, FILTER_VALIDATE_INT) === false) {
-                        if ($list_id !== "all") {
+                        if ($list_id === "me") {
+                            //$id will be $_SESSION['user_id']
+                            $this->deleteUserLists($id);
+                            $this->deleteUserPref($id);
+                            $this->deleteUser($id);
+
                             echo json_encode([
-                                "message" => "Incorrect argument!"
+                                "message" => "Current user has been deleted successfully!"
                             ]);
                             break;
-                        }else {
+                        }else if ($list_id === "all") {
                             if ($this->existsAList($id) !== 0) {
                                 $this->deleteAllLists($id);
                                 echo json_encode([
@@ -269,6 +274,11 @@
                                 ]);
                                 break;
                             }
+                        }else {
+                            echo json_encode([
+                                "message" => "Incorrect argument!"
+                            ]);
+                            break;
                         }
                     }
 
