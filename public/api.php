@@ -3,6 +3,7 @@
 include(dirname(__DIR__).'/public/ErrorHandler.php');
 header("Content-type: application/json; charset=UTF-8");
 set_exception_handler("ErrorHandler::handleException");
+session_start();
 
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
 echo "\n\n";
@@ -16,6 +17,10 @@ if ($parts[2] === "users") {
     include(dirname(__DIR__).'/public/ListManagement.php');
     $manager = new ListManager();
     $manager->processRequest($_SERVER["REQUEST_METHOD"], $id);
+}elseif($parts[2] == "login"){
+    include(dirname(__DIR__).'/public/LoginManagement.php');
+    $loginManager = new LoginManager();
+    $loginManager->processRequest($_SERVER["REQUEST_METHOD"]); 
 }else echo "No such endpoint exists yet.";
 
 ?>
