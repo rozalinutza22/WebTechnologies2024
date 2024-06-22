@@ -43,6 +43,16 @@ body {
     -1px 1px 0 #000,
     3px 3px 0 #000;  
 }
+.NoLogin{
+  color: black;
+  padding-right:5%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  font-family: 'Inter';
+  position: relative;
+  font-size: calc(1rem + 3vw);
+  text-align: center;
+}
 
 
 @media screen and (max-width: 800px) {

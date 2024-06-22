@@ -1,6 +1,7 @@
 <?php
     session_start();
-
+    
+if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
     $user_fname = $_SESSION["user_fname"];
     $user_lname = $_SESSION["user_lname"];
     $user_email = $_SESSION["user_email"];
@@ -9,6 +10,11 @@
     $veg = $_SESSION["vegetarian"];
     $admin = $_SESSION["admin"];
     
+} else {
+    header("Location: /noLogin");
+    exit;
+}
+
 ?>
 
 

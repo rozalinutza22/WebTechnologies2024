@@ -7,7 +7,8 @@ $model = new SelectListModel();
 $userId = isset($_SESSION['user_id']) ? (int)$_SESSION['user_id'] : null;
 
 if (!$userId) {
-    die("User not logged in.");
+    header("Location: /noLogin");
+    exit;
 }
 
 $lists = $model->getAllLists($userId);

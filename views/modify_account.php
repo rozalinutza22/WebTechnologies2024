@@ -1,12 +1,18 @@
 <?php
     session_start();
-    $user_fname = $_SESSION["user_fname"];
-    $user_lname = $_SESSION["user_lname"];
-    $user_email = $_SESSION["user_email"];
-    $user_phone = $_SESSION["user_phone"];
-    $allerg = $_SESSION["allergens"];
-    $veg = $_SESSION["vegetarian"];
-    $admin = $_SESSION["admin"];
+    if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
+        $user_fname = $_SESSION["user_fname"];
+        $user_lname = $_SESSION["user_lname"];
+        $user_email = $_SESSION["user_email"];
+        $user_phone = $_SESSION["user_phone"];
+        $allerg = $_SESSION["allergens"];
+        $veg = $_SESSION["vegetarian"];
+        $admin = $_SESSION["admin"];
+        
+    } else {
+        header("Location: /noLogin");
+        exit;
+    }
 ?>
 
 <!DOCTYPE html>

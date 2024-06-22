@@ -67,7 +67,8 @@ elseif (strpos($requestUri, '/selectList') === 0) {
 
 }elseif ($requestUri === '/delete_acc') {
     require '../controllers/profile_controller.php';
-
+}elseif ($requestUri === '/noLogin') {
+        require_once '../views/noLogin_view.php';
 }else {
     echo '404 Not Found';
 }

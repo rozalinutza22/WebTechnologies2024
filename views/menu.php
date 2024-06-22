@@ -1,12 +1,19 @@
 <?php
-  include(dirname(__DIR__).'/models/menu_model.php');
-  session_start();
-  $firstName = $_SESSION["user_fname"];
-  $lastName = $_SESSION["user_lname"];
-  $email = $_SESSION["user_email"];
-  $m = new MenuModel();
-  $allProducts = $m->getAllProducts();
-  $_SESSION["allProducts"] = $allProducts;
+include(dirname(__DIR__) . '/models/menu_model.php');
+session_start();
+
+if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
+    $firstName = $_SESSION["user_fname"];
+    $lastName = $_SESSION["user_lname"];
+    $email = $_SESSION["user_email"];
+
+    $m = new MenuModel();
+    $allProducts = $m->getAllProducts();
+    $_SESSION["allProducts"] = $allProducts;
+} else {
+    header("Location: /noLogin");
+    exit;
+}
 ?>
 
 

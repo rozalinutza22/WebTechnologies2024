@@ -1,3 +1,14 @@
+<?php
+include(dirname(__DIR__) . '/models/menu_model.php');
+
+if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
+
+} else {
+    header("Location: /noLogin");
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en-US">
 <head>
