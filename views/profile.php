@@ -143,7 +143,6 @@ if (isset($_SESSION["user_fname"])) {
       <a href="/modify"><button id="create" name="create_acc">Modify</button></a>
 
       <form action="/delete_acc" method="post">
-        <button type="submit" class="import" name="import">Import</button>
         <button type="submit" class="export" name="export">Export JSON</button>
         <button type="submit" class="export_csv" name="export_csv">Export CSV</button>
       </form>
