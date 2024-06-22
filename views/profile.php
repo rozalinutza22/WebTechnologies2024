@@ -135,8 +135,6 @@ if (isset($_SESSION["user_fname"])) {
             <?php 
                 if ($admin == 1): ?>
                     <a href="/access-admin"><button class="access_admin">Access admin</button>
-                <?php else: ?>
-                    <p>You do not have access here</p>
                 <?php endif; ?>        
         </div>
 
