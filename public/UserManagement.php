@@ -38,6 +38,20 @@
             $stmt->close();
             return $products;
         }
+
+        public function create($data) {
+            $stmt = $this->conn->prepare("INSERT INTO users (firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens) 
+                                          VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $data["passwrd"] = password_hash($data["passwrd"], PASSWORD_DEFAULT);
+
+            $stmt->bind_param("sssssiis", $data["firstName"], $data["lastName"], $data["emailAdress"], 
+                                          $data["phoneNumber"], $data["passwrd"], $data["vegetarian"], $data["admin"], $data["allergens"]);
+            $stmt->execute();
+        }
         
         public function processRequest($method, $id) {
             if($id) {
@@ -61,8 +75,14 @@
                     echo json_encode($this->getAll());
                     break;
                 case "POST":
-                    $data = json_decode(file_get_contents("php://input"), true);
-                    var_dump($data);
+                    $data = (array) json_decode(file_get_contents("php://input"), true);
+                    // var_dump($data);
+                    $this->create($data);
+
+                    echo json_encode([
+                        "message" => "User created"
+                    ]);
+                    break;
             }
 
         }

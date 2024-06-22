@@ -16,6 +16,6 @@ if ($parts[2] === "users") {
     include(dirname(__DIR__).'/public/ListManagement.php');
     $manager = new ListManager();
     $manager->processRequest($_SERVER["REQUEST_METHOD"], $id);
-}else echo "No such command exists yet.";
+}else echo "No such endpoint exists yet.";
 
 ?>
