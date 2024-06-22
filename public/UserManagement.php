@@ -82,7 +82,7 @@
                     $errors = $this->getValidationErrors($data);
 
                     if (!empty($errors)) {
-                        http_response_code(422); //Unprocessable Entityt
+                        http_response_code(422); //Unprocessable Entity
                         echo json_encode(["errors" => $errors]);
                         break;
                     }
