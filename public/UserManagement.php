@@ -206,6 +206,37 @@
             else return 1;
         }
 
+        public function existsAList($id) {
+            $stmt = $this->conn->prepare("SELECT name FROM lists WHERE user_id=? AND name != 'Favourites'");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+
+            if ($result->num_rows === 0)
+                return 0;
+            else return 1;
+
+            return $result->num_rows;
+        }
+
+        public function deleteAllLists($id) {
+            $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=?");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
         public function processRequest($method, $id, $list_id) {
             if($id && $list_id) {
                 $this->processListRequest($method, $id, $list_id);
@@ -226,10 +257,18 @@
                             ]);
                             break;
                         }else {
-                            echo json_encode([
-                                "message" => "Deleted all lists!"
-                            ]);
-                            break;
+                            if ($this->existsAList($id) !== 0) {
+                                $this->deleteAllLists($id);
+                                echo json_encode([
+                                    "message" => "Deleted all lists!"
+                                ]);
+                                break;
+                            }else {
+                                echo json_encode([
+                                    "message" => "User $id has no list!"
+                                ]);
+                                break;
+                            }
                         }
                     }
 
