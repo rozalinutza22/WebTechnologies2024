@@ -1,7 +1,7 @@
 <?php
     session_start();
-    
-if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
+
+if (isset($_SESSION["user_fname"])) {
     $user_fname = $_SESSION["user_fname"];
     $user_lname = $_SESSION["user_lname"];
     $user_email = $_SESSION["user_email"];

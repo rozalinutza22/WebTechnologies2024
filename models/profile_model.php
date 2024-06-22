@@ -94,45 +94,86 @@
             return $user;
         }    
 
+        //function doesnt work properly
         public function processCSV($filePath) {
             $handle = fopen($filePath, 'r');
-            if ($handle !== FALSE) {
-                while (($line = fgets($handle)) !== FALSE) {
-                    //parse the line from export format
-                    $data = explode(',', trim($line));
-        
-                    if (count($data) != 12) {
-                        echo "Invalid data format: Each row must have exactly 12 columns.";
-                        return false;
-                    }
-        
-                    $id = $this->conn->real_escape_string($data[0]);
-                    $firstName = $this->conn->real_escape_string($data[1]);
-                    $lastName = $this->conn->real_escape_string($data[2]);
-                    $emailAdress = $this->conn->real_escape_string($data[3]);
-                    $phoneNumber = $this->conn->real_escape_string($data[4]);
-                    $passwrd = $this->conn->real_escape_string($data[5]);
-                    $vegetarian = (int)$data[6];
-                    $admin = (int)$data[7];
-                    $allergens = $this->conn->real_escape_string($data[8]);
-                    $session_token = $this->conn->real_escape_string($data[9]);
-                    $last_login = $this->conn->real_escape_string($data[10]);
-                    $session_expiry = $this->conn->real_escape_string($data[11]);
-
-                    $sql = "INSERT INTO users (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry)
-                            VALUES ('$id', '$firstName', '$lastName', '$emailAdress', '$phoneNumber', '$passwrd', $vegetarian, $admin, '$allergens', '$session_token', '$last_login', '$session_expiry')
-                            ON DUPLICATE KEY UPDATE firstName='$firstName', lastName='$lastName', emailAdress='$emailAdress', phoneNumber='$phoneNumber', passwrd='$passwrd', vegetarian=$vegetarian, admin=$admin, allergens='$allergens', session_token='$session_token', last_login='$last_login', session_expiry='$session_expiry'";
-        
-                    if (!$this->conn->query($sql)) {
-                        echo "Error: " . $sql . "<br>" . $this->conn->error;
-                    }
-                }
-                fclose($handle);
+            if ($handle === FALSE) {
+                echo "Failed to open CSV file.";
+                return false;
             }
+        
+            $columns = fgetcsv($handle, 1000, ",");
+            if (count($columns) != 12) {
+                echo "Invalid CSV format: The header row must have exactly 12 columns.";
+                fclose($handle);
+                return false;
+            }
+        
+             $stmt = $this->conn->prepare("
+            INSERT INTO users 
+                (id, firstName, lastName, emailAdress, phoneNumber, passwrd, vegetarian, admin, allergens, session_token, last_login, session_expiry)
+            VALUES 
+                (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            ON DUPLICATE KEY UPDATE 
+                firstName = VALUES(firstName), 
+                lastName = VALUES(lastName), 
+                emailAdress = VALUES(emailAdress), 
+                phoneNumber = VALUES(phoneNumber), 
+                passwrd = VALUES(passwrd), 
+                vegetarian = VALUES(vegetarian), 
+                admin = VALUES(admin), 
+                allergens = VALUES(allergens), 
+                session_token = VALUES(session_token), 
+                last_login = VALUES(last_login), 
+                session_expiry = VALUES(session_expiry)
+        ");        
+        
+            if ($stmt === false) {
+                echo "Prepare failed: " . $this->conn->error;
+                fclose($handle);
+                return false;
+            }
+        
+            $stmt->bind_param(
+                "isssssiissss", 
+                $id, $firstName, $lastName, $emailAdress, $phoneNumber, $passwrd, $vegetarian, $admin, $allergens,
+                $session_token, $last_login, $session_expiry
+            );
+
+            while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+                if (count($data) != 12) {
+                    echo "Invalid data format: Each row must have exactly 12 columns.";
+                    $stmt->close();
+                    fclose($handle);
+                    return false;
+                }
+        
+                $id = $data[0];
+                $firstName = $data[1];
+                $lastName = $data[2];
+                $emailAdress = $data[3];
+                $phoneNumber = $data[4];
+                $passwrd = $data[5];
+                $vegetarian = (int)$data[6];
+                $admin = (int)$data[7];
+                $allergens = $data[8];
+                $session_token = $data[9];
+                $last_login = $data[10];
+                $session_expiry = $data[11];
+        
+                if (!$stmt->execute()) {
+                    echo "Execute failed: " . $stmt->error;
+                    $stmt->close();
+                    fclose($handle);
+                    return false;
+                }
+            }
+        
+            $stmt->close();
+            fclose($handle);
+        
             return true;
         }
-        
-        
         
         public function processJSON($filePath) {
             $jsonContent = file_get_contents($filePath);

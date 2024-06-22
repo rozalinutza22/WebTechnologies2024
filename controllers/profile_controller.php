@@ -61,7 +61,11 @@
                     updateSessionData($userData);
                     header("Location: /profile"); 
                      exit();
-                }
+                    } else {
+                        echo "Failed to parse CSV file.";
+                        header("Location: /menu"); 
+                        exit();
+                    }
             }
         } elseif (isset($_POST['import_json'])) {
             if (isset($_FILES['json_file']) && $_FILES['json_file']['error'] == 0) {
@@ -82,7 +86,7 @@
         if ($result) {
             echo "CSV file imported successfully.";
             return getUserDataFromCSV($filePath); 
-        } else {
+        } else {                  ///here is the problem
             echo "Failed to import CSV file.";
             return false;
         }
@@ -91,10 +95,10 @@
     function getUserDataFromCSV($filePath) {
         $handle = fopen($filePath, 'r');
         $userData = [];
-    
+
         if ($handle !== FALSE) {
             $columns = fgetcsv($handle, 1000, ",");
-            
+
             while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
                 $userData[] = [
                     'id' => $data[0],
@@ -111,10 +115,12 @@
                     'session_expiry' => $data[11]
                 ];
             }
-    
+
             fclose($handle);
+        }else{
+
         }
-    
+
         return $userData;
     }
     
