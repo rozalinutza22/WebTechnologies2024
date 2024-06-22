@@ -12,6 +12,10 @@ if ($parts[2] === "users") {
     include(dirname(__DIR__).'/public/UserManagement.php');
     $model = new UserManager();
     $model->processRequest($_SERVER["REQUEST_METHOD"], $id);
-}else echo "lists";
+}elseif ($parts[2] ==="lists") {
+    include(dirname(__DIR__).'/public/ListManagement.php');
+    $manager = new ListManager();
+    $manager->processRequest($_SERVER["REQUEST_METHOD"], $id);
+}else echo "No such command exists yet.";
 
 ?>
