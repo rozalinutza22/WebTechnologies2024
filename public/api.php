@@ -1,5 +1,4 @@
 <?php
-// include(dirname(__DIR__).'/public/UserManagement.php');
 include(dirname(__DIR__).'/public/ErrorHandler.php');
 header("Content-type: application/json; charset=UTF-8");
 set_exception_handler("ErrorHandler::handleException");
@@ -16,7 +15,7 @@ if ($parts[2] === "users") {
 }elseif ($parts[2] ==="lists") {
     include(dirname(__DIR__).'/public/ListManagement.php');
     $manager = new ListManager();
-    $manager->processRequest($_SERVER["REQUEST_METHOD"], $id);
+    $manager->processRequest($_SERVER["REQUEST_METHOD"], $id, $list_id);
 }elseif($parts[2] == "login"){
     include(dirname(__DIR__).'/public/LoginManagement.php');
     $loginManager = new LoginManager();
