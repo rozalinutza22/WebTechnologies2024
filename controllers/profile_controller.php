@@ -132,10 +132,10 @@
     
     function updateSessionData($userData) {
         $_SESSION['id'] = $userData['id'];
-        $_SESSION['firstName'] = $userData['firstName'];
-        $_SESSION['lastName'] = $userData['lastName'];
-        $_SESSION['emailAdress'] = $userData['emailAdress'];
-        $_SESSION['phoneNumber'] = $userData['phoneNumber'];
+        $_SESSION['user_fname'] = $userData['firstName'];
+        $_SESSION['user_lname'] = $userData['lastName'];
+        $_SESSION['user_email'] = $userData['emailAdress'];
+        $_SESSION['user_phone'] = $userData['phoneNumber'];
         $_SESSION['vegetarian'] = $userData['vegetarian'];
         $_SESSION['admin'] = $userData['admin'];
         $_SESSION['allergens'] = $userData['allergens'];
