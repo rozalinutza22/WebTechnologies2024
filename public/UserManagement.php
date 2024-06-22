@@ -143,7 +143,40 @@
             $stmt->bind_param("i", $id);
             $stmt->execute();
         }
+
+        public function deleteAllUsers() {
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE admin=0");
+
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $stmt->execute();
+            $stmt->close();
+        }
         
+        public function deleteAllUsersLists() {
+            $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id IN (SELECT id FROM users WHERE admin = 0)");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->execute();
+            $stmt->close();
+        }
+    
+        public function deleteAllUsersPref() {
+            $stmt = $this->conn->prepare("DELETE FROM preferences WHERE user_id IN (SELECT id FROM users WHERE admin = 0)");
+            
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->execute();
+            $stmt->close();
+        }    
+
         public function processRequest($method, $id) {
             if($id) {
                 $this->processResourceRequest($method, $id);
@@ -200,7 +233,7 @@
                         "message" => "User $id updated successfully!"
                     ]);
                     break;
-                    
+
                 case "DELETE":
                     $this->deleteUserLists($id);
                     $this->deleteUserPref($id);
@@ -236,6 +269,13 @@
                     echo json_encode([
                         "message" => "User created successfully!"
                     ]);
+                    break;
+                
+                case "DELETE":
+                    $this->deleteAllUsersLists();
+                    $this->deleteAllUsersPref();
+                    $this->deleteAllUsers();
+                    echo json_encode(["message" => "Users have been deleted successfully!"]);
                     break;
 
                 default: 
