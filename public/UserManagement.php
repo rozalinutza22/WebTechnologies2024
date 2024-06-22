@@ -110,6 +110,39 @@
             $stmt->bind_param("ii", $veg, $id);
             $stmt->execute();
         }
+
+        public function deleteUser($id) {
+            $stmt = $this->conn->prepare("DELETE FROM users WHERE id=?");
+
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
+
+        public function deleteUserPref($id) {
+            $stmt = $this->conn->prepare("DELETE FROM preferences WHERE user_id=?");
+
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
+
+        public function deleteUserLists($id) {
+            $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=?");
+
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+
+            $stmt->bind_param("i", $id);
+            $stmt->execute();
+        }
         
         public function processRequest($method, $id) {
             if($id) {
@@ -167,7 +200,12 @@
                         "message" => "User $id updated successfully!"
                     ]);
                     break;
-
+                case "DELETE":
+                    $this->deleteUserLists($id);
+                    $this->deleteUserPref($id);
+                    $this->deleteUser($id);
+                    echo json_encode(["message" => "User $id has been deleted successfully!"]);
+                    break;
             }
         }
 
@@ -197,10 +235,10 @@
                 default: 
                     //Method Not Allowed
                     http_response_code(405); 
-                    header("Allow: GET, POST");
+                    header("Allow: GET, POST, PATCH, DELETE");
 
                     echo "Method not allowed.\n";
-                    echo "Allow: GET, POST";
+                    echo "Allow: GET, POST, PATCH, DELETE";
             }
 
         }
