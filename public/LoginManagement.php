@@ -1,4 +1,7 @@
 <?php
+
+session_start();
+
 class LoginManager {
     private $servername = "localhost";
     private $username = "root";
@@ -45,17 +48,26 @@ class LoginManager {
 
 
                     echo "Login successful. User ID: " . $row['id'];
+                    $email = $row['emailAdress'];
+                    $password = $row['passwrd'];
+                    $id = $row['id'];
 
-                    $_SESSION["user_email"] = $row['emailAdress'];
-                    $_SESSION["user_fname"] = $row['firstName'];
-                    $_SESSION["user_lname"] = $row['lastName'];
-                    $_SESSION["user_phone"] = $row['phoneNumber'];
-                    $_SESSION["allergens"] = $row['allergens'];
-                    $_SESSION["admin"] = $row['admin'];
-                    $_SESSION['vegetarian'] = $row['vegetarian'];
-                    $_SESSION['user_id'] = $row['id'];
+                    // $_SESSION["user_email"] = $row['emailAdress'];
+                    // $_SESSION["user_fname"] = $row['firstName'];
+                    // $_SESSION["user_lname"] = $row['lastName'];
+                    // $_SESSION["user_phone"] = $row['phoneNumber'];
+                    // $_SESSION["allergens"] = $row['allergens'];
+                    // $_SESSION["admin"] = $row['admin'];
+                    // $_SESSION['vegetarian'] = $row['vegetarian'];
+                    // $_SESSION['user_id'] = $row['id'];
 
-                    
+                    // setcookie('API_email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    // setcookie('API_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    // setcookie('API_id', $id, time() + (30 * 24 * 60 * 60), '/');
+
+                    // var_dump($_COOKIE["API_id"]);
+
+
                 } else {
                     echo "Incorrect password.";
                 }
