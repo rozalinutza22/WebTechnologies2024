@@ -127,6 +127,7 @@ p {
     bottom: 5%;
     left: 80%;
 }
+
 .imports{
     display: flex;
     align-items: center;
@@ -227,6 +228,13 @@ p {
         bottom: 5%;
         left: 85%;
     }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (max-width: 1200px) {
@@ -281,6 +289,13 @@ p {
         bottom: 5%;
         left: 80%;
     }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 5%;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -334,6 +349,13 @@ p {
         position: fixed;
         bottom: 5%;
         left: 80%;
+    }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 25%;
     }
 }
 
@@ -391,6 +413,13 @@ p {
         bottom: 5%;
         left: 80%;
         font-size: 0.7em;
+    }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 25%;
     }
 }
 
@@ -455,6 +484,20 @@ p {
         width: 20%;
         height: 20%;
     }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 55%;
+    }
+
+    .imp{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 55%;
+    }
 }
 
 @media screen and (max-width: 370px){
@@ -517,6 +560,20 @@ p {
         padding-left: 50%;
         width: 5%;
         height: 5%;
+    }
+
+    .imports{
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-bottom: 55%;
+    }
+
+    .imp {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        margin-bottom: 55%;
     }
 }
 
