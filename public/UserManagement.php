@@ -62,7 +62,7 @@
             if ($stmt === false) {
                 die("Prepare failed: " . $this->conn->error);
             }
-
+            //com
             $stmt->bind_param("si", $firstName, $id);
             $stmt->execute();
         }
