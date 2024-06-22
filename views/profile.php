@@ -78,7 +78,7 @@ if (isset($_SESSION["user_fname"])) {
                 <p>
                     <?php 
                         if ($veg === 0) echo 'No';
-                        else echo 'Yes';
+                        else if ($veg === 1) echo 'Yes';
                     ?>
                 </p>
             </div>
@@ -90,7 +90,7 @@ if (isset($_SESSION["user_fname"])) {
                 <p>
                     <?php 
                         if ($admin === 0) echo 'No';
-                        else echo 'Yes';
+                        else if (admin === 1) echo 'Yes';
                     ?>
                 </p>
             </div>
