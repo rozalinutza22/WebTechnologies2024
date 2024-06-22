@@ -136,23 +136,24 @@
                     $data = (array) json_decode(file_get_contents("php://input"), true);
                     $errors = $this->getValidationErrors($data);
 
-                    if ($data["firstName"]) {
+
+                    if (isset($data["firstName"])) {
                         $this->updateFName($data["firstName"], $id);
                     }
 
-                    if ($data["lastName"]) {
+                    if (isset($data["lastName"])) {
                         $this->updateLName($data["lastName"], $id);
                     }
 
-                    if (!empty($data["allergens"] !== null)) {
+                    if (isset($data["allergens"])) {
                         $this->updateAllerg($data["allergens"], $id);
                     }else "nu modifica\n";
 
-                    if ($data["passwrd"]) {
+                    if (isset($data["passwrd"])) {
                         $this->updatePass($data["passwrd"], $id);
                     }
 
-                    if ($data["vegetarian"]) {
+                    if (isset($data["vegetarian"])) {
                         $this->updateVeg($data["vegetarian"], $id);
                     }
 
