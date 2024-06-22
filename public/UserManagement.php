@@ -1,5 +1,5 @@
 <?php
-    class ProductController {
+    class UserManager {
         private $servername = "localhost";
         private $username = "root";
         private $password = "";
