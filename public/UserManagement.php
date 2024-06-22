@@ -76,9 +76,9 @@
                     break;
                 case "POST":
                     $data = (array) json_decode(file_get_contents("php://input"), true);
-                    // var_dump($data);
                     $this->create($data);
 
+                    http_response_code(201); //Created Successfully 
                     echo json_encode([
                         "message" => "User created"
                     ]);
