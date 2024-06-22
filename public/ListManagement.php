@@ -81,20 +81,63 @@ class ListManager {
     }
 
     public function deleteSpecificList($id, $list_id) {
-        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND id=?");
-
+        $stmt = $this->conn->prepare("SELECT name FROM lists WHERE user_id=? AND id=?");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
-
+    
         $stmt->bind_param("ii", $id, $list_id);
         $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows == 1) {
+            $row = $result->fetch_assoc();
+            $listName = $row['name'];
+            
+            if ($listName == 'Favourites') {
+               $this->deleteItemsFromFavourites($id);
+            }
+            else{
+    
+        $deleteListStmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND id=?");
+        if ($deleteListStmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+    
+        $deleteListStmt->bind_param("ii", $id, $list_id);
+        $deleteListStmt->execute();
+        $deleteListStmt->close();
+                }
+                                    }
+    }
+    
+    public function deleteItemsFromFavourites($id) {
+        $listName = "Favourites";
+        $stmt = $this->conn->prepare("SELECT id FROM lists WHERE name = ? and user_id = ?");
+        $stmt->bind_param("si", $listName, $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $row = $result->fetch_assoc();
+            $listId = $row['id'];
+
+            $stmt = $this->conn->prepare("DELETE FROM items WHERE list_id = ?");
+            $stmt->bind_param("i", $listId);
+            $stmt->execute();
+
+            echo "All items from 'Favourites' list have been deleted successfully. \n";
+        } else {
+            echo "List 'Favourites' not found.";
+        }
+
         $stmt->close();
     }
 
     public function deleteUserLists($id) {
         $sql = "DELETE FROM lists WHERE user_id = ? AND name != ?";
         $stmt = $this->conn->prepare($sql);
+
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
@@ -102,6 +145,8 @@ class ListManager {
 
         $stmt->bind_param("is", $id, $sacredList);
         $stmt->execute();
+
+        $this->deleteItemsFromFavourites($id);
     }
 
     public function deleteUserPref($id) {
@@ -147,18 +192,19 @@ class ListManager {
     private function processListRequest($method, $id, $list_id) {
         switch ($method) {
             case "DELETE":
-                if ($this->isList($id, $list_id)) {
+                if ($this->isList($id, $list_id) == 0) {
                     echo json_encode([
                         "message" => "This list does not exist!"
                     ]);
                     break;
                 }
-                
+                else{
                 $this->deleteSpecificList($id, $list_id);
                 echo json_encode([
                     "message" => "Users $id list $list_id has been deleted successfully!"
                 ]);
                 break;
+            }
             default:
             echo "Method not allowed in this format.\n";
         }
