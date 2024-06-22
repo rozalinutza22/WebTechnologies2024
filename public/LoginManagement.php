@@ -32,7 +32,7 @@ class LoginManager {
             $emailAdress = $data['emailAdress'];
             $passwrd = $data['passwrd'];
 
-            $stmt = $this->conn->prepare("SELECT id, emailAdress, passwrd FROM users WHERE emailAdress = ?");
+            $stmt = $this->conn->prepare("SELECT * FROM users WHERE emailAdress = ?");
             $stmt->bind_param("s", $emailAdress);
             $stmt->execute();
             $result = $stmt->get_result();
@@ -43,6 +43,14 @@ class LoginManager {
 
                 if (password_verify($passwrd, $hashed_password)) {
                     echo "Login successful. User ID: " . $row['id'];
+                    $_SESSION["user_email"] = $row['emailAdress'];
+                    $_SESSION["user_fname"] = $row['firstName'];
+                    $_SESSION["user_lname"] = $row['lastName'];
+                    $_SESSION["user_phone"] = $row['phoneNumber'];
+                    $_SESSION["allergens"] = $row['allergens'];
+                    $_SESSION["admin"] = $row['admin'];
+                    $_SESSION['vegetarian'] = $row['vegetarian'];
+                    $_SESSION['user_id'] = $row['id'];
                 } else {
                     echo "Incorrect password.";
                 }
