@@ -7,11 +7,12 @@ set_exception_handler("ErrorHandler::handleException");
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
 echo "\n\n";
 $id = $parts[3] ??  null;
+$list_id = $parts[4] ?? null;
 
 if ($parts[2] === "users") {
     include(dirname(__DIR__).'/public/UserManagement.php');
     $model = new UserManager();
-    $model->processRequest($_SERVER["REQUEST_METHOD"], $id);
+    $model->processRequest($_SERVER["REQUEST_METHOD"], $id, $list_id);
 }elseif ($parts[2] ==="lists") {
     include(dirname(__DIR__).'/public/ListManagement.php');
     $manager = new ListManager();

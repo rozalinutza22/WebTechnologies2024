@@ -175,13 +175,64 @@
     
             $stmt->execute();
             $stmt->close();
-        }    
+        }  
+        
+        public function deleteSpecificList($id, $list_id) {
+            $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND id=?");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("ii", $id, $list_id);
+            $stmt->execute();
+            $stmt->close();
+        }
 
-        public function processRequest($method, $id) {
-            if($id) {
+        public function isList($id, $list_id) {
+            $stmt = $this->conn->prepare("SELECT COUNT(*) FROM lists WHERE user_id=? AND id=?");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("ii", $id, $list_id);
+            $stmt->execute();
+            $result = $stmt->get_result();
+            $stmt->close();
+
+            if ($result->num_rows === 0)
+                return 0;
+            else return 1;
+        }
+
+        public function processRequest($method, $id, $list_id) {
+            if($id && $list_id) {
+                $this->processListRequest($method, $id, $list_id);
+            }else if($id) {
                 $this->processResourceRequest($method, $id);
             }else {
                 $this->processCollectionRequest($method);
+            }
+        }
+
+        private function processListRequest($method, $id, $list_id) {
+            switch ($method) {
+                case "DELETE":
+                    if ($this->isList($id, $list_id)) {
+                        echo json_encode([
+                            "message" => "This list does not exist!"
+                        ]);
+                        break;
+                    }
+                    
+                    $this->deleteSpecificList($id, $list_id);
+                    echo json_encode([
+                        "message" => "Users $id list $list_id has been deleted successfully!"
+                    ]);
+                    break;
+                default:
+                echo "Method not allowed in this format.\n";
             }
         }
 
