@@ -93,6 +93,14 @@ nav ul li a:hover {
    background: #ccc;
 }
 
+.export_json{
+    background-color:#fabc3c;
+}
+
+.export_csv {
+    background-color:#fabc3c;
+}
+
 .boxes {
     display: flex;
     flex-direction: column;

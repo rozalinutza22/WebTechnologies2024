@@ -19,12 +19,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if($user=="Incorrect password."){
        echo "Wrong password! Try again.";
+       exit();
 }
-    else if($user=="Incorect email."){
+    else if($user==="Incorrect email."){
        echo "Wrong email! Try again.";
+       exit();
     }
 else if ($user) {
-       
+        // var_dump($user);
         $_SESSION["user_email"] = $user['emailAdress'];
         $_SESSION["user_fname"] = $user['firstName'];
         $_SESSION["user_lname"] = $user['lastName'];

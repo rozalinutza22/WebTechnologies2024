@@ -144,6 +144,11 @@ if (!empty($lists)) {
     </div>
 <?php endforeach; ?>
 
+<form action="/lists" method="post">
+        <button type="submit" class="export_json" name="export_json">Export statistics via JSON</button>
+        <button type="submit" class="export_csv" name="export_csv">Export statistics via CSV</button>
+</form>
+
     </div>
 
     <div class="detaliiFinal">

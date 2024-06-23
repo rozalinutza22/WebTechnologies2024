@@ -2,26 +2,26 @@
 
 session_start();
 
-// if (isset($_SESSION["user_fname"])) {
-//     $user_fname = $_SESSION["user_fname"];
-//     $user_lname = $_SESSION["user_lname"];
-//     $user_email = $_SESSION["user_email"];
-//     $user_phone = $_SESSION["user_phone"];
-//     $allerg = $_SESSION["allergens"];
-//     $veg = $_SESSION["vegetarian"];
-//     $admin = $_SESSION["admin"];
-// } else {
-//    echo "Must be logged in in order to manage lists.";
-//    exit();
-// }
+if (isset($_SESSION["user_fname_API"])) {
+    $user_fname = $_SESSION["user_fname_API"];
+    $user_lname = $_SESSION["user_lname_API"];
+    $user_email = $_SESSION["user_email_API"];
+    $user_phone = $_SESSION["user_phone_API"];
+    $allerg = $_SESSION["allergens_API"];
+    $veg = $_SESSION["vegetarian_API"];
+    $admin = $_SESSION["admin_API"];
+} else {
+   echo "Must be logged in in order to manage lists.";
+   exit();
+}
 
-// if (isset($_COOKIE["API_id"])) {
-// }else{
-//     echo "       \n";
-//     var_dump($_COOKIE);
-//     echo "Must be logged in in order to manage lists.";
-//     exit();
-// }
+if (isset($_COOKIE["API_id"])) {
+}else{
+    echo "       \n";
+    var_dump($_COOKIE);
+    echo "Must be logged in in order to manage lists.";
+    exit();
+}
 
 class ListManager {
     private $servername = "localhost";

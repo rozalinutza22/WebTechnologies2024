@@ -19,7 +19,7 @@ class LoginManager {
 
     public function processRequest($method) {
         switch ($method) {
-            case "GET": 
+            case "POST": 
                 $this->check_login();
                 break;
             // Handle other HTTP methods (POST, PUT, DELETE) 
@@ -52,18 +52,18 @@ class LoginManager {
                     $password = $row['passwrd'];
                     $id = $row['id'];
 
-                    // $_SESSION["user_email"] = $row['emailAdress'];
-                    // $_SESSION["user_fname"] = $row['firstName'];
-                    // $_SESSION["user_lname"] = $row['lastName'];
-                    // $_SESSION["user_phone"] = $row['phoneNumber'];
-                    // $_SESSION["allergens"] = $row['allergens'];
-                    // $_SESSION["admin"] = $row['admin'];
-                    // $_SESSION['vegetarian'] = $row['vegetarian'];
-                    // $_SESSION['user_id'] = $row['id'];
+                    $_SESSION["user_email_API"] = $row['emailAdress'];
+                    $_SESSION["user_fname_API"] = $row['firstName'];
+                    $_SESSION["user_lname_API"] = $row['lastName'];
+                    $_SESSION["user_phone_API"] = $row['phoneNumber'];
+                    $_SESSION["allergens_API"] = $row['allergens'];
+                    $_SESSION["admin_API"] = $row['admin'];
+                    $_SESSION['vegetarian_API'] = $row['vegetarian'];
+                    $_SESSION['user_id_API'] = $row['id'];
 
-                    setcookie('API_email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                    setcookie('API_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
-                    setcookie('API_id', $id, time() + (30 * 24 * 60 * 60), '/');
+                    // setcookie('API_email', $email, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    // setcookie('API_password', $password, time() + (30 * 24 * 60 * 60), '/'); // 30 days
+                    // setcookie('API_id', $id, time() + (30 * 24 * 60 * 60), '/');
 
 
                 } else {

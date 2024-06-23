@@ -76,6 +76,49 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_item_from_list
     exit();
 }
 
+//Export user's statistics
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_json'])) {
+    $userData = $model->getStatisticsData($_SESSION['user_id']);
+    $id = $_SESSION['user_id'];
+
+    if ($userData) {
+        header('Content-Type: application/json');
+        header('Content-Disposition: attachment; filename="user_' . $id . '.json"');
+    
+        echo json_encode($userData);
+        exit;
+    } else {
+        echo "User not found";
+        header("Location: /menu"); 
+        exit();
+    }
+}
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
+    $userData = $model->getStatisticsData($_SESSION['user_id']);
+    $id = $_SESSION['user_id'];
+
+    if ($userData) {
+        $csvData = [$userData];
+
+        header('Content-Type: text/csv');
+        header('Content-Disposition: attachment; filename="user_' . $id . '.csv"');
+
+        $output = fopen('php://output', 'w');
+
+        foreach ($csvData as $row) {
+            fputcsv($output, [$row]); 
+        }
+
+        fclose($output);
+        exit;
+    } else {
+        echo "User not found";
+        header("Location: /menu"); 
+        exit();
+    }
+}
+
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;

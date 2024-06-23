@@ -309,7 +309,75 @@ class ShoppingListModel {
         } else {
             return false;
         }
+    } 
+
+    public function getStatisticsData($id) {
+        //get preferences and related product details for the user
+        $sql = "
+            SELECT 
+                p.category,
+                p.name AS product_name,
+                pr.count
+            FROM 
+                preferences pr
+            JOIN 
+                products p ON pr.preference_name = p.name
+            WHERE 
+                pr.user_id = ?
+            ORDER BY 
+                pr.count DESC
+            LIMIT 10
+        ";
+    
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+        $result = $stmt->get_result();
+    
+        $preferences = [];
+        while ($row = $result->fetch_assoc()) {
+            $preferences[] = $row;
+        }
+    
+        if (count($preferences) == 0) {
+            return "No preferences found for the user.";
+        }
+    
+        $categoryCounts = [];
+        $productNames = [];
+        foreach ($preferences as $preference) {
+            $category = $preference['category'];
+            $productName = $preference['product_name'];
+    
+            // count categories
+            if (!isset($categoryCounts[$category])) {
+                $categoryCounts[$category] = 0;
+            }
+            $categoryCounts[$category] += $preference['count'];
+    
+            if (!isset($productNames[$category])) {
+                $productNames[$category] = [];
+            }
+            $productNames[$category][] = $productName;
+        }
+    
+        arsort($categoryCounts);
+        $topCategory = key($categoryCounts);
+        $topCategoryCount = $categoryCounts[$topCategory];
+        $topProducts = implode(", ", $productNames[$topCategory]);
+    
+        $otherCategories = array_diff_key($categoryCounts, [$topCategory => $topCategoryCount]);
+        $otherProducts = [];
+        foreach ($otherCategories as $category => $count) {
+            $otherProducts[] = $category . ": " . implode(", ", $productNames[$category]);
+        }
+        $otherProductsStr = implode("; ", $otherProducts);
+    
+        $message = "Statistics show a preference for items from category {$topCategory}, with products: {$topProducts}. Other preferences seem to be from categories {$otherProductsStr}.";
+    
+        return $message;
     }
+    
 
     public function closeConnection() {
         $this->conn->close();
