@@ -112,6 +112,12 @@ p {
     left: 70%;
 }
 
+.modifyByUpload{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .export {
     max-width: 7%;
     height: auto;
@@ -497,6 +503,20 @@ p {
         align-items: center;
         flex-direction: column;
         margin-bottom: 55%;
+    }
+    .access_admin{
+        max-width: 77%;
+        height: auto;
+        margin-bottom: 5%; 
+        position: relative;
+        left: 35%;
+    }
+    .delUser{
+        max-width: 77%;
+        height: auto;
+        margin-bottom: 30%; 
+        position: relative;
+        left: 35%;
     }
 }
 

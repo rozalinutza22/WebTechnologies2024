@@ -376,8 +376,7 @@ class ShoppingListModel {
         $message = "Statistics show a preference for items from category {$topCategory}, with products: {$topProducts}. Other preferences seem to be from categories {$otherProductsStr}.";
     
         return $message;
-    }
-    
+    } 
 
     public function closeConnection() {
         $this->conn->close();

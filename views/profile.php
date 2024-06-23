@@ -109,21 +109,23 @@ if (isset($_SESSION["user_fname"])) {
             <br>
             <br>
             <div class ="imports">
+        <div class="modifyByUpload">
     <h2>Modify account by uploading a file:</h2>
     
     <!-- Form pentru încărcarea unui fisier CSV -->
-    <form action="/delete_acc" method="post" enctype="multipart/form-data" class="imp">
+    <form action="/delete_acc" method="post" enctype="multipart/form-data" class="uploadForm">
         <label for="csv_file">Import CSV:</label>
         <input type="file" name="csv_file" id="csv_file" accept=".csv">
         <input type="submit" name="import_csv" value="Import CSV">
     </form>
 
     <!-- Form pentru încărcarea unui fisier JSON -->
-    <form action="/delete_acc" method="post" enctype="multipart/form-data" class="imp">
+    <form action="/delete_acc" method="post" enctype="multipart/form-data" class="uploadForm">
         <label for="json_file">Import JSON:</label>
         <input type="file" name="json_file" id="json_file" accept=".json">
         <input type="submit" name="import_json" value="Import JSON">
     </form>
+</div>
 </div>
 
             <?php 
