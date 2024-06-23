@@ -1,4 +1,5 @@
 <?php
+// session_start();
 include(dirname(__DIR__).'/public/ErrorHandler.php');
 header("Content-type: application/json; charset=UTF-8");
 set_exception_handler("ErrorHandler::handleException");

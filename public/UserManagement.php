@@ -1,12 +1,11 @@
 <?php
+    session_start();
     class UserManager {
         private $servername = "localhost";
         private $username = "root";
         private $password = "";
         private $dbname = "cupo_db";        
         private $conn;
-
-        // session_start();
     
         public function __construct() { 
             $this->conn = new mysqli($this->servername, $this->username, $this->password, $this->dbname);
@@ -405,13 +404,16 @@
         private function processCollectionRequest($method) {
             switch ($method) {
                 case "GET":
+                    if (isset($_SESSION['admin']) && $_SESSION['admin'] === 1) {
                         echo json_encode($this->getAll());
                         break;
+                    }else {
+                        echo json_encode(["message" => "You do not have admin rights!"]);
+                        break;
+                    }
                 case "POST":
                     $data = (array) json_decode(file_get_contents("php://input"), true);
                     $errors = $this->getValidationErrors($data);
-
-                    // session_start();
 
                     // $_SESSION["user_password"] = $data["passwrd"];
                     // $_SESSION["user_fname"] = $data["firstName"];
