@@ -404,13 +404,8 @@
         private function processCollectionRequest($method) {
             switch ($method) {
                 case "GET":
-                    if (isset($_SESSION['admin']) && $_SESSION['admin'] === 1) {
-                        echo json_encode($this->getAll());
-                        break;
-                    }else {
-                        echo json_encode(["message" => "You do not have admin rights!"]);
-                        break;
-                    }
+                    echo json_encode($this->getAll());
+                    break;
                 case "POST":
                     $data = (array) json_decode(file_get_contents("php://input"), true);
                     $errors = $this->getValidationErrors($data);
