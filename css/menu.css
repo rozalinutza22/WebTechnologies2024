@@ -410,6 +410,14 @@ p {
         display: flex;
         flex-direction: row;
     }
+
+    .categories {
+        float: right;
+        right: 1%;
+        font-style: oblique;
+        font-size: 0.6em;
+        position:absolute;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -419,16 +427,54 @@ p {
         font-size: 1em;
     }
 
+    .filter-container label {
+        flex: 100%;
+        margin: 5px 0;
+        padding: 7px;
+        font-size: 0.7em;
+    }
+    
+    .product_buttons{
+        margin-right: 2%;
+    }
+    
     .categories {
         float: right;
-        right: 15%;
+        right: 1%;
         font-style: oblique;
-        font-size: 0.55em;
-        position:absolute;
+        font-size: 0.45em;
+        position: absolute;
     }
 }
 
 @media screen and (max-width: 576px) {
+    /* body {
+        padding: 80px;
+    }
+
+    .filter-container label {
+        flex: 80%;
+        margin: 2px 0;
+        padding: 5px;
+        font-size: 0.7em;
+    }
+
+    .product_buttons{
+        margin-right: 2%;
+    }
+
+    .productText{
+        display:flex;
+    }
+
+    .categories {
+        float: right;
+        right: 5%;
+        font-style: oblique;
+        font-size: 0.5em;
+        position: absolute;
+    } */
+
     body {
         padding: 10px;
     }
@@ -437,17 +483,44 @@ p {
         flex: 100%;
         margin: 5px 0;
         padding: 10px;
-        font-size: 1em;
-    }
-    .product_buttons{
-        margin-right: 5%;
+        font-size: 0.9em;
     }
 
+    .boxes {
+        display: flex;
+        flex-direction: column;
+        align-items:flex-start;
+        margin-left: 10%;
+    }
+    .box {
+        width: 100%; 
+        height: 15em;
+        display:flex;
+        align-items: center;
+        flex-direction: column;
+    }
+    .productText{
+        display:flex;
+    }
+    .productDetails{
+        display:grid;
+        grid-template-columns: 1fr 1fr;
+    }
+    .specialButtonProduct{
+        background-color: #fabc3c;
+        height: 50px;
+        width: 100px;
+        margin-left: 5%;
+        cursor: pointer;
+    }
+
+
     .categories {
-        float: right;
-        right: 25%;
+        float: left;
+        /* right: 45%; */
+        left: 95%;
         font-style: oblique;
-        font-size: 0.5em;
+        font-size: 0.55em;
         position:absolute;
     }
 }
