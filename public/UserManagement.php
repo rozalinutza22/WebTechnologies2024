@@ -260,6 +260,20 @@
             exit;
         }
 
+        public function getCurrentUserId($email) {
+            $stmt = $this->conn->prepare("SELECT id FROM users WHERE emailAdress=?");
+    
+            if ($stmt === false) {
+                die("Prepare failed: " . $this->conn->error);
+            }
+    
+            $stmt->bind_param("s", $email);
+            $stmt->execute();
+            $id = $stmt->get_result();
+            $stmt->close();
+            return $id;
+        }
+
         private function processListRequest($method, $id, $list_id) {
             switch ($method) {
                 case "DELETE":
@@ -391,11 +405,22 @@
         private function processCollectionRequest($method) {
             switch ($method) {
                 case "GET":
-                    echo json_encode($this->getAll());
-                    break;
+                        echo json_encode($this->getAll());
+                        break;
                 case "POST":
                     $data = (array) json_decode(file_get_contents("php://input"), true);
                     $errors = $this->getValidationErrors($data);
+
+                    // session_start();
+
+                    // $_SESSION["user_password"] = $data["passwrd"];
+                    // $_SESSION["user_fname"] = $data["firstName"];
+                    // $_SESSION["user_lname"] = $data["lastName"];
+                    // $_SESSION["user_email"] = $data["emailAdress"];
+                    // $_SESSION["user_phone"] = $data["phoneNumber"];
+                    // $_SESSION["admin"] = $data["admin"];
+                    // $_SESSION["allergens"] = $data["allergens"];
+                    // $_SESSION["vegetarian"] = $data["vegetarian"];
 
                     if (!empty($errors)) {
                         http_response_code(422); //Unprocessable Entity
@@ -404,6 +429,8 @@
                     }
 
                     $this->create($data);
+
+                    $_SESSION["user_id"] = $this->getCurrentUserId($data["emailAdress"]);
 
                     http_response_code(201); //Created Successfully 
                     echo json_encode([
