@@ -60,11 +60,6 @@ nav ul li a:hover {
     text-align: center;
     margin-top:2%;
     font-size: 120%;
-    text-shadow:
-    -0.5px -0.5x 0 #000,
-    0.5px -0.5px 0 #000,
-    -0.5px 0.5px 0 #000,
-    0.5px 0.5px 0 #000;  
 } 
   
 .searchSection .search-container {
@@ -273,7 +268,7 @@ nav ul li a:hover {
     width: 100%;
     height: 10em;
     margin: 10% 0; 
-    border: 2px black solid;
+    /* border: 2px black solid; */
     border-radius: 10px;
 }
 
@@ -378,7 +373,7 @@ nav ul li a:hover {
     }
     
 .searchSection .search-container {
-    float: center;
+    /* float: center; */
     padding:3%;
     margin-right: 5%;
 }
@@ -427,7 +422,6 @@ nav ul li a:hover {
         flex-direction: column;
         width: 100%;
         height: 20em;
-        border: 2px black solid;
         border-radius: 10px;
     }
 
