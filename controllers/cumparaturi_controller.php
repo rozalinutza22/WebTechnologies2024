@@ -1,5 +1,5 @@
 <?php
-
+require_once(dirname(__DIR__).'/public/fpdf.php');
 session_start();
 
 include(dirname(__DIR__).'/models/cumparaturi_model.php');
@@ -120,7 +120,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
 }
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_pdf'])) {
-   //todo
+    $userData = $model->getStatisticsData($_SESSION['user_id']);
+    $id = $_SESSION['user_id'];
+
+    if ($userData) {
+        $pdf = new FPDF();
+        $pdf->AddPage();
+        $pdf->SetFont('Arial', 'B', 16);
+
+        $pdf->Cell(0, 10, 'User Statistics', 0, 1, 'C');
+        $pdf->Ln(10);
+
+        $pdf->SetFont('Arial', '', 12);
+        $pdf->MultiCell(0, 10, $userData);
+
+        $pdf->Output('D', 'user_statistics_' . $id . '.pdf');
+        exit;
+    } else {
+        echo "User not found";
+        header("Location: /menu");
+        exit();
+    }
 }
 
 

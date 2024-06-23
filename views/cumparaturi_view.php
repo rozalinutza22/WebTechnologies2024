@@ -1,5 +1,6 @@
 <?php
 include(dirname(__DIR__) . '/models/menu_model.php');
+require_once(dirname(__DIR__) . '/public/fpdf.php');
 
 if (isset($_SESSION["user_fname"]) && $_SESSION["user_fname"] != null) {
 
@@ -147,8 +148,7 @@ if (!empty($lists)) {
 <form action="/lists" method="post">
         <button type="submit" class="export_json" name="export_json">Export statistics via JSON</button>
         <button type="submit" class="export_csv" name="export_csv">Export statistics via CSV</button>
-        <button class="export_pdf">Export statistics via PDF</button>
-        <!-- type="submit" name="export_pdf" -->
+        <button type="submit" name="export_pdf" class="export_pdf">Export statistics via PDF</button>
 </form>
     </div>
 
