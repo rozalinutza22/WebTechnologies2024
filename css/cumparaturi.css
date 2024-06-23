@@ -95,6 +95,9 @@ nav ul li a:hover {
 .export_csv {
     background-color:#fabc3c;
 }
+.export_pdf{
+    background-color:#fabc3c;
+}
 
 .boxes {
     display: flex;

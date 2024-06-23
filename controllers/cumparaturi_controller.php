@@ -119,6 +119,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_csv'])) {
     }
 }
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['export_pdf'])) {
+   //todo
+}
+
+
 // Function to calculate total of items in a list
 function calculateTotal($items) {
     $total = 0;

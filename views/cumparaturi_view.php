@@ -147,8 +147,9 @@ if (!empty($lists)) {
 <form action="/lists" method="post">
         <button type="submit" class="export_json" name="export_json">Export statistics via JSON</button>
         <button type="submit" class="export_csv" name="export_csv">Export statistics via CSV</button>
+        <button class="export_pdf">Export statistics via PDF</button>
+        <!-- type="submit" name="export_pdf" -->
 </form>
-
     </div>
 
     <div class="detaliiFinal">
