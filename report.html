@@ -121,13 +121,19 @@
               <li>
                 <a href="#recovery">
                   <span>3.5</span>
-                  Account recovery
+                  Manage page in admin mode
                 </a>
               </li>
               <li>
                 <a href="#disponibility">
                   <span>3.6</span>
                   Mention recipe disponibility
+                </a>
+              </li>
+              <li>
+                <a href="#filtering">
+                  <span>3.7</span>
+                  Filter the products
                 </a>
               </li>
           
@@ -171,7 +177,9 @@
             <span>1.2</span>
             References
           </h3>
-          <p>As system requirements specifications, the user can access our web application on every browser and on every operating system. </p>
+          <p>As system requirements specifications, the user can access our web application on every browser and on every operating system. 
+            Also, we provide an API REST which can be used be everyone and on every operating system.
+          </p>
         </section>
       </section>
 
@@ -213,7 +221,8 @@
             Operating Environment
           </h3>
           <p>The software will operate on any platform that can access a browser and an internet connection. 
-            It does not require the installation of any other application in order to function properly.</p>
+            It does not require the installation of any other application in order to function properly. Users can also 
+            use another alternative instead of a browser: our API REST which offers most of our functionalities. </p>
         </section>
 
         <section id="assumptions">
@@ -223,7 +232,7 @@
           </h3>
           <p>
             A constraint that appears in our create account form is that first name, last name, email adress and phone number are required.
-            Otherwise, the user can not create an account. Also, there are specific types of phone numbers that are allows to use in the create account form.
+            Otherwise, the user can not create an account. Also, there are specific types of phone numbers that are allowed to be used in the create account form.
           </p>
           <p>
             It is very important for the user to inform us about every allergens that he/she is allergic to, because we can not apply the filtering process
@@ -269,9 +278,10 @@
         <section id="recovery">
           <h3>
             <span>3.5</span>
-            Account recovery
+            Manage page in admin mode
           </h3>
-          <p> The system allows users to recover their account using their provided email, in cases like losing their password. Priority: Medium.</p>
+          <p> The system allows users to register as admin and to modify the database as follows: delete all users, delete a certain user, delete a
+            certain list from a certain user, delete all lists from a certain user, create a new user. Priority: Medium.</p>
         </section>
         <section id="disponibility">
           <h3>
@@ -279,6 +289,16 @@
             Mention recipe disponibility
           </h3>
           <p>The system will mention the disponibility of different recipes based on ingredients used. Priority: Low.</p>
+        </section>
+        <section id="filtering">
+          <h3>
+            <span>3.7</span>
+            Filter the products
+          </h3>
+          <p>The system will filter the products when the user will press the filtering buttons. There are 3 available filters: 
+            name, perishability and price. The products will be displayed by chosen filter inside their specific category. 
+            Users can also search a specific product or a specific category of products. If the answer is negative, then an error 
+            message will be displayed. Priority: Medium.</p>
         </section>
       </section>
 
@@ -297,7 +317,15 @@
             within our application. 
           </p>
           <p>
-            If you suspect that someone stole your login credentials, please contact us. We will send you an email with the new credentials.
+            If you suspect that someone stole your login credentials, please contact us.
+          </p>
+          <p>
+            When the user proceeds to login, the email adress and the password are required in order to gain access to his/her account.
+          </p>
+          <p>
+            Our application uses prepared statements for all SQL queries involving user-provided data. This is the best method to prevent 
+            SQL injection attacks. Essentially, prepared statements separate SQL code from user data, ensuring that the data is 
+            always treated as simple values and not as part of the SQL code.
           </p>
         </section>
       </section>
