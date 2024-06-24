@@ -145,7 +145,6 @@
             if(($line = fgetcsv($handle, 1000, ",")) !== FALSE) {
  
                 $data = explode("," , $line[0]);
-        
                 if (count($data) != 12) {
                     echo "Invalid data format: Each row must have exactly 12 columns.Actual rows: \n";
                     var_dump($data);

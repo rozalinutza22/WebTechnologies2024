@@ -107,8 +107,8 @@
         $_SESSION['user_lname'] = $userData[2];
         $_SESSION['user_email'] = $userData[3];
         $_SESSION['user_phone'] = $userData[4];
-        $_SESSION['vegetarian'] = $userData[5];
-        $_SESSION['admin'] = $userData[6];
+        $_SESSION['vegetarian'] = (int)$userData[5];
+        $_SESSION['admin'] = (int)$userData[6];
         $_SESSION['allergens'] = $userData[7];
         $_SESSION['session_token'] = $userData[8];
         $_SESSION['last_login'] = $userData[8];
