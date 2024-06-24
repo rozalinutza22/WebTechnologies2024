@@ -88,6 +88,17 @@ class AdminModel {
     }
 
     public function deleteAllLists($user_id) {
+        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=?");
+        if ($stmt === false) {
+            die("Prepare failed: " . $this->conn->error);
+        }
+
+        $stmt->bind_param("i", $user_id);
+        $stmt->execute();
+        $stmt->close();
+    }
+
+    public function deleteAllListsF($user_id) {
         $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND name != 'Favourites'");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);

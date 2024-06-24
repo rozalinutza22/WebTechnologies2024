@@ -486,7 +486,7 @@ p {
         font-size: 0.9em;
     }
 
-    .filter {
+    .filter { 
         flex: 100%;
         margin: 5px 0;
         padding: 7px;
