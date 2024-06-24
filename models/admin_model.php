@@ -77,7 +77,7 @@ class AdminModel {
     }
 
     public function deleteList($user_id, $list_id) {
-        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND id=?");
+        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND id=? AND name != 'Favourites'");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
@@ -88,7 +88,7 @@ class AdminModel {
     }
 
     public function deleteAllLists($user_id) {
-        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=?");
+        $stmt = $this->conn->prepare("DELETE FROM lists WHERE user_id=? AND name != 'Favourites'");
         if ($stmt === false) {
             die("Prepare failed: " . $this->conn->error);
         }
