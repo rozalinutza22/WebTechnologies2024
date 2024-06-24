@@ -180,8 +180,11 @@
             <span>1.1</span>
             Product Scope
           </h3>
-          <p>Our product has as the main objective managing culinary preferences of the user.</p> 
-          <p> It provides relevant information about different types of recipes, based on client’s favorite ingredients and taking into consideration possible allergies.</p>
+          <p>Our product has as the main objective managing culinary preferences for multiple users. It offers a seamless experience for users to create and manage shopping lists, add products to favorites, and receive personalized product recommendations based on their preferences.</p> 
+          <!-- <p>It provides a detailed description of every product. Besides a representative image, the product has associated information such as name, price, ingredients, perishability, valability, region and stores where it can be found, quantity, brand, origin of ingredients, packaging material, NutriScore  and also possible allergens or if it is or not suitable for a vegetarian diet.</p>
+          <p>The </p>
+          <p>Every product from the menu has three specific buttons: viewing more details, adding it to an existing user's list and another button for adding the product to the favourites list.</p> -->
+
         </section>
 
         <section id="ref">
@@ -206,12 +209,28 @@
             Product Functions
           </h3>
           <ul>
-            <li>Create an account based on username and password;</li>
-            <li>Select favorite ingredients in order to receive recipes recommendations;</li>
-            <li>Select allergies in order to avoid specific food options;</li>
-            <li>Navigate through main menu in order to find recipes;</li>
-            <li>View cart details and selected options;</li>
-            <li>Manage profile and edit the information provided.</li>
+            <li>Users can create an account by introducing information like first name, last name, email address, phone number and creating a password. They can set if they are vegetarian or not, introduce allergens, and set if they are admin or not.</li>
+            <li>After account creation, users will be redirected to the menu page. Here products are grouped in categories, that can be filtered. Besides this, search for a specific product name is possible.</li>
+            <li>On menu page, users can also order the products by perishability, name or price.</li>
+            <li>Every product display has three specific buttons: one for showing more details, that will redirect the user to the product page, one for adding the product to another user's specific list and another one for adding the product to the favourites list.</li>
+            <li>The navigation bar has three options: menu page, lists page and one for user's profile.</li>
+            <li>In the lists page, the user has his own favourites list predefined. He can also create more lists by introducting their name in the text input area and click on the "add list" button.</li>
+            <li>In every list, if any products are added their name and price are displayed, and the total price of the items. Also, every product has a remove button on the left, if the user changes his mind and wants to remove an item.</li>
+            <li>On lists page, the user can find a section called "Other things you might like". Here, four products are displayed in the following manner:</li>
+            <p>If the user has never added an item to a list or clicked on the product to see more details about it, the section will show four random products.</p>
+            <p>But, if the user has added a product to a list or clicked on the button to view its details, it will be saved in a "preferences" table. If the product is present in one of the lists, it will not be shown again in the other section. Otherwise, it will be present there. One of three products are chosen from the preferences table, and the other one is always chosen random.</p>
+            <li>On the lists page, the user can export his statistics in csv, json or pdf format. The statistics are based on his preferences, and are focused on the product categories.</li>
+            <li>On profile page, the user can view his information introduced at create account. He can export this data in csv or json format.</li>
+            <li>The user can modify his information by clicking the modify button, or by importing a csv or json file, that must be in the document format of export.</li>
+            <li>Other options available to every user on profile page is logout and delete account.</li>
+            <li>If the user is admin, he can acces the admin page via a button from profile. In the admin page, he can:</li>
+            <ul>
+              <li>Delete all users</li>
+              <li>Create a new user's account</li>
+              <li>Delete an user by using his id</li>
+              <li>Delete an user's list by using his id and the list id</li>
+              <li>Delete all lists of an user by using his id</li>
+            </ul>
           </ul>
         </section>
         <section id="classes">
