@@ -486,6 +486,13 @@ p {
         font-size: 0.9em;
     }
 
+    .filter {
+        flex: 100%;
+        margin: 5px 0;
+        padding: 7px;
+        font-size: 0.9em;
+    }
+
     .boxes {
         display: flex;
         flex-direction: column;
@@ -517,11 +524,11 @@ p {
 
     .categories {
         float: left;
-        /* right: 45%; */
+        /* width: 20%; */
         left: 95%;
         font-style: oblique;
         font-size: 0.55em;
-        position:absolute;
+        position: absolute;
     }
 }
 
